@@ -72,6 +72,9 @@ Alınan her mimari kararın kısa gerekçesi. Yeni karar alındıkça en alta ek
 | 2026-11-21 | Ayrı temiz repo `opspilot_ai`, Python 3.12, proje içi `.venv` | Değerlendirici doğrudan projeyi görür; 3.14'te paket uyumu garanti değil. |
 | 2026-11-21 | Model ve embedding seçimi ölçümle yapılacak (Faz 3) | GPU yok; canlı demoda süre kritik. |
 | 2026-11-21 | Bilgi bankasında yalnızca şirket politikaları; politikalar sade şirket dili ile yazılır, içinde kanun/yönetmelik atfı **yer almaz**. Mevzuat uyumu yalnızca `kaynaklar/MEVZUAT_OZETI.md` ile izlenir | Hoca görüşü: firmalar kendi kurallarıyla çalışır. Merve'nin şartı: şirket kuralları mevzuatın asgari şartlarını karşılar (daha cömert olabilir, daha kısıtlayıcı olamaz). LLM'in müşteriye kanun maddesi yazma riski ortadan kalkar. |
+| 2026-11-21 | Standart red kararları tutardan bağımsız Destek Uzmanı yetkisinde (POL-ESK-007 Madde 2.4 eklendi) | Tutar tablosu mali çıkış doğuran işlemler (iade, değişim, bedel indirimi) içindir; net redde finansal çıkış yok, operasyonel darboğaz yaratılmaz. |
+| 2026-11-21 | Talep çıktısında `oneri` enum'u (IADE_KABUL, DEGISIM_KABUL, SERVISE_YONLENDIR, KARGO_SORUSTURMA, RED, ESKALASYON, EKSIK_BILGI) ile `eskalasyon_birimi` ve `gerekli_onay` ayrı alanlar | Bir talepte hem aksiyon hem yönlendirilecek birim olabilir (ör. ürün güvenliği + iade); panel kartı ve n8n yönlendirmesi netleşir. |
+| 2026-11-21 | Veri seti özeti 4 üst grupla (Onay/Red/Eksik Bilgi/Eskalasyon) raporlanır; model doğruluğu `oneri` enum'unda birebir eşleşme (exact match) ile ölçülür | SERVISE_YONLENDIR ve KARGO_SORUSTURMA "işleme alındı" anlamında Onay grubunda; ancak SERVISE_YONLENDIR yerine IADE_KABUL demek hata sayılır. |
 
 ## 5. Kod ve veri standartları
 

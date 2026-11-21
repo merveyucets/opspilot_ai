@@ -26,6 +26,8 @@
 
 2.3. Değişim işlemlerinde işlem tutarı, değiştirilecek ürünün fiilen ödenen tutarıdır.
 
+2.4. Tutar bazlı yetki limitleri yalnızca onaylanan iade, değişim ve bedel indirimi işlemleri için geçerlidir; politika ve prosedürlere kesin aykırılık nedeniyle verilen standart red kararları tutardan bağımsız olarak Destek Uzmanı yetkisindedir.
+
 ## Madde 3 — Onay Yetkisinin Anlamı ve Sınırları
 
 3.1. Onay yetkisi, bir işlemi **kimin yürüteceğini** belirler; politikalarda tanımlanan müşteri haklarını reddetme yetkisi vermez. Süresi içindeki cayma talebi (POL-IADE-001), onarım sonrası tekrar arıza (POL-GAR-003 Madde 5) veya hasarlı, yanlış, kutudan arızalı ürün (POL-HSR-004) gibi durumlarda koşullar sağlanmışsa onay makamı talebi reddedemez; yalnızca koşulların sağlandığını doğrular ve işlemi yürütür.
@@ -46,6 +48,8 @@ c) Müşteriden değer kaybı bedeli talep edilmesi (POL-IADE-001 Madde 5.4).
 4.2. Politika istisnaları tutardan bağımsız olarak **en az Takım Lideri** onayı gerektirir. İşlem tutarı 15.000 TL'nin üzerindeyse Operasyon Müdürü onayı gerekir.
 
 4.3. Destek Uzmanı politika istisnasını kendi başına onaylayamaz ve istisna onaylanmadan müşteriye istisna yapılacağını söyleyemez.
+
+4.4. Cayma süresini en fazla 2 gün aşan ve işlem tutarı 2.500 TL'nin üzerinde olan talepler Destek Uzmanı tarafından reddedilmez; Madde 4.1(a) kapsamında politika istisnası olarak değerlendirilmek üzere Takım Liderine aktarılır.
 
 ## Madde 5 — Telafi (Kupon) Yetkileri
 

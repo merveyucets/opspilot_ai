@@ -1,0 +1,169 @@
+{
+  "_aciklama": "Tamamen kurgusal veri. *_gun_once alanları takvim günüdür ve seed sırasında bugünün tarihine göre gerçek tarihe çevrilir; demo hangi gün çalışırsa çalışsın kurallar aynı sonucu verir. Gün sayımı: gecen_gun = bugun - teslim_tarihi; cayma için gecen_gun <= 14 süre içidir. İş günü eşiklerine (7 / 15 iş günü) bağlı siparişlerde değerler eşikten uzak seçilmiştir; araya bayram girse bile sonuç değişmez. Ödenen pay ve iade tutarı burada saklanmaz, POL-KMP-009'a göre kodda hesaplanır.",
+  "_alanlar": {
+    "son_30_gun_sikayet": "Mevcut talep HARİÇ son 30 gündeki şikâyet kaydı sayısı. Zorunlu eskalasyon: son_30_gun_sikayet + 1 >= 3 (POL-ESK-007 Madde 6.2).",
+    "durum": ["HAZIRLANIYOR", "KARGODA", "TESLIM_EDILDI", "IADE_ONAYLANDI"],
+    "odeme_yontemi": ["KREDI_KARTI_TEK", "KREDI_KARTI_TAKSIT", "BANKA_KARTI", "HAVALE_EFT", "KAPIDA_ODEME", "NOVAPARA"],
+    "kampanya.tur": ["SEPET_INDIRIMI", "X_AL_Y_ODE", "KUPON", "HEDIYE_URUN"],
+    "cayma_istisnasi": "POL-IADE-001 Madde 6.1 ürün grubu: HIJYEN (a), KISIYE_OZEL (b), CABUK_BOZULAN (c), ICERIK_SARF (d, yalnızca ambalaj açılmışsa), ANINDA_DIJITAL (e). null = istisna değil. Ambalajın açılıp açılmadığı sipariş verisinde değil, müşteri mesajındadır.",
+    "garanti_ay": "Teslim tarihinden itibaren garanti süresi (ay). null = garanti kapsamında olmayan ürün grubu.",
+    "onarimlar": "Bu garanti süresi içindeki tamamlanmış onarımlar (POL-GAR-003 Madde 5).",
+    "degisim_sayisi": "Bu sipariş için daha önce yapılmış değişim sayısı (POL-DEG-005 Madde 5).",
+    "telafi_kuponu_tl": "Bu sipariş için daha önce tanımlanmış telafi kuponu tutarı; yoksa null."
+  },
+  "musteriler": [
+    {"musteri_id": "MUS-101", "ad_soyad": "Deniz Arslan",  "eposta": "deniz.arslan@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-102", "ad_soyad": "Ece Kaya",      "eposta": "ece.kaya@ornek.test",      "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-103", "ad_soyad": "Burak Demir",   "eposta": "burak.demir@ornek.test",   "son_30_gun_sikayet": 1},
+    {"musteri_id": "MUS-104", "ad_soyad": "Selin Yıldız",  "eposta": "selin.yildiz@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-105", "ad_soyad": "Kerem Şahin",   "eposta": "kerem.sahin@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-106", "ad_soyad": "Zeynep Çelik",  "eposta": "zeynep.celik@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-107", "ad_soyad": "Emre Koç",      "eposta": "emre.koc@ornek.test",      "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-108", "ad_soyad": "Ayşe Öztürk",   "eposta": "ayse.ozturk@ornek.test",   "son_30_gun_sikayet": 1},
+    {"musteri_id": "MUS-109", "ad_soyad": "Can Aydın",     "eposta": "can.aydin@ornek.test",     "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-110", "ad_soyad": "Melis Güneş",   "eposta": "melis.gunes@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-111", "ad_soyad": "Ozan Kılıç",    "eposta": "ozan.kilic@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-112", "ad_soyad": "Elif Aksoy",    "eposta": "elif.aksoy@ornek.test",    "son_30_gun_sikayet": 1},
+    {"musteri_id": "MUS-113", "ad_soyad": "Mert Yalçın",   "eposta": "mert.yalcin@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-114", "ad_soyad": "Derya Polat",   "eposta": "derya.polat@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-115", "ad_soyad": "Kaan Erdem",    "eposta": "kaan.erdem@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-116", "ad_soyad": "Nazlı Tekin",   "eposta": "nazli.tekin@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-117", "ad_soyad": "Barış Kurt",    "eposta": "baris.kurt@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-118", "ad_soyad": "Gizem Acar",    "eposta": "gizem.acar@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-119", "ad_soyad": "Tolga Şen",     "eposta": "tolga.sen@ornek.test",     "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-120", "ad_soyad": "İrem Doğan",    "eposta": "irem.dogan@ornek.test",    "son_30_gun_sikayet": 1},
+    {"musteri_id": "MUS-121", "ad_soyad": "Onur Bulut",    "eposta": "onur.bulut@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-122", "ad_soyad": "Ceren Avcı",    "eposta": "ceren.avci@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-123", "ad_soyad": "Furkan Taş",    "eposta": "furkan.tas@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-124", "ad_soyad": "Sevgi Uçar",    "eposta": "sevgi.ucar@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-125", "ad_soyad": "Umut Karaca",   "eposta": "umut.karaca@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-126", "ad_soyad": "Pınar Özkan",   "eposta": "pinar.ozkan@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-127", "ad_soyad": "Ebru Sarı",     "eposta": "ebru.sari@ornek.test",     "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-128", "ad_soyad": "Serkan Uysal",  "eposta": "serkan.uysal@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-129", "ad_soyad": "Hande Coşkun",  "eposta": "hande.coskun@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-130", "ad_soyad": "Volkan Işık",   "eposta": "volkan.isik@ornek.test",   "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-131", "ad_soyad": "Batuhan Er",    "eposta": "batuhan.er@ornek.test",    "son_30_gun_sikayet": 2},
+    {"musteri_id": "MUS-132", "ad_soyad": "Esra Güler",    "eposta": "esra.guler@ornek.test",    "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-133", "ad_soyad": "Levent Çakır",  "eposta": "levent.cakir@ornek.test",  "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-134", "ad_soyad": "Aslı Kara",     "eposta": "asli.kara@ornek.test",     "son_30_gun_sikayet": 0},
+    {"musteri_id": "MUS-135", "ad_soyad": "Cem Özer",      "eposta": "cem.ozer@ornek.test",      "son_30_gun_sikayet": 1}
+  ],
+  "siparisler": [
+    {"siparis_no": "SP-2001", "musteri_id": "MUS-101", "durum": "TESLIM_EDILDI", "siparis_gun_once": 10, "kargo_gun_once": 8, "teslim_gun_once": 6, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "El Blenderı Seti", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 1200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2002", "musteri_id": "MUS-102", "durum": "TESLIM_EDILDI", "siparis_gun_once": 15, "kargo_gun_once": 13, "teslim_gun_once": 11, "odeme_yontemi": "KREDI_KARTI_TAKSIT", "taksit_sayisi": 6, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "15.6 inç Dizüstü Bilgisayar", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 32500.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2003", "musteri_id": "MUS-103", "durum": "TESLIM_EDILDI", "siparis_gun_once": 18, "kargo_gun_once": 16, "teslim_gun_once": 14, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Robot Süpürge", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 7600.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2004", "musteri_id": "MUS-104", "durum": "TESLIM_EDILDI", "siparis_gun_once": 13, "kargo_gun_once": 11, "teslim_gun_once": 9, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Tıraş Makinesi Yedek Başlık Seti", "urun_grubu": "KISISEL_BAKIM", "liste_fiyati": 480.00, "cayma_istisnasi": "HIJYEN", "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2005", "musteri_id": "MUS-105", "durum": "TESLIM_EDILDI", "siparis_gun_once": 24, "kargo_gun_once": 22, "teslim_gun_once": 20, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Kapüşonlu Kışlık Mont (M Beden)", "urun_grubu": "GIYIM", "liste_fiyati": 2150.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2006", "musteri_id": "MUS-106", "durum": "TESLIM_EDILDI", "siparis_gun_once": 7, "kargo_gun_once": 5, "teslim_gun_once": 3, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Keten Gömlek Siyah (S Beden)", "urun_grubu": "GIYIM", "liste_fiyati": 900.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2007", "musteri_id": "MUS-107", "durum": "TESLIM_EDILDI", "siparis_gun_once": 8, "kargo_gun_once": 6, "teslim_gun_once": 4, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00,
+     "kampanya": {"tur": "HEDIYE_URUN", "ad": "Kahve Makinesine 250 g Kahve Hediye", "indirim_tutari": 0.00}, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [
+       {"kalem_no": 1, "urun": "Filtre Kahve Makinesi", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 4200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []},
+       {"kalem_no": 2, "urun": "Filtre Kahve 250 g (Hediye)", "urun_grubu": "GIDA", "liste_fiyati": 0.00, "cayma_istisnasi": "CABUK_BOZULAN", "garanti_ay": null, "hediye": true, "hediye_degeri": 180.00, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2008", "musteri_id": "MUS-108", "durum": "TESLIM_EDILDI", "siparis_gun_once": 244, "kargo_gun_once": 242, "teslim_gun_once": 240, "odeme_yontemi": "KREDI_KARTI_TAKSIT", "taksit_sayisi": 9, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Akıllı Telefon 128 GB", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 14500.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2009", "musteri_id": "MUS-109", "durum": "TESLIM_EDILDI", "siparis_gun_once": 10, "kargo_gun_once": 8, "teslim_gun_once": 6, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00,
+     "kampanya": {"tur": "X_AL_Y_ODE", "ad": "Spor Ürünlerinde 3 Al 2 Öde (en ucuzu bedava)", "indirim_tutari": 200.00}, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [
+       {"kalem_no": 1, "urun": "Yoga Matı", "urun_grubu": "SPOR", "liste_fiyati": 400.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []},
+       {"kalem_no": 2, "urun": "Spor Çantası", "urun_grubu": "SPOR", "liste_fiyati": 300.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []},
+       {"kalem_no": 3, "urun": "Çelik Su Şişesi", "urun_grubu": "SPOR", "liste_fiyati": 200.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2010", "musteri_id": "MUS-110", "durum": "KARGODA", "siparis_gun_once": 16, "kargo_gun_once": 14, "teslim_gun_once": null, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Airfryer 5.5 L", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 3100.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2011", "musteri_id": "MUS-111", "durum": "TESLIM_EDILDI", "siparis_gun_once": 6, "kargo_gun_once": 4, "teslim_gun_once": 2, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "55 inç 4K Televizyon", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 27000.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2012", "musteri_id": "MUS-112", "durum": "TESLIM_EDILDI", "siparis_gun_once": 304, "kargo_gun_once": 302, "teslim_gun_once": 300, "odeme_yontemi": "KREDI_KARTI_TAKSIT", "taksit_sayisi": 12, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "9 kg Çamaşır Makinesi", "urun_grubu": "BUYUK_EV_ALETI", "liste_fiyati": 14200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null,
+       "onarimlar": [{"bildirim_gun_once": 104, "tamamlanma_gun_once": 92, "ariza": "Tahliye pompası arızası, su boşaltmıyor", "servis_fisi": "SRV-55821"}]}]},
+
+    {"siparis_no": "SP-2013", "musteri_id": "MUS-113", "durum": "TESLIM_EDILDI", "siparis_gun_once": 23, "kargo_gun_once": 21, "teslim_gun_once": 19, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Koşu Ayakkabısı Siyah 42", "urun_grubu": "AYAKKABI", "liste_fiyati": 1650.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2014", "musteri_id": "MUS-114", "durum": "TESLIM_EDILDI", "siparis_gun_once": 9, "kargo_gun_once": 7, "teslim_gun_once": 5, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Çekirdek Kahve 1 kg", "urun_grubu": "GIDA", "liste_fiyati": 420.00, "cayma_istisnasi": "CABUK_BOZULAN", "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2015", "musteri_id": "MUS-115", "durum": "TESLIM_EDILDI", "siparis_gun_once": 11, "kargo_gun_once": 9, "teslim_gun_once": 7, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "İsim Baskılı Tişört", "urun_grubu": "GIYIM", "liste_fiyati": 450.00, "cayma_istisnasi": "KISIYE_OZEL", "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2016", "musteri_id": "MUS-116", "durum": "TESLIM_EDILDI", "siparis_gun_once": 3, "kargo_gun_once": null, "teslim_gun_once": 3, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Dijital Hediye Kartı 500 TL", "urun_grubu": "DIJITAL", "liste_fiyati": 500.00, "cayma_istisnasi": "ANINDA_DIJITAL", "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2017", "musteri_id": "MUS-117", "durum": "TESLIM_EDILDI", "siparis_gun_once": 22, "kargo_gun_once": 20, "teslim_gun_once": 18, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Elektrikli Kahve Öğütücü", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 2400.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2018", "musteri_id": "MUS-118", "durum": "TESLIM_EDILDI", "siparis_gun_once": 42, "kargo_gun_once": 40, "teslim_gun_once": 38, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Oxford Gömlek Mavi (L Beden)", "urun_grubu": "GIYIM", "liste_fiyati": 750.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2019", "musteri_id": "MUS-119", "durum": "TESLIM_EDILDI", "siparis_gun_once": 24, "kargo_gun_once": 22, "teslim_gun_once": 20, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Kablosuz Kulak Üstü Kulaklık Siyah", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 3400.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2020", "musteri_id": "MUS-101", "durum": "TESLIM_EDILDI", "siparis_gun_once": 824, "kargo_gun_once": 822, "teslim_gun_once": 820, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "El Blenderı Seti", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 1200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2021", "musteri_id": "MUS-120", "durum": "TESLIM_EDILDI", "siparis_gun_once": 25, "kargo_gun_once": 22, "teslim_gun_once": 10, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": 150.00,
+     "kalemler": [{"kalem_no": 1, "urun": "LED Masa Lambası", "urun_grubu": "EV_YASAM", "liste_fiyati": 650.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2022", "musteri_id": "MUS-121", "durum": "TESLIM_EDILDI", "siparis_gun_once": 8, "kargo_gun_once": 6, "teslim_gun_once": 4, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Konsol Oyunu (Kutulu)", "urun_grubu": "OYUN", "liste_fiyati": 1900.00, "cayma_istisnasi": "ICERIK_SARF", "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2023", "musteri_id": "MUS-122", "durum": "TESLIM_EDILDI", "siparis_gun_once": 29, "kargo_gun_once": 27, "teslim_gun_once": 25, "odeme_yontemi": "KREDI_KARTI_TAKSIT", "taksit_sayisi": 3, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Akıllı Saat 45 mm", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 5600.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2024", "musteri_id": "MUS-123", "durum": "TESLIM_EDILDI", "siparis_gun_once": 9, "kargo_gun_once": 7, "teslim_gun_once": 5, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Kablosuz Kulak İçi Kulaklık", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 1899.00, "cayma_istisnasi": "HIJYEN", "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2025", "musteri_id": "MUS-124", "durum": "KARGODA", "siparis_gun_once": 4, "kargo_gun_once": 2, "teslim_gun_once": null, "odeme_yontemi": "HAVALE_EFT", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "5 Raflı Kitaplık", "urun_grubu": "MOBILYA", "liste_fiyati": 2200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2026", "musteri_id": "MUS-125", "durum": "TESLIM_EDILDI", "siparis_gun_once": 12, "kargo_gun_once": 10, "teslim_gun_once": 8, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00,
+     "kampanya": {"tur": "SEPET_INDIRIMI", "ad": "Küçük Ev Aletlerinde Sepette 400 TL İndirim", "indirim_tutari": 400.00}, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [
+       {"kalem_no": 1, "urun": "Buharlı Ütü", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 1000.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []},
+       {"kalem_no": 2, "urun": "Elektrikli Su Isıtıcı", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 500.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []},
+       {"kalem_no": 3, "urun": "Dijital Mutfak Tartısı", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 500.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2027", "musteri_id": "MUS-126", "durum": "TESLIM_EDILDI", "siparis_gun_once": 7, "kargo_gun_once": 5, "teslim_gun_once": 3, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Taşınabilir Bluetooth Hoparlör", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 1300.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2028", "musteri_id": "MUS-127", "durum": "TESLIM_EDILDI", "siparis_gun_once": 14, "kargo_gun_once": 12, "teslim_gun_once": 10, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Midi Boy Elbise Yeşil (38 Beden)", "urun_grubu": "GIYIM", "liste_fiyati": 1100.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2029", "musteri_id": "MUS-128", "durum": "IADE_ONAYLANDI", "siparis_gun_once": 12, "kargo_gun_once": 10, "teslim_gun_once": 8, "odeme_yontemi": "KAPIDA_ODEME", "taksit_sayisi": 1, "kargo_ucreti": 49.90, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Tost Makinesi", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 1450.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2030", "musteri_id": "MUS-129", "durum": "TESLIM_EDILDI", "siparis_gun_once": 5, "kargo_gun_once": 3, "teslim_gun_once": 1, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Porselen Yemek Takımı 24 Parça", "urun_grubu": "EV_YASAM", "liste_fiyati": 2800.00, "cayma_istisnasi": null, "garanti_ay": null, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2031", "musteri_id": "MUS-131", "durum": "KARGODA", "siparis_gun_once": 16, "kargo_gun_once": 14, "teslim_gun_once": null, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Dikey Şarjlı Süpürge", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 4800.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2032", "musteri_id": "MUS-132", "durum": "HAZIRLANIYOR", "siparis_gun_once": 1, "kargo_gun_once": null, "teslim_gun_once": null, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Oyun Konsolu 1 TB", "urun_grubu": "ELEKTRONIK", "liste_fiyati": 21000.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2033", "musteri_id": "MUS-133", "durum": "TESLIM_EDILDI", "siparis_gun_once": 154, "kargo_gun_once": 152, "teslim_gun_once": 150, "odeme_yontemi": "BANKA_KARTI", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "İyonik Saç Kurutma Makinesi", "urun_grubu": "KISISEL_BAKIM", "liste_fiyati": 2300.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2034", "musteri_id": "MUS-134", "durum": "TESLIM_EDILDI", "siparis_gun_once": 20, "kargo_gun_once": 18, "teslim_gun_once": 16, "odeme_yontemi": "KREDI_KARTI_TEK", "taksit_sayisi": 1, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "HEPA Filtreli Hava Temizleyici", "urun_grubu": "KUCUK_EV_ALETI", "liste_fiyati": 3200.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]},
+
+    {"siparis_no": "SP-2035", "musteri_id": "MUS-135", "durum": "TESLIM_EDILDI", "siparis_gun_once": 10, "kargo_gun_once": 8, "teslim_gun_once": 6, "odeme_yontemi": "KREDI_KARTI_TAKSIT", "taksit_sayisi": 6, "kargo_ucreti": 0.00, "kampanya": null, "degisim_sayisi": 0, "telafi_kuponu_tl": null,
+     "kalemler": [{"kalem_no": 1, "urun": "Ankastre Elektrikli Fırın", "urun_grubu": "BUYUK_EV_ALETI", "liste_fiyati": 9800.00, "cayma_istisnasi": null, "garanti_ay": 24, "hediye": false, "hediye_degeri": null, "onarimlar": []}]}
+  ]
+}
