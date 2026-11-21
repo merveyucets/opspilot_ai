@@ -1,0 +1,16 @@
+# Sanal ortam ve Python önbellekleri
+.venv/
+__pycache__/
+*.pyc
+
+# Çalışma sırasında oluşan veritabanları (Chroma, SQLite, checkpoint)
+runtime/
+
+# Gizli ayarlar (API anahtarları vb.)
+.env
+
+# Editör / işletim sistemi
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
