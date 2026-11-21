@@ -1,0 +1,12 @@
+{
+  "POL-IADE-001_iade_ve_cayma.md": {"kod": "POL-IADE-001", "baslik": "İade ve Cayma Hakkı Politikası", "kategori": "IADE", "surum": "4.0", "yururluk": "2026-11-01", "birim": "Musteri_Deneyimi", "erisim": "ic"},
+  "POL-PARA-002_para_iadesi.md": {"kod": "POL-PARA-002", "baslik": "Para İadesi Süreleri ve Yöntemleri", "kategori": "PARA_IADESI", "surum": "3.0", "yururluk": "2026-11-01", "birim": "Finans_Operasyon", "erisim": "ic"},
+  "POL-GAR-003_garanti.md": {"kod": "POL-GAR-003", "baslik": "Garanti Şartları ve Arızalı Ürün Süreci", "kategori": "GARANTI", "surum": "5.0", "yururluk": "2026-11-01", "birim": "Teknik_Servis", "erisim": "ic"},
+  "POL-HSR-004_hasarli_yanlis_eksik.md": {"kod": "POL-HSR-004", "baslik": "Hasarlı, Yanlış, Eksik veya Kutudan Arızalı Ürün Teslimatı", "kategori": "HASARLI_URUN", "surum": "3.0", "yururluk": "2026-11-01", "birim": "Lojistik", "erisim": "ic"},
+  "POL-DEG-005_degisim.md": {"kod": "POL-DEG-005", "baslik": "Beden ve Renk Değişim Politikası", "kategori": "DEGISIM", "surum": "2.0", "yururluk": "2026-11-01", "birim": "Musteri_Deneyimi", "erisim": "ic"},
+  "POL-KRG-006_kargo_teslimat.md": {"kod": "POL-KRG-006", "baslik": "Kargo ve Teslimat Süreçleri", "kategori": "KARGO", "surum": "3.0", "yururluk": "2026-11-01", "birim": "Lojistik", "erisim": "ic"},
+  "POL-ESK-007_eskalasyon_yetki.md": {"kod": "POL-ESK-007", "baslik": "Eskalasyon ve Onay Yetki Matrisi", "kategori": "ESKALASYON", "surum": "6.0", "yururluk": "2026-11-01", "birim": "Operasyon_Yonetimi", "erisim": "ic"},
+  "POL-ILT-008_iletisim_standartlari.md": {"kod": "POL-ILT-008", "baslik": "Müşteri İletişim ve Yanıt Standartları", "kategori": "ILETISIM", "surum": "2.0", "yururluk": "2026-11-01", "birim": "Musteri_Deneyimi", "erisim": "ic"},
+  "POL-KMP-009_kampanya_kupon_kismi_iade.md": {"kod": "POL-KMP-009", "baslik": "Kampanya, Kupon ve Kısmi İade Hesaplama Politikası", "kategori": "KAMPANYA", "surum": "1.0", "yururluk": "2026-11-01", "birim": "Finans_Operasyon", "erisim": "ic"},
+  "GZL-TDR-010_tedarikci_maliyet_marj.md": {"kod": "GZL-TDR-010", "baslik": "Tedarikçi Maliyetleri, Kâr Marjları ve İade Maliyet Analizi", "kategori": "GIZLI", "surum": "1.2", "yururluk": "2026-11-01", "birim": "Satin_Alma", "erisim": "gizli"}
+}

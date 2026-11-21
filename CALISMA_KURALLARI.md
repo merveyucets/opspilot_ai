@@ -44,7 +44,7 @@ Durumlar: ⬜ başlamadı · 🔄 devam ediyor · ✅ tamamlandı ve onaylandı
 | Faz | İçerik | Durum |
 |---|---|---|
 | 0 | Repo, sanal ortam, config, plan, çalışma kuralları | ✅ |
-| 1 | Bilgi bankası: 9 politika + 1 gizli doküman (mevzuat dayanaklı, madde numaralı) | ⬜ |
+| 1 | Bilgi bankası: 9 politika + 1 gizli doküman (mevzuat dayanaklı, madde numaralı) | ✅ |
 | 2 | Talep veri seti (36) + sipariş/müşteri verisi + RAG soru seti | ⬜ |
 | 3 | RAG hattı + değerlendirme + model/embedding ölçümü | ⬜ |
 | 4 | Araçlar, kurallar, güvenlik katmanı, SQLite, MCP Server/Client | ⬜ |
@@ -71,6 +71,7 @@ Alınan her mimari kararın kısa gerekçesi. Yeni karar alındıkça en alta ek
 | 2026-11-21 | Veri: 9 politika + 1 gizli doküman, 36 talep (12 onay/12 red/6 eksik bilgi/6 eskalasyon; 30 test + 6 demo) | Rehberin 20-50 önerisi; dengeli test matrisi. |
 | 2026-11-21 | Ayrı temiz repo `opspilot_ai`, Python 3.12, proje içi `.venv` | Değerlendirici doğrudan projeyi görür; 3.14'te paket uyumu garanti değil. |
 | 2026-11-21 | Model ve embedding seçimi ölçümle yapılacak (Faz 3) | GPU yok; canlı demoda süre kritik. |
+| 2026-11-21 | Bilgi bankasında yalnızca şirket politikaları; politikalar sade şirket dili ile yazılır, içinde kanun/yönetmelik atfı **yer almaz**. Mevzuat uyumu yalnızca `kaynaklar/MEVZUAT_OZETI.md` ile izlenir | Hoca görüşü: firmalar kendi kurallarıyla çalışır. Merve'nin şartı: şirket kuralları mevzuatın asgari şartlarını karşılar (daha cömert olabilir, daha kısıtlayıcı olamaz). LLM'in müşteriye kanun maddesi yazma riski ortadan kalkar. |
 
 ## 5. Kod ve veri standartları
 
@@ -108,3 +109,41 @@ Donanım notu: GPU yok, tüm model çıkarımı CPU'da. Süre ölçümleri buna 
 - Modeller sunumdan önce ısıtılır (ilk çağrı yavaştır).
 - Tüm demo akışının ekran kaydı **yedek video** olarak hazır bulunur.
 - Sunumdaki her rakam `eval/raporlar/` içindeki bir rapora dayanır.
+
+## 9. Kaldığımız yer (oturum devri)
+
+> Her çalışma oturumunun sonunda bu bölüm güncellenir. Yeni oturum buradan devam eder.
+
+**Son güncelleme:** 2026-11-21
+
+**Tamamlanan:** Faz 0 (commit `89aacf4`, GitHub'a gönderildi).
+
+**Faz 1 (Bilgi bankası) — tamamlandı, Merve onayladı:**
+- 4 mevzuat PDF'i `kaynaklar/mevzuat/` + `kaynaklar/MEVZUAT_OZETI.md` (kural → madde → uyum tablosu).
+- 9 politika (`POL-IADE-001` … `POL-KMP-009`) + 1 gizli doküman (`GZL-TDR-010`), hepsi aynı şablon: başlık tablosu, `## Madde N — Başlık`, `N.M.` alt maddeler, son madde "Destek Uzmanı için Uygulama Adımları".
+- `data/meta.json`: kod, başlık, kategori, sürüm, yürürlük, birim, **erisim** (`ic` / `gizli`).
+- `tests/test_bilgi_bankasi.py`: meta-dosya eşleşmesi, başlık/sürüm/erişim tutarlılığı, madde sıralaması, 84 madde atfının geçerliliği, politikalarda mevzuat atfı olmaması. 5/5 yeşil; bozuk atıf testiyle doğrulandı.
+- **POL-ESK-007 madde numaraları sabittir** (diğer dokümanlar atıf yapıyor): Madde 2 tutar yetkisi (2.500 / 15.000 TL), Madde 3 yetkinin anlamı (3.3 = injection kuralı), Madde 4 istisnalar, Madde 5 kupon (150 / 1.000 TL), Madde 6 zorunlu eskalasyon.
+- Gizli dokümanda iki bilinçli tuzak: Madde 5.1 politikalarla çelişen iç talimat, Madde 6.1 gömülü prompt injection (`GIZLI10` kodu). Sistem ikisini de uygulamamalı.
+
+**Mevzuat incelemesinin kritik bulguları (taslaklardaki hatalar, politikalarda düzeltildi):**
+- Garanti: "3 onarım + 4. arıza" eşiği yanlış → onarım sonrası ilk tekrar arızada iade/değişim hakkı (TKHK 56/3, GBY 9/1).
+- Garanti teslim tarihinden başlar (fatura değil); "pil 6 ay" dayanaksız.
+- Taksitli iade: tek seferde (MSY 12/4). Para iadesi taşıyıcıya teslimden itibaren 14 gün (MSY 12/1).
+- Tüketici malı 14 günde geri gönderir (10 değil); "kullanılmamış olmalı" ve "%20 kesinti" dayanaksız (MSY 13/2).
+- Ayıplı malda seçimlik hak müşterinindir (TKHK 11/1).
+- İş günü tanımında cumartesi iş günüdür (SSHY 4/d) → kodda iş günü hesabı buna göre.
+- Azami tamir süresi (20 iş günü) PDF'ten doğrulanamadı → şirket taahhüdü olarak yazılacak.
+- MSY 15/1-k (kurulumu yapılmış mal istisnası) Danıştay 6/5/2026 kararıyla iptal → politika güncelleme demosu için aday.
+
+**Mevzuat kararı:** Yönetmelikler RAG'e **eklenmez** ve politikalarda kanun atfı **yer almaz** (hoca görüşü, karar günlüğü). Uyum yalnızca `MEVZUAT_OZETI.md` ile izlenir.
+
+**Sıradaki adım — Faz 2 (Talep veri seti):**
+1. `siparisler_seed.json` yeniden düzenlenecek: yeni politikalara göre alanlar (indirim/kampanya bilgisi, önceki onarım kaydı, ödeme yöntemi), 36 talebi besleyecek kadar sipariş.
+2. 36 talep: 12 onay / 12 red / 6 eksik bilgi / 6 gri alan-eskalasyon; 30 test + 6 demo. Her talebin beklenen sonucu: kategori, öneri, gerekli onay, eskalasyon, dayanak madde. Politikalardaki "tuzak" notları senaryolara dönüştürülecek (ör. değişim vs yanlış ürün çifti, sıvı teması → servis, taksitli iade tek seferde, S14 injection).
+3. `rag_sorular.json` yeni madde numaralarına göre güncellenecek (beklenen doküman + madde).
+4. Gri alan için aday: ürün güvenliği (POL-ESK-007 Madde 6.5), politika istisnası, çapraz prosedür (kampanya + hasar).
+
+**Henüz commit'lenmemiş taslaklar (Faz 2'de yeniden yazılacak):** `data/siparisler_seed.json`, `data/ornek_talepler.json` (eski 15 senaryo, eski kurallara göre — beklenen sonuçları artık geçersiz), `data/rag_sorular.json`.
+
+**Referans kodlar (ders):** `../BTK_Ollama_Project/rag_kodlar/` (Gün 5-7), `../BTK_Ollama_Project/rag_kodlar/7. Gün Kodlar Tekrar/` (HTTP MCP, LangGraph, FastAPI köprüsü, n8n), `../BTK_Ollama_Project/benim_rag/rerank_karsilastirma.py` (hibrit rerank deneyi).
