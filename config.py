@@ -34,7 +34,8 @@ RERANK_TOP_N = 3          # LLM'e verilecek son parça sayısı
 SEMANTIK_AGIRLIK = float(os.getenv("SEMANTIK_AGIRLIK", "1.0"))
 # Faz 3 embedding karşılaştırmasının adayları (eval/rag_eval.py --all)
 EMBED_MODEL_ADAYLARI = ["embeddinggemma", "bge-m3", "qwen3-embedding:0.6b"]
-CLASSIFY_OPTIONS = {"temperature": 0, "num_predict": 200, "seed": 42}
+# num_ctx, KARAR_OPTIONS ile AYNI tutulur: aynı model farklı bağlam boyutuyla çağrılırsa Ollama modeli yeniden yükler (ölçüldü).
+CLASSIFY_OPTIONS = {"temperature": 0, "num_predict": 200, "num_ctx": 6144, "seed": 42}
 # Düşünme (thinking) açık modellerde düşünme metni de token bütçesinden yer; 200 token yetmez (ölçüldü: qwen3:8b).
 CLASSIFY_THINK_OPTIONS = {"temperature": 0, "num_predict": 1536, "seed": 42}
 LLM_TIMEOUT_SN = int(os.getenv("LLM_TIMEOUT_SN", "600"))   # CPU'da 7-8B modeller için

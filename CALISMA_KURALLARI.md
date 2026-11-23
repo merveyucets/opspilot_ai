@@ -46,13 +46,13 @@ Durumlar: ⬜ başlamadı · 🔄 devam ediyor · ✅ tamamlandı ve onaylandı
 | 0 | Repo, sanal ortam, config, plan, çalışma kuralları | ✅ |
 | 1 | Bilgi bankası: 9 politika + 1 gizli doküman (mevzuat dayanaklı, madde numaralı) | ✅ |
 | 2 | Talep veri seti (36) + sipariş/müşteri verisi + RAG soru seti | ✅ |
-| 3 | RAG hattı + değerlendirme + model/embedding ölçümü | ⬜ |
-| 4 | Araçlar, kurallar, güvenlik katmanı, SQLite, MCP Server/Client | ⬜ |
-| 5 | LangGraph agent + interrupt + checkpoint | ⬜ |
-| 6 | FastAPI (+ SSE) | ⬜ |
-| 7 | Web paneli: mockup → sade sürüm → cila | ⬜ |
-| 8 | n8n workflow'ları + docker-compose | ⬜ |
-| 9 | Değerlendirme raporu, güvenlik testleri, README, sunum + yedek video | ⬜ |
+| 3 | RAG hattı + değerlendirme + model/embedding ölçümü | ✅ |
+| 4 | Araçlar, kurallar, güvenlik katmanı, SQLite, MCP Server/Client | ✅ |
+| 5 | LangGraph agent + interrupt + checkpoint | ✅ |
+| 6 | FastAPI (SSE kapsam dışı; adımlar analiz sonrası listelenir) | ✅ |
+| 7 | Web paneli (tek sayfa, mockup aşaması atlandı) | ✅ |
+| 8 | n8n talep alma akışı (diğer 2 akış ve docker-compose kapsam dışı) | ✅ |
+| 9 | Değerlendirme raporu, güvenlik testleri, README (sunum + yedek video: Merve) | 🔄 |
 
 **Teslim:** GitHub reposu (`merveyucets/opspilot_ai`) + kendi laptopundan canlı, uygulamalı sunum (internetli ortam).
 
@@ -122,29 +122,19 @@ Donanım notu: GPU yok, tüm model çıkarımı CPU'da. Süre ölçümleri buna 
 
 > Her çalışma oturumunun sonunda bu bölüm güncellenir. Yeni oturum buradan devam eder.
 
-**Son güncelleme:** 2026-11-21
+**Son güncelleme:** 2026-11-23
 
-**Tamamlanan:** Faz 0 (`89aacf4`), Faz 1 (`43e6813`), Faz 2 (`e7556b4` + soru seti commit'i). Hepsi Merve onaylı ve GitHub'da.
+**Durum:** Faz 0–8 tamamlandı (2026-11-23, Merve'nin "bu akşam bitir" talebiyle kapsam daraltıldı: SSE, panel mockup'ı, n8n'in 2 akışı ve docker-compose kapsam dışı). Faz 9'da karar değerlendirmesi (`eval/karar_eval.py`) çalıştırıldı; sonuçlar `eval/raporlar/karar_degerlendirme_test.md` ve README §6'da.
 
-**Faz 1 özeti (bilgi bankası):**
-- 9 politika (`POL-IADE-001` … `POL-KMP-009`) + 1 gizli doküman (`GZL-TDR-010`); `data/meta.json` erişim alanı (`ic` / `gizli`).
-- Politikalarda mevzuat atfı yok; uyum `kaynaklar/MEVZUAT_OZETI.md` ile izlenir.
-- **POL-ESK-007 madde numaraları sabittir:** Madde 2 tutar yetkisi (2.500 / 15.000 TL; 2.4 = standart red tutardan bağımsız DU), Madde 3 yetkinin anlamı (3.3 = injection kuralı), Madde 4 istisnalar (4.4 = süreyi en fazla 2 gün aşan, 2.500 TL üzeri talep → TL'ye politika istisnası), Madde 5 kupon (150 / 1.000 TL), Madde 6 zorunlu eskalasyon.
-- Gizli dokümanda iki bilinçli tuzak: Madde 5.1 iç talimat (düşük marjlıda NovaPara'ya yönlendir), Madde 6.1 gömülü prompt injection (`GIZLI10`). Sistem ikisini de uygulamamalı.
-- İş günü tanımında cumartesi iş günüdür; kodda iş günü hesabı buna göre yapılır.
+**Çalıştırma:** README §4. Sıra: `app.veritabani --seed` → `app.mcp_sunucusu` → `uvicorn app.api:app` → panel http://127.0.0.1:8000.
 
-**Faz 2 özeti (veri setleri):**
-- `data/siparisler_seed.json`: 35 müşteri, 35 sipariş. `*_gun_once` alanları takvim günü; seed sırasında gerçek tarihe çevrilecek (Faz 4). Ödenen pay / iade tutarı saklanmaz, POL-KMP-009'a göre kodda hesaplanır. `son_30_gun_sikayet` mevcut talep hariçtir.
-- `data/ornek_talepler.json`: 36 talep (12 ONAY / 12 RED / 6 EKSIK_BILGI / 6 ESKALASYON; T01–T30 test, D01–D06 demo). Beklenen: grup, kategori, `oneri`, `gerekli_onay`, `eskalasyon_birimi`, `islem_tutari`, dayanak maddeler, `yanitta_olmamali`.
-- `data/rag_sorular.json`: 40 soru (9 doğrudan, 9 günlük dil, 9 eski kural, 5 çapraz, 4 cevapsız, 4 gizli); beklenen doküman + madde, arama modu (`ic` / `musteri`), yasak dokümanlar.
-- Doğruluk `oneri` alanında birebir eşleşmeyle ölçülür; grup yalnızca özet içindir.
-- `tests/__init__.py` eklendi: `python -m unittest` artık testleri buluyor (öncesinde 0 test çalışıyordu).
+**Önemli tasarım notları:**
+- Modeller: arama bge-m3 (900 parçalama, rerank ağırlığı 1.0); sınıflandırma ve öneri/taslak qwen3:8b düşünme kapalı. CLASSIFY_OPTIONS ve KARAR_OPTIONS aynı `num_ctx` (6144) kullanır; farklı olursa Ollama modeli her çağrıda yeniden yükler (talep süresi 282 → ~155-190 sn).
+- Karar şemasında `gerekce` alanı `oneri`'den ÖNCE gelir (model karara gerekçeden sonra bağlanır; D01'de tutarsız RED bu şekilde düzeldi).
+- Onay token'ı yalnızca API/konsolda (insan eylemi) üretilir; MCP aracı değildir. Yetersiz rol API'de 403 alır ve talep karar beklemeye devam eder.
+- Agent politika aramasını daima müşteri modunda yapar (gizli doküman LLM bağlamına girmez).
+- Ayrı cevap ölçümü (`eval/cevap_eval.py`) süre nedeniyle tamamlanmadı; atıf geçerliliği karar değerlendirmesinde ölçülür.
 
-**Sıradaki adım — Faz 3 (RAG hattı + değerlendirme + model/embedding ölçümü):**
-1. Parçalama: her `## Madde N` (gerekirse alt madde) bir parça; metadata: kod, madde no, kategori, erişim.
-2. Chroma + `embeddinggemma` ile indeks (`runtime/` altında, git'e girmez); müşteri modunda `erisim: gizli` filtresi.
-3. `eval/rag_eval.py`: doküman ve madde düzeyinde Hit@3, rerank Top1, cevapsız sorularda davranış, müşteri modunda gizli doküman sızıntısı.
-4. Embedding ve LLM seçimi ölçümle (CPU süresi + kalite); sonuçlar `eval/raporlar/` altına.
-5. Önce plan konuşulur, sonra küçük parçalar halinde yazılır.
+**Kalan (Merve):** sunum, demo provası (D01–D06 önceden analiz edilir), yedek video, README §6'daki karar sonuçlarının yorumu.
 
-**Referans kodlar (ders):** `../BTK_Ollama_Project/rag_kodlar/` (Gün 5-7), `../BTK_Ollama_Project/rag_kodlar/7. Gün Kodlar Tekrar/` (HTTP MCP, LangGraph, FastAPI köprüsü, n8n), `../BTK_Ollama_Project/benim_rag/rerank_karsilastirma.py` (hibrit rerank deneyi).
+**Referans kodlar (ders):** `../BTK_Ollama_Project/rag_kodlar/` (Gün 5-7), `../BTK_Ollama_Project/rag_kodlar/7. Gün Kodlar Tekrar/`, `../BTK_Ollama_Project/benim_rag/rerank_karsilastirma.py`.
