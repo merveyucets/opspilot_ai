@@ -7,7 +7,7 @@ Uç noktalar:
   GET  /                 → destek uzmanı paneli (app/web/index.html)
   POST /analyze          → talebi kaydet + agent analizi (çalışan kararını bekler)
   POST /approve          → çalışan kararı: tek kullanımlık onay token'ı burada (insan eylemiyle) üretilir
-  GET  /tickets, /tickets/{talep_no}, /demo-talepler, /health
+  GET  /tickets, /tickets/{talep_no}, /demo-talepler, /ek-turleri, /health
 
 Çalıştırma (MCP sunucusu açıkken):
   .\\.venv\\Scripts\\python.exe -m uvicorn app.api:app --host 127.0.0.1 --port 8000
@@ -26,6 +26,7 @@ from langgraph.types import Command
 from pydantic import BaseModel, Field
 
 from config import CHECKPOINT_PATH, DATA_DIR, INGEST_API_KEY
+from app import kurallar as K
 from app import veritabani as V
 from app.agent.graf import build_graph, config, get_prompt
 from app.mcp_istemcisi import call
@@ -38,6 +39,7 @@ class TalepIn(BaseModel):
     musteri_id: str = ""
     siparis_no: str = ""
     kanal: str = "PANEL"
+    ekler: list[str] = Field(default_factory=list, max_length=10)   # ek TÜRLERİ (kurallar.EK_TURLERI)
     operation_key: str | None = None
 
 
@@ -89,7 +91,7 @@ def analyze(t: TalepIn, x_api_key: str | None = Header(default=None)):
         return {"talep_no": talep["talep_no"], "durum": "ONAY_BEKLIYOR", "analiz": st.tasks[0].interrupts[0].value["analiz"]}
     out = app.state.graph.invoke({"thread_id": thread_of(talep["talep_no"]), "talep_no": talep["talep_no"],
                                   "mesaj": t.mesaj, "musteri_id": t.musteri_id, "siparis_no": t.siparis_no,
-                                  "kanal": t.kanal}, cfg)
+                                  "kanal": t.kanal, "ekler": K.ekleri_dogrula(t.ekler)}, cfg)
     prompt = get_prompt(out)
     if not prompt:
         raise HTTPException(500, "Agent beklenmedik şekilde interrupt olmadan bitti")
@@ -135,4 +137,9 @@ def ticket(talep_no: str):
 def demo_talepler():
     veri = json.loads((DATA_DIR / "ornek_talepler.json").read_text(encoding="utf-8"))
     return [{"id": t["id"], "set": t["set"], "mesaj": t["mesaj"], "musteri_id": t["musteri_id"],
-             "siparis_no": t["siparis_no"] or "", "kanal": t["kanal"]} for t in veri["talepler"]]
+             "siparis_no": t["siparis_no"] or "", "kanal": t["kanal"], "ekler": t["ekler"]} for t in veri["talepler"]]
+
+
+@app.get("/ek-turleri")
+def ek_turleri():
+    return K.EK_TURLERI

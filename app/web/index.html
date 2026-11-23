@@ -28,6 +28,7 @@
         <input id="siparis" class="border rounded p-2 text-sm" placeholder="Sipariş no (SP-2001)">
         <input id="musteri" class="border rounded p-2 text-sm" placeholder="Müşteri (MUS-101)">
       </div>
+      <div id="ekler" class="flex flex-wrap gap-3 text-xs text-slate-600"></div>
       <button id="analizBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded p-2 font-semibold">Analiz et</button>
       <p id="analizDurum" class="text-xs text-slate-500"></p>
     </div>
@@ -61,12 +62,16 @@ async function api(yol, govde) {
 }
 
 async function demolariYukle() {
+  const turler = await api("/ek-turleri");
+  $("#ekler").innerHTML = "<span>Ekler:</span>" + Object.entries(turler).map(([k, v]) =>
+    `<label><input type="checkbox" value="${k}" class="ek mr-1">${v}</label>`).join("");
   demolar = await api("/demo-talepler");
   for (const d of demolar) $("#demo").insertAdjacentHTML("beforeend",
     `<option value="${d.id}">${d.id} — ${esc(d.mesaj.slice(0,60))}…</option>`);
 }
 $("#demo").onchange = () => { const d = demolar.find(x => x.id === $("#demo").value); if (!d) return;
-  $("#mesaj").value = d.mesaj; $("#siparis").value = d.siparis_no; $("#musteri").value = d.musteri_id; };
+  $("#mesaj").value = d.mesaj; $("#siparis").value = d.siparis_no; $("#musteri").value = d.musteri_id;
+  document.querySelectorAll(".ek").forEach(c => c.checked = d.ekler.includes(c.value)); };
 
 async function listele() {
   const l = await api("/tickets");
@@ -78,7 +83,8 @@ async function listele() {
 }
 
 $("#analizBtn").onclick = async () => {
-  const govde = {mesaj:$("#mesaj").value.trim(), siparis_no:$("#siparis").value.trim(), musteri_id:$("#musteri").value.trim(), kanal:"PANEL"};
+  const govde = {mesaj:$("#mesaj").value.trim(), siparis_no:$("#siparis").value.trim(), musteri_id:$("#musteri").value.trim(), kanal:"PANEL",
+    ekler:[...document.querySelectorAll(".ek:checked")].map(c => c.value)};
   if (!govde.mesaj) return;
   $("#analizBtn").disabled = true;
   $("#analizDurum").innerHTML = `<span class="spin"></span> Agent çalışıyor: sınıflandırma → sipariş → kurallar → politika arama → öneri → güvenlik kontrolü (CPU'da 1-2 dk)`;
@@ -106,7 +112,7 @@ async function goster(no) {
     <div class="grid md:grid-cols-3 gap-3 text-sm">
       <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Kategori</div><b>${s.kategori}</b> <span class="text-xs">(${esc(s.kaynak)})</span><div class="text-xs">aciliyet ${s.aciliyet} · duygu ${s.duygu}</div></div>
       <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Sipariş</div>${b.siparis_var ? `${r.talep.siparis_no} · teslimden <b>${b.teslimden_gecen_gun ?? "-"}</b> gün · ${b.cayma_durumu ?? b.kargo_durumu ?? ""}` : "<b>bulunamadı</b>"}</div>
-      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">İlgili ürün</div>${esc(g.kalem ?? "-")}</div>
+      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">İlgili ürün</div>${esc(g.kalem ?? "-")}<div class="text-xs mt-1">Ekler: ${(b.ekler||[]).map(esc).join(", ") || "yok"}</div></div>
     </div>
     ${g.uyarilar.length ? `<div class="bg-amber-50 border border-amber-300 rounded p-3 text-sm">${g.uyarilar.map(u => `<div>⚠ ${esc(u)}</div>`).join("")}</div>` : ""}
     <div class="text-sm"><b>Gerekçe:</b> ${esc(o.gerekce)}</div>

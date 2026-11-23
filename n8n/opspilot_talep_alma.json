@@ -27,7 +27,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ mesaj: $json.body.mesaj, siparis_no: $json.body.siparis_no ?? '', musteri_id: $json.body.musteri_id ?? '', kanal: 'N8N', operation_key: $json.body.operation_key || $execution.id }) }}",
+        "jsonBody": "={{ JSON.stringify({ mesaj: $json.body.mesaj, siparis_no: $json.body.siparis_no ?? '', musteri_id: $json.body.musteri_id ?? '', ekler: $json.body.ekler ?? [], kanal: 'N8N', operation_key: $json.body.operation_key || $execution.id }) }}",
         "options": { "timeout": 600000 }
       },
       "id": "analyze",

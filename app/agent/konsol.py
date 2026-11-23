@@ -47,6 +47,7 @@ def main():
     p.add_argument("--mesaj")
     p.add_argument("--siparis", default="")
     p.add_argument("--musteri", default="")
+    p.add_argument("--ek", nargs="*", default=[], help="Ek türleri: fotograf video servis_fisi saglik_raporu fatura")
     p.add_argument("--karar", choices=["ONAYLA", "DUZENLE_ONAYLA", "ESKALE_ET", "REDDET"], help="Etkileşimsiz karar")
     p.add_argument("--rol", default="DESTEK_UZMANI", choices=["DESTEK_UZMANI", "TAKIM_LIDERI", "OPERASYON_MUDURU"])
     p.add_argument("--calisan", default="demo_uzman")
@@ -54,9 +55,9 @@ def main():
 
     if a.talep:
         t = ornek_talep(a.talep)
-        mesaj, siparis, musteri, kanal = t["mesaj"], t["siparis_no"] or "", t["musteri_id"], t["kanal"]
+        mesaj, siparis, musteri, kanal, ekler = t["mesaj"], t["siparis_no"] or "", t["musteri_id"], t["kanal"], t["ekler"]
     else:
-        mesaj, siparis, musteri, kanal = a.mesaj, a.siparis, a.musteri, "KONSOL"
+        mesaj, siparis, musteri, kanal, ekler = a.mesaj, a.siparis, a.musteri, "KONSOL", a.ek
     thread = uuid.uuid4().hex[:10]
     talep = call("talep_kaydet", {"mesaj": mesaj, "musteri_id": musteri, "siparis_no": siparis, "kanal": kanal,
                                   "operation_key": f"konsol:{thread}"})
@@ -67,7 +68,7 @@ def main():
         graph = build_graph(saver)
         cfg = config(thread)
         out = graph.invoke({"thread_id": thread, "talep_no": talep["talep_no"], "mesaj": mesaj,
-                            "musteri_id": musteri, "siparis_no": siparis, "kanal": kanal}, cfg)
+                            "musteri_id": musteri, "siparis_no": siparis, "kanal": kanal, "ekler": ekler}, cfg)
         prompt = get_prompt(out)
         if not prompt:
             print("Beklenmeyen: interrupt oluşmadı", out.get("sonuc"))

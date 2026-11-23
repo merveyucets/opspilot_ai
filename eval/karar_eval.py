@@ -6,7 +6,9 @@ Her talep agent'ta interrupt noktasına kadar çalıştırılır (karar kaydı Y
 - Zorunlu eskalasyon birimi doğruluğu
 - Güvenlik katmanı: yanlış önerilerin kaçında uyarı (⚠) üretildi
 - Yanıt taslağında yasak ifade / gizli kod (GIZLI10) sızıntısı, atıf geçerliliği, süre
-MCP sunucusu açık olmalı. Kullanım: python eval/karar_eval.py [--set test|demo] [--limit N]
+Talep ekleri (fotoğraf, servis fişi...) agent'a iletilir. Rapor her talepten sonra yeniden yazılır;
+yarıda kalırsa --devam ile önceki JSON'daki talepler atlanır.
+MCP sunucusu açık olmalı. Kullanım: python eval/karar_eval.py [--set test|demo] [--limit N] [--ids T29 T30] [--devam]
 """
 import argparse
 import json
@@ -36,7 +38,8 @@ def tek_talep(graph, t: dict) -> dict:
                                   "kanal": "EVAL", "operation_key": thread})
     t0 = time.perf_counter()
     out = graph.invoke({"thread_id": thread, "talep_no": talep["talep_no"], "mesaj": t["mesaj"],
-                        "musteri_id": t["musteri_id"], "siparis_no": t["siparis_no"] or "", "kanal": "EVAL"}, config(thread))
+                        "musteri_id": t["musteri_id"], "siparis_no": t["siparis_no"] or "", "kanal": "EVAL",
+                        "ekler": t["ekler"]}, config(thread))
     sure = round(time.perf_counter() - t0, 1)
     a = get_prompt(out)["analiz"]
     b, o, g = t["beklenen"], a["oneri"], a["guvenlik"]
@@ -72,7 +75,7 @@ def rapor(sonuc: list[dict], set_adi: str) -> None:
     md = f"""# Faz 9: Uçtan Uca Karar Değerlendirmesi
 
 **Tarih:** {datetime.now().strftime('%d.%m.%Y %H:%M')}
-**Set:** `data/ornek_talepler.json` — {set_adi} ({n} talep). Agent interrupt noktasına kadar çalıştırıldı; karar kaydı yapılmadı.
+**Set:** `data/ornek_talepler.json` — {set_adi} ({n} talep). Agent interrupt noktasına kadar çalıştırıldı; karar kaydı yapılmadı. Talep ekleri (türleri) agent'a iletildi.
 **Modeller:** sınıflandırma {CLASSIFIER_MODEL}, öneri+taslak {WRITER_MODEL} (düşünme kapalı). Arama: bge-m3, müşteri modu. Donanım: CPU.
 
 | Metrik | Sonuç |
@@ -112,17 +115,27 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--set", default="test", choices=["test", "demo"])
     p.add_argument("--limit", type=int)
+    p.add_argument("--ids", nargs="*", help="Yalnızca bu talepler (ör. T29 T30)")
+    p.add_argument("--devam", action="store_true", help="Önceki JSON'daki sonuçları koru, eksik talepleri çalıştır")
     a = p.parse_args()
     talepler = [t for t in json.loads((DATA_DIR / "ornek_talepler.json").read_text(encoding="utf-8"))["talepler"]
-                if t["set"] == a.set][: a.limit]
+                if t["set"] == a.set and (not a.ids or t["id"] in a.ids)][: a.limit]
+    onceki = RAPORLAR / f"karar_degerlendirme_{a.set}.json"
+    sonuc = json.loads(onceki.read_text(encoding="utf-8")) if a.devam and onceki.exists() else []
+    bitmis = {s["id"] for s in sonuc}
     graph = build_graph(MemorySaver())
-    sonuc = []
-    for t in talepler:
+    for i, t in enumerate(talepler, 1):
+        if t["id"] in bitmis:
+            print(f"{t['id']}: önceki sonuç kullanıldı", flush=True)
+            continue
         try:
             r = tek_talep(graph, t)
-            print(f"{r['id']}: öneri {'✓' if r['oneri_dogru'] else '✗'} {r['sistem']['oneri']:<18} onay {'✓' if r['onay_dogru'] else '✗'} "
-                  f"esk {'✓' if r['eskalasyon_dogru'] else '✗'} {r['sure_sn']} sn", flush=True)
+            print(f"[{i}/{len(talepler)}] {r['id']}: öneri {'✓' if r['oneri_dogru'] else '✗'} {r['sistem']['oneri']:<18} "
+                  f"onay {'✓' if r['onay_dogru'] else '✗'} esk {'✓' if r['eskalasyon_dogru'] else '✗'} {r['sure_sn']} sn", flush=True)
             sonuc.append(r)
+            sonuc.sort(key=lambda s: s["id"])
+            rapor(sonuc, a.set)   # her talepten sonra: yarıda kalırsa --devam ile sürdürülür
         except Exception as e:
             print(f"{t['id']}: HATA {e}", flush=True)
-    rapor(sonuc, a.set)
+    if sonuc:
+        rapor(sonuc, a.set)

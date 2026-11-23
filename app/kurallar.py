@@ -163,12 +163,25 @@ def injection_isareti(mesaj: str) -> bool:
     return any(k in m for k in INJECTION_KALIPLARI)
 
 
-def bilgileri_hesapla(siparis: dict | None, musteri: dict | None, mesaj: str, bugun: date) -> dict:
-    """Agent'ın 'bilgileri_hesapla' düğümü: LLM'e verilecek kesin bilgiler."""
+# --- Talep ekleri (POL-HSR-004 / POL-GAR-003: fotoğraf, video, servis fişi; POL-ESK-007 4.4: belgeli gecikme) ---
+EK_TURLERI = {"fotograf": "fotoğraf", "video": "video", "servis_fisi": "servis fişi", "saglik_raporu": "sağlık raporu",
+              "fatura": "fatura"}
+
+
+def ekleri_dogrula(ekler: list[str] | None) -> list[str]:
+    """Yalnızca tanımlı ek türleri kabul edilir (bilinmeyen değer modele metin olarak sızmaz)."""
+    return [e for e in (ekler or []) if e in EK_TURLERI]
+
+
+def bilgileri_hesapla(siparis: dict | None, musteri: dict | None, mesaj: str, bugun: date,
+                      ekler: list[str] | None = None) -> dict:
+    """Agent'ın 'bilgileri_hesapla' düğümü: LLM'e verilecek kesin bilgiler.
+    ekler: müşterinin talebe eklediği belgelerin TÜRLERİ (içerikleri sistemce doğrulanmaz; uzman kontrol eder)."""
     bilgi = {
         "zorunlu_eskalasyonlar": zorunlu_eskalasyonlar(mesaj, (musteri or {}).get("son_30_gun_sikayet", 0)),
         "injection_isareti": injection_isareti(mesaj),
         "siparis_var": siparis is not None,
+        "ekler": ekleri_dogrula(ekler),
     }
     if not siparis:
         return bilgi

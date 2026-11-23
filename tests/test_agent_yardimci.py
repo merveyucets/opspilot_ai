@@ -1,7 +1,11 @@
 """Agent'ın deterministik yardımcıları: PII maskeleme, atıf normalleştirme, yanıt temizliği (model gerektirmez)."""
+import json
 import unittest
+from datetime import date
 
-from app.agent.graf import atif_normalize, maskele, yanit_taslagi
+from config import DATA_DIR
+from app import kurallar as K
+from app.agent.graf import atif_normalize, bilgi_metni, maskele, yanit_taslagi
 
 P = [{"kod": "POL-HSR-004", "madde_no": 3, "etiket": "K1"}]
 
@@ -23,6 +27,18 @@ class TestAgentYardimci(unittest.TestCase):
         for yasak in ("[K1]", "POL-HSR-004", "GIZLI10", "TR00"):
             self.assertNotIn(yasak, r["yanit_taslagi"])
         self.assertTrue(r["guvenlik"]["uyarilar"])
+
+    def test_ekler_dogrulama_ve_bilgi_metni(self):
+        b = K.bilgileri_hesapla(None, None, "Ürün kırık geldi", date(2026, 11, 23), ["fotograf", "uydurma<script>"])
+        self.assertEqual(b["ekler"], ["fotograf"])          # bilinmeyen tür modele gitmez
+        self.assertIn("EKLEMİŞ: fotoğraf", bilgi_metni(b))
+        b = K.bilgileri_hesapla(None, None, "Ürün kırık geldi", date(2026, 11, 23))
+        self.assertIn("EKLEMEMİŞ", bilgi_metni(b))
+
+    def test_ekler_veri_setinde_tanimli(self):
+        veri = json.loads((DATA_DIR / "ornek_talepler.json").read_text(encoding="utf-8"))
+        for t in veri["talepler"]:
+            self.assertEqual(K.ekleri_dogrula(t["ekler"]), t["ekler"], t["id"])
 
 
 if __name__ == "__main__":
