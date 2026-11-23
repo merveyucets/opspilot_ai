@@ -203,7 +203,9 @@ def talep_getir(talep_no: str) -> dict:
 def talep_listele(limit: int = 50) -> list[dict]:
     with connect() as c:
         return [dict(r) for r in c.execute(
-            "SELECT talep_no, musteri_id, siparis_no, kanal, substr(mesaj,1,120) AS mesaj, durum, created_at "
+            "SELECT talep_no, musteri_id, siparis_no, kanal, substr(mesaj,1,120) AS mesaj, created_at, "
+            "CASE WHEN durum='YENI' AND analiz_json IS NOT NULL THEN 'ONAY_BEKLIYOR' ELSE durum END AS durum, "
+            "json_extract(analiz_json,'$.oneri.oneri') AS oneri, json_extract(analiz_json,'$.guvenlik.gerekli_onay') AS gerekli_onay "
             "FROM talepler ORDER BY id DESC LIMIT ?", (limit,))]
 
 

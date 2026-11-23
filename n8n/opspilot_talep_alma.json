@@ -1,0 +1,99 @@
+{
+  "name": "OpsPilot — Talep Alma (Webhook → /analyze)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "opspilot-talep",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook — opspilot-talep",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "opspilot-talep"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/analyze",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-API-Key", "value": "={{ $env.OPSPILOT_INGEST_KEY ?? '' }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ mesaj: $json.body.mesaj, siparis_no: $json.body.siparis_no ?? '', musteri_id: $json.body.musteri_id ?? '', kanal: 'N8N', operation_key: $json.body.operation_key || $execution.id }) }}",
+        "options": { "timeout": 600000 }
+      },
+      "id": "analyze",
+      "name": "OpsPilot — /analyze",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "combinator": "or",
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.analiz?.guvenlik?.eskalasyon_birimleri?.length ?? 0 }}",
+              "rightValue": 0,
+              "operator": { "type": "number", "operation": "gt" }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "if",
+      "name": "Zorunlu eskalasyon var mı?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ talep_no: $json.talep_no, durum: 'ONAY_BEKLIYOR', oncelik: 'ESKALASYON', birimler: $json.analiz.guvenlik.eskalasyon_birimleri, gerekli_onay: $json.analiz.guvenlik.gerekli_onay, mesaj: 'Talep alındı ve ilgili birime aktarılmak üzere destek uzmanı onayına sunuldu.' }) }}",
+        "options": {}
+      },
+      "id": "respond_esk",
+      "name": "Yanıt — eskalasyon",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [980, 180]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ talep_no: $json.talep_no, durum: $json.durum ?? 'HATA', oneri: $json.analiz?.oneri?.oneri, gerekli_onay: $json.analiz?.guvenlik?.gerekli_onay, hata: $json.error ?? null, mesaj: 'Talep alındı; destek uzmanı onayından sonra yanıtlanacak.' }) }}",
+        "options": {}
+      },
+      "id": "respond_normal",
+      "name": "Yanıt — onay bekliyor",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [980, 420]
+    }
+  ],
+  "connections": {
+    "Webhook — opspilot-talep": { "main": [[{ "node": "OpsPilot — /analyze", "type": "main", "index": 0 }]] },
+    "OpsPilot — /analyze": { "main": [[{ "node": "Zorunlu eskalasyon var mı?", "type": "main", "index": 0 }]] },
+    "Zorunlu eskalasyon var mı?": {
+      "main": [
+        [{ "node": "Yanıt — eskalasyon", "type": "main", "index": 0 }],
+        [{ "node": "Yanıt — onay bekliyor", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {}
+}

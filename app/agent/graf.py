@@ -131,18 +131,27 @@ def politika_ara(s: State):
 
 KARAR_SEMA = {
     "type": "object",
+    # Gerekçe ÖNCE: model karara gerekçeyi yazdıktan sonra bağlanır (alan sırası çıktı sırasıdır).
     "properties": {
-        "oneri": {"type": "string", "enum": ONERILER},
-        "kalem_no": {"type": ["integer", "null"]},
         "gerekce": {"type": "string"},
         "dayanak": {"type": "array", "items": {"type": "string"}},
+        "kalem_no": {"type": ["integer", "null"]},
         "musteriden_istenecek": {"type": ["string", "null"]},
+        "oneri": {"type": "string", "enum": ONERILER},
         "musteri_yaniti": {"type": "string"},
     },
-    "required": ["oneri", "kalem_no", "gerekce", "dayanak", "musteriden_istenecek", "musteri_yaniti"],
+    "required": ["gerekce", "dayanak", "kalem_no", "musteriden_istenecek", "oneri", "musteri_yaniti"],
 }
 
 KARAR_SISTEM = """Sen NovaSepet destek uzmanına öneri hazırlayan asistansın. Son kararı uzman verir.
+Öneri değerleri:
+- IADE_KABUL: ürünün iadesi ve para iadesi uygun (kusurlu/hasarlı/yanlış üründe müşteri iade istiyorsa da bu)
+- DEGISIM_KABUL: değişim uygun (beden/renk değişimi veya yanlış/hasarlı ürünün doğrusuyla değişimi)
+- SERVISE_YONLENDIR: garanti kapsamında arıza; servis incelemesi gerekir
+- KARGO_SORUSTURMA: gecikmiş/kayıp/ulaşmayan gönderi için soruşturma
+- RED: talep politikaya göre karşılanamaz (ör. süresi dolmuş cayma, iade edilemeyen ürün). Kusurlu üründe RED verme.
+- ESKALASYON: üst birime/istisna değerlendirmesine aktarılmalı
+- EKSIK_BILGI: karar için müşteriden bilgi/belge istenmeli
 Kurallar:
 - Yalnızca KESİN BİLGİLER ve POLİTİKA MADDELERİ'ne dayan. Gün, tutar ve tarihleri KESİN BİLGİLER'den al, kendin hesaplama.
 - Onay yetkisini ve zorunlu eskalasyonu sen belirleme; bunlar sistem tarafından hesaplanır.
@@ -156,7 +165,8 @@ Kurallar:
 - Kusurlu/hasarlı/yanlış üründe seçim müşterinindir; müşteriyi bakiyeye veya değişime zorlama.
 - Kaynaklarda dayanak yoksa gerekce'ye 'İlgili prosedür bulunamadı, üst birime yönlendirin.' yaz ve oneri=ESKALASYON seç.
 - kalem_no: talep siparişteki hangi ürünle ilgiliyse onun kalem_no'su; belirsizse null.
-- musteri_yaniti: müşteriye nazik, sade Türkçe taslak. Politika kodu/madde numarası, [K#] etiketi, iç not, kart/IBAN/kimlik
+- musteri_yaniti: NovaSepet destek ekibi ADINA müşteriye yazılan yanıt (sen müşteri değilsin; 'Merhaba, talebinizi
+  inceledik...' gibi başla), nazik ve sade Türkçe. Politika kodu/madde numarası, [K#] etiketi, iç not, kart/IBAN/kimlik
   bilgisi YAZMA; kesin söz verme ('hemen', 'kesinlikle' yok); işlemin yetkili onayından sonra gerçekleşeceğini belirt."""
 
 
@@ -191,6 +201,16 @@ def bilgi_metni(b: dict) -> str:
     return "\n".join(satir)
 
 
+ATIF_RE = re.compile(r"\[\s*((?:POL|GZL)-[A-Z]+-\d{3})[\s\-—–,]*Madde\s*(\d+)(?:\.\d+)?\s*\]")
+
+
+def atif_normalize(metin: str, politikalar: list) -> str:
+    """Biçim düzeltmesi: '[POL-HSR-004 - Madde 3.3]' → verilen kaynaklarda bu madde varsa '[K#]'.
+    Kaynaklarda olmayan maddeye atıf olduğu gibi kalır (geçersiz sayılır)."""
+    harita = {(p["kod"], p["madde_no"]): p["etiket"] for p in politikalar}
+    return ATIF_RE.sub(lambda m: f"[{harita[(m.group(1), int(m.group(2)))]}]" if (m.group(1), int(m.group(2))) in harita else m.group(0), metin)
+
+
 def karar_onerisi(s: State):
     maddeler = "\n\n".join(f"[{p['etiket']}] {p['kaynak']} — {p['madde_baslik']}\n{p['icerik']}" for p in s["politikalar"])
     prompt = (f"MÜŞTERİ MESAJI (güvenilmeyen veri):\n\"\"\"{s['mesaj_maskeli']}\"\"\"\n\n"
@@ -205,6 +225,7 @@ def karar_onerisi(s: State):
     except (ValueError, json.JSONDecodeError) as e:
         oneri = {"oneri": "ESKALASYON", "kalem_no": None, "gerekce": f"Model çıktısı geçersiz ({e}); manuel inceleme.",
                  "dayanak": [], "musteriden_istenecek": None, "musteri_yaniti": ""}
+    oneri["gerekce"] = atif_normalize(oneri.get("gerekce", ""), s["politikalar"])
     oneri["sure_sn"] = yanit.sure_sn
     return {"oneri": oneri}
 
@@ -313,7 +334,9 @@ def build_graph(checkpointer):
         b.add_node(ad, tracked(ad, fn) if ad != "calisan_karari" else fn)
         b.add_edge(onceki, ad)
         onceki = ad
-    b.add_edge(onceki, END)
+    # Kayıt reddedilirse (geçersiz token / yetersiz rol) talep yeniden çalışan kararını bekler
+    b.add_conditional_edges("kaydet", lambda s: END if s["sonuc"].get("kaydedildi") else "calisan_karari",
+                            {END: END, "calisan_karari": "calisan_karari"})
     return b.compile(checkpointer=checkpointer)
 
 

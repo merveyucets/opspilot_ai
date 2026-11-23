@@ -19,7 +19,8 @@ EMBED_MODEL = os.getenv("EMBED_MODEL", "bge-m3")
 # qwen3:8b düşünme kapalı — v1 21/30, v2 26/30 (iyimser), görülmemiş demo seti 4/6, ~22 sn/talep.
 CLASSIFIER_MODEL = os.getenv("CLASSIFIER_MODEL", "qwen3:8b")
 CLASSIFIER_THINK = False   # düşünme açıkken +2 doğru ama ~4 kat süre (89 sn/talep)
-WRITER_MODEL = os.getenv("WRITER_MODEL", "qwen2.5:latest")
+# Yazım (öneri + yanıt taslağı): qwen3:8b düşünme kapalı — qwen2.5 7B aynı talepte tutarsız öneri üretti (D01)
+WRITER_MODEL = os.getenv("WRITER_MODEL", "qwen3:8b")
 WRITER_THINK = False if WRITER_MODEL.startswith("qwen3") else None   # qwen3 düşünme varsayılanı açık
 KARAR_OPTIONS = {"temperature": 0.1, "num_ctx": 6144, "num_predict": 1400, "repeat_penalty": 1.1, "seed": 42}
 

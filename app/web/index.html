@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpsPilot AI — Destek Paneli</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .rozet{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
+  .spin{width:18px;height:18px;border:3px solid #cbd5e1;border-top-color:#4f46e5;border-radius:50%;animation:s 1s linear infinite;display:inline-block;vertical-align:middle}
+  @keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<header class="bg-indigo-700 text-white px-6 py-3 flex items-center justify-between">
+  <div><span class="font-bold text-lg">OpsPilot AI</span> <span class="opacity-80 text-sm">· NovaSepet Destek Uzmanı Paneli (kurgusal)</span></div>
+  <div class="text-xs opacity-80">Yerel model · son karar her zaman çalışanda</div>
+</header>
+
+<main class="max-w-7xl mx-auto p-4 grid gap-4 lg:grid-cols-3">
+  <!-- Sol: yeni talep + liste -->
+  <section class="space-y-4">
+    <div class="bg-white rounded-xl shadow p-4 space-y-2">
+      <h2 class="font-semibold">Yeni talep</h2>
+      <select id="demo" class="w-full border rounded p-2 text-sm"><option value="">— Örnek talep seç (D01–D06 demo) —</option></select>
+      <textarea id="mesaj" rows="5" class="w-full border rounded p-2 text-sm" placeholder="Müşteri mesajı"></textarea>
+      <div class="grid grid-cols-2 gap-2">
+        <input id="siparis" class="border rounded p-2 text-sm" placeholder="Sipariş no (SP-2001)">
+        <input id="musteri" class="border rounded p-2 text-sm" placeholder="Müşteri (MUS-101)">
+      </div>
+      <button id="analizBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded p-2 font-semibold">Analiz et</button>
+      <p id="analizDurum" class="text-xs text-slate-500"></p>
+    </div>
+    <div class="bg-white rounded-xl shadow p-4">
+      <div class="flex justify-between items-center mb-2"><h2 class="font-semibold">Talepler</h2>
+        <button id="yenile" class="text-xs text-indigo-600">yenile</button></div>
+      <ul id="liste" class="divide-y text-sm max-h-[420px] overflow-auto"></ul>
+    </div>
+  </section>
+
+  <!-- Sağ: analiz -->
+  <section class="lg:col-span-2 space-y-4" id="detay">
+    <div class="bg-white rounded-xl shadow p-6 text-slate-500">Bir talep seçin veya yeni talep analiz edin.</div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const RENK = {IADE_KABUL:"bg-emerald-100 text-emerald-800", DEGISIM_KABUL:"bg-emerald-100 text-emerald-800",
+  SERVISE_YONLENDIR:"bg-sky-100 text-sky-800", KARGO_SORUSTURMA:"bg-sky-100 text-sky-800", RED:"bg-rose-100 text-rose-800",
+  ESKALASYON:"bg-amber-100 text-amber-800", EKSIK_BILGI:"bg-slate-200 text-slate-800"};
+const ROL = {DESTEK_UZMANI:"Destek Uzmanı", TAKIM_LIDERI:"Takım Lideri", OPERASYON_MUDURU:"Operasyon Müdürü"};
+let demolar = [];
+
+async function api(yol, govde) {
+  const r = await fetch(yol, govde ? {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(govde)} : {});
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.detail || r.statusText);
+  return j;
+}
+
+async function demolariYukle() {
+  demolar = await api("/demo-talepler");
+  for (const d of demolar) $("#demo").insertAdjacentHTML("beforeend",
+    `<option value="${d.id}">${d.id} — ${esc(d.mesaj.slice(0,60))}…</option>`);
+}
+$("#demo").onchange = () => { const d = demolar.find(x => x.id === $("#demo").value); if (!d) return;
+  $("#mesaj").value = d.mesaj; $("#siparis").value = d.siparis_no; $("#musteri").value = d.musteri_id; };
+
+async function listele() {
+  const l = await api("/tickets");
+  $("#liste").innerHTML = l.map(t => `<li class="py-2 cursor-pointer hover:bg-slate-50" onclick="goster('${t.talep_no}')">
+    <div class="flex justify-between"><b>${t.talep_no}</b><span class="text-xs">${t.durum}</span></div>
+    <div class="text-xs text-slate-500 truncate">${esc(t.mesaj)}</div>
+    ${t.oneri ? `<span class="rozet ${RENK[t.oneri]||""}">${t.oneri}</span> <span class="text-xs">${ROL[t.gerekli_onay]||""}</span>` : ""}</li>`).join("")
+    || `<li class="py-2 text-slate-400">Henüz talep yok</li>`;
+}
+
+$("#analizBtn").onclick = async () => {
+  const govde = {mesaj:$("#mesaj").value.trim(), siparis_no:$("#siparis").value.trim(), musteri_id:$("#musteri").value.trim(), kanal:"PANEL"};
+  if (!govde.mesaj) return;
+  $("#analizBtn").disabled = true;
+  $("#analizDurum").innerHTML = `<span class="spin"></span> Agent çalışıyor: sınıflandırma → sipariş → kurallar → politika arama → öneri → güvenlik kontrolü (CPU'da 1-2 dk)`;
+  try { const r = await api("/analyze", govde); await listele(); await goster(r.talep_no); $("#analizDurum").textContent = ""; }
+  catch (e) { $("#analizDurum").textContent = "Hata: " + e.message; }
+  finally { $("#analizBtn").disabled = false; }
+};
+
+async function goster(no) {
+  const r = await api("/tickets/" + no);
+  const a = r.talep.analiz;
+  if (!a) { $("#detay").innerHTML = `<div class="bg-white rounded-xl shadow p-6">${no}: analiz yok</div>`; return; }
+  const s = a.siniflandirma, o = a.oneri, g = a.guvenlik, b = a.bilgi;
+  const karar = r.kararlar.at(-1);
+  $("#detay").innerHTML = `
+  <div class="bg-white rounded-xl shadow p-5 space-y-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <h2 class="font-bold text-lg mr-2">${no}</h2>
+      <span class="rozet ${RENK[o.oneri]||""}">Öneri: ${o.oneri}</span>
+      <span class="rozet bg-indigo-100 text-indigo-800">Gerekli onay: ${ROL[g.gerekli_onay]}</span>
+      ${g.islem_tutari != null ? `<span class="rozet bg-slate-100">İşlem tutarı: ${g.islem_tutari} TL</span>` : ""}
+      ${g.eskalasyon_birimleri.map(e => `<span class="rozet bg-amber-100 text-amber-800">Eskalasyon: ${e}</span>`).join("")}
+    </div>
+    <p class="text-sm bg-slate-50 rounded p-3"><b>Müşteri mesajı:</b> ${esc(r.talep.mesaj)}</p>
+    <div class="grid md:grid-cols-3 gap-3 text-sm">
+      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Kategori</div><b>${s.kategori}</b> <span class="text-xs">(${esc(s.kaynak)})</span><div class="text-xs">aciliyet ${s.aciliyet} · duygu ${s.duygu}</div></div>
+      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Sipariş</div>${b.siparis_var ? `${r.talep.siparis_no} · teslimden <b>${b.teslimden_gecen_gun ?? "-"}</b> gün · ${b.cayma_durumu ?? b.kargo_durumu ?? ""}` : "<b>bulunamadı</b>"}</div>
+      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">İlgili ürün</div>${esc(g.kalem ?? "-")}</div>
+    </div>
+    ${g.uyarilar.length ? `<div class="bg-amber-50 border border-amber-300 rounded p-3 text-sm">${g.uyarilar.map(u => `<div>⚠ ${esc(u)}</div>`).join("")}</div>` : ""}
+    <div class="text-sm"><b>Gerekçe:</b> ${esc(o.gerekce)}</div>
+    <div class="text-sm"><b>Dayanak:</b> ${g.dayanak.length ? g.dayanak.map(esc).join("; ") : "—"}</div>
+    <details class="text-sm"><summary class="cursor-pointer text-indigo-700">Bulunan politika maddeleri</summary>
+      <ul class="mt-1">${a.politikalar.map(p => `<li>[${p.etiket}] ${p.kaynak} — ${esc(p.madde_baslik)} <span class="text-xs text-slate-500">(benzerlik ${p.benzerlik})</span></li>`).join("")}</ul></details>
+  </div>
+  <div class="bg-white rounded-xl shadow p-5 space-y-2">
+    <h3 class="font-semibold">Müşteri yanıt taslağı</h3>
+    <textarea id="yanit" rows="6" class="w-full border rounded p-2 text-sm" ${r.karar_bekliyor ? "" : "disabled"}>${esc(karar?.gonderilen_yanit ?? a.yanit_taslagi)}</textarea>
+    ${r.karar_bekliyor ? `
+    <div class="flex flex-wrap items-center gap-2">
+      <select id="rol" class="border rounded p-2 text-sm">${Object.entries(ROL).map(([k,v]) => `<option value="${k}" ${k===g.gerekli_onay?"selected":""}>${v}</option>`).join("")}</select>
+      <input id="calisan" class="border rounded p-2 text-sm w-32" value="demo_uzman">
+      <button onclick="karar('${no}','ONAYLA')" class="bg-emerald-600 text-white rounded px-3 py-2 text-sm">Onayla</button>
+      <button onclick="karar('${no}','DUZENLE_ONAYLA')" class="bg-emerald-700 text-white rounded px-3 py-2 text-sm">Düzenle + onayla</button>
+      <button onclick="karar('${no}','ESKALE_ET')" class="bg-amber-500 text-white rounded px-3 py-2 text-sm">Eskale et</button>
+      <button onclick="karar('${no}','REDDET')" class="bg-rose-600 text-white rounded px-3 py-2 text-sm">Taslağı reddet</button>
+    </div><p id="kararDurum" class="text-sm"></p>` :
+    `<p class="text-sm"><b>Karar:</b> ${karar ? `${karar.karar} · ${karar.calisan} (${ROL[karar.rol]}) · ${karar.created_at}${karar.duzenlendi ? " · yanıt düzenlendi" : ""}` : r.talep.durum}</p>`}
+  </div>
+  <div class="bg-white rounded-xl shadow p-5">
+    <h3 class="font-semibold mb-2">Agent adımları (audit)</h3>
+    <ol class="text-xs space-y-1 list-decimal ml-5">${r.olaylar.map(e => `<li><b>${e.node_name}</b> <span class="text-slate-500">${e.created_at}</span></li>`).join("")}</ol>
+  </div>`;
+}
+
+async function karar(no, k) {
+  $("#kararDurum").innerHTML = `<span class="spin"></span> Kaydediliyor…`;
+  try {
+    await api("/approve", {talep_no:no, karar:k, rol:$("#rol").value, calisan:$("#calisan").value, yanit_metni:$("#yanit").value});
+    await listele(); await goster(no);
+  } catch (e) { $("#kararDurum").textContent = "⛔ " + e.message; }
+}
+
+$("#yenile").onclick = listele;
+demolariYukle(); listele();
+</script>
+</body>
+</html>
