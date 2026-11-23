@@ -140,11 +140,12 @@ def talep_kaydet(mesaj: str, musteri_id: str | None, siparis_no: str | None, kan
 
 
 def analiz_kaydet(talep_no: str, analiz: dict) -> dict:
-    """Agent analizini ONAY_BEKLIYOR durumuna yazar (öneri kaydıdır; karar değildir)."""
+    """Agent analizini (öneri + taslak) saklar. Talep durumunu DEĞİŞTİRMEZ: durum yalnızca çalışan kararıyla
+    değişir (altın kural 2). Panel, analizi olup kararı olmayan talebi 'onay bekliyor' gösterir."""
     with connect() as c:
-        c.execute("UPDATE talepler SET analiz_json=?, durum='ONAY_BEKLIYOR', updated_at=? WHERE talep_no=? AND durum IN ('YENI','ONAY_BEKLIYOR')",
+        c.execute("UPDATE talepler SET analiz_json=?, updated_at=? WHERE talep_no=?",
                   (json.dumps(analiz, ensure_ascii=False, default=str), now(), talep_no))
-    return {"talep_no": talep_no, "durum": "ONAY_BEKLIYOR"}
+    return {"talep_no": talep_no, "kaydedildi": True}
 
 
 def onay_token_uret(talep_no: str, calisan: str, rol: str) -> str:

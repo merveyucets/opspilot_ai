@@ -20,6 +20,8 @@ EMBED_MODEL = os.getenv("EMBED_MODEL", "bge-m3")
 CLASSIFIER_MODEL = os.getenv("CLASSIFIER_MODEL", "qwen3:8b")
 CLASSIFIER_THINK = False   # düşünme açıkken +2 doğru ama ~4 kat süre (89 sn/talep)
 WRITER_MODEL = os.getenv("WRITER_MODEL", "qwen2.5:latest")
+WRITER_THINK = False if WRITER_MODEL.startswith("qwen3") else None   # qwen3 düşünme varsayılanı açık
+KARAR_OPTIONS = {"temperature": 0.1, "num_ctx": 6144, "num_predict": 1400, "repeat_penalty": 1.1, "seed": 42}
 
 # --- RAG parametreleri (Gün 5-6, "Temel Kavramlar" rehberi §2-4, §8) ---
 CHUNK_SIZE = 900          # karakter; başlık bazlı bölümlemeden sonra uzun bölümler için
