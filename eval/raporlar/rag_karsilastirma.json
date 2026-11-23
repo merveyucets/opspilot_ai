@@ -1,0 +1,2537 @@
+{
+  "embeddinggemma": {
+    "model": "embeddinggemma",
+    "tarih": "2026-11-23T16:42:19",
+    "ayarlar": {
+      "rerank": true,
+      "semantik_agirlik": 0.7,
+      "k": 8,
+      "top_n": 3,
+      "chunk_size": 900,
+      "parca_sayisi": 96
+    },
+    "cevapli_soru": 34,
+    "cevapsiz_soru": 6,
+    "dokuman_hit_3": "32/34 (%94.1)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_dokuman": "27/34 (%79.4)",
+    "top1_madde": "22/34 (%64.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik_analizi": {
+      "esik": 0.4906,
+      "yanlis_alarm": 1,
+      "kacan": 3,
+      "cevapli_min": 0.4359,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "indeksleme_sn": 36.69,
+    "isinma_sn": 2.55,
+    "ortalama_arama_ms": 52.5,
+    "tur_kirilim": {
+      "DOGRUDAN": {
+        "dokuman_hit": "9/9 (%100.0)",
+        "madde_hit": "9/9 (%100.0)"
+      },
+      "GUNLUK_DIL": {
+        "dokuman_hit": "8/9 (%88.9)",
+        "madde_hit": "7/9 (%77.8)"
+      },
+      "ESKI_KURAL": {
+        "dokuman_hit": "8/9 (%88.9)",
+        "madde_hit": "7/9 (%77.8)"
+      },
+      "CAPRAZ": {
+        "dokuman_hit": "5/5 (%100.0)",
+        "madde_hit": "2/5 (%40.0)"
+      },
+      "GIZLI": {
+        "dokuman_hit": "2/2 (%100.0)",
+        "madde_hit": "2/2 (%100.0)"
+      }
+    },
+    "kacan_maddeler": [
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 2",
+          "POL-GAR-003 Madde 4"
+        ]
+      },
+      {
+        "id": "R17",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-PARA-002 Madde 3",
+          "POL-PARA-002 Madde 5",
+          "POL-IADE-001 Madde 4"
+        ]
+      },
+      {
+        "id": "R19",
+        "tur": "ESKI_KURAL",
+        "bulunan": [
+          "POL-KMP-009 Madde 2",
+          "POL-PARA-002 Madde 4",
+          "POL-KMP-009 Madde 6"
+        ]
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "bulunan": [
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 2",
+          "POL-HSR-004 Madde 5"
+        ]
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-KMP-009 Madde 6",
+          "POL-HSR-004 Madde 2",
+          "POL-IADE-001 Madde 5"
+        ]
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-IADE-001 Madde 9",
+          "POL-KMP-009 Madde 5",
+          "POL-ESK-007 Madde 4"
+        ]
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6"
+        ]
+      }
+    ],
+    "soru_detaylari": [
+      {
+        "id": "R01",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.4943,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 2",
+          "POL-IADE-001 Madde 5",
+          "POL-IADE-001 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 38.9
+      },
+      {
+        "id": "R02",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5758,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-IADE-001 Madde 8",
+          "POL-PARA-002 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 37.9
+      },
+      {
+        "id": "R03",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6779,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 3",
+          "POL-GAR-003 Madde 7",
+          "POL-GAR-003 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 39.8
+      },
+      {
+        "id": "R04",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6989,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 4",
+          "POL-HSR-004 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 50.7
+      },
+      {
+        "id": "R05",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7744,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 2",
+          "POL-DEG-005 Madde 3",
+          "POL-DEG-005 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 42.4
+      },
+      {
+        "id": "R06",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7221,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 5",
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 39.5
+      },
+      {
+        "id": "R07",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6553,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 2",
+          "POL-ESK-007 Madde 5",
+          "POL-ESK-007 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 44.3
+      },
+      {
+        "id": "R08",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6329,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-ILT-008 Madde 4",
+          "POL-ILT-008 Madde 10"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 36.6
+      },
+      {
+        "id": "R09",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6237,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 48.0
+      },
+      {
+        "id": "R10",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5528,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 6",
+          "POL-IADE-001 Madde 5",
+          "POL-DEG-005 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 49.9
+      },
+      {
+        "id": "R11",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.523,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 4",
+          "POL-KMP-009 Madde 5",
+          "POL-PARA-002 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 50.6
+      },
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5297,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 2",
+          "POL-GAR-003 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 53.3
+      },
+      {
+        "id": "R13",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6081,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 7",
+          "POL-GAR-003 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 65.6
+      },
+      {
+        "id": "R14",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5518,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 5",
+          "POL-DEG-005 Madde 2",
+          "POL-DEG-005 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 44.3
+      },
+      {
+        "id": "R15",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6596,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 4",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 43.8
+      },
+      {
+        "id": "R16",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.4359,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 2",
+          "POL-ESK-007 Madde 6",
+          "POL-GAR-003 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 50.0
+      },
+      {
+        "id": "R17",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6104,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-PARA-002 Madde 5",
+          "POL-IADE-001 Madde 4"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 50.4
+      },
+      {
+        "id": "R18",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6152,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 4",
+          "POL-KMP-009 Madde 5",
+          "POL-PARA-002 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 58.2
+      },
+      {
+        "id": "R19",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5641,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 2",
+          "POL-PARA-002 Madde 4",
+          "POL-KMP-009 Madde 6"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 40.0
+      },
+      {
+        "id": "R20",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6584,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 8",
+          "POL-PARA-002 Madde 2",
+          "POL-PARA-002 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 45.4
+      },
+      {
+        "id": "R21",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7157,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 8",
+          "POL-GAR-003 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 54.1
+      },
+      {
+        "id": "R22",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7821,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 7",
+          "POL-HSR-004 Madde 1"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 44.8
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6702,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 2",
+          "POL-HSR-004 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 52.1
+      },
+      {
+        "id": "R24",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7765,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-PARA-002 Madde 2",
+          "POL-DEG-005 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 51.5
+      },
+      {
+        "id": "R25",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6511,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 3",
+          "POL-ILT-008 Madde 5",
+          "POL-ESK-007 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 60.5
+      },
+      {
+        "id": "R26",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6951,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-IADE-001 Madde 9",
+          "POL-PARA-002 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 56.3
+      },
+      {
+        "id": "R27",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7366,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 5",
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 55.2
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7027,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 6",
+          "POL-HSR-004 Madde 2",
+          "POL-IADE-001 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 71.3
+      },
+      {
+        "id": "R29",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6822,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 2",
+          "POL-GAR-003 Madde 5",
+          "POL-IADE-001 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 57.4
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.541,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 9",
+          "POL-KMP-009 Madde 5",
+          "POL-ESK-007 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 55.1
+      },
+      {
+        "id": "R31",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6547,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 5",
+          "POL-KRG-006 Madde 4",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 57.8
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5945,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 69.0
+      },
+      {
+        "id": "R33",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.4456,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 5",
+          "GZL-TDR-010 Madde 3",
+          "POL-KMP-009 Madde 7"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 45.0
+      },
+      {
+        "id": "R34",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.4869,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-KRG-006 Madde 2",
+          "POL-IADE-001 Madde 7"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 48.7
+      },
+      {
+        "id": "R35",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.6322,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 7",
+          "POL-PARA-002 Madde 4",
+          "POL-IADE-001 Madde 8"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 58.0
+      },
+      {
+        "id": "R36",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.5608,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-KMP-009 Madde 9",
+          "POL-IADE-001 Madde 3"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 53.1
+      },
+      {
+        "id": "R37",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.3477,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 3",
+          "POL-DEG-005 Madde 4",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 60.1
+      },
+      {
+        "id": "R38",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.4967,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 7",
+          "POL-DEG-005 Madde 5",
+          "POL-KRG-006 Madde 5"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 61.9
+      },
+      {
+        "id": "R39",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6571,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 2",
+          "POL-DEG-005 Madde 4",
+          "POL-IADE-001 Madde 1"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 79.1
+      },
+      {
+        "id": "R40",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5509,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 5",
+          "POL-KMP-009 Madde 9",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 80.1
+      }
+    ]
+  },
+  "bge-m3": {
+    "model": "bge-m3",
+    "tarih": "2026-11-23T16:43:46",
+    "ayarlar": {
+      "rerank": true,
+      "semantik_agirlik": 0.7,
+      "k": 8,
+      "top_n": 3,
+      "chunk_size": 900,
+      "parca_sayisi": 96
+    },
+    "cevapli_soru": 34,
+    "cevapsiz_soru": 6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_dokuman": "27/34 (%79.4)",
+    "top1_madde": "23/34 (%67.6)",
+    "gizli_sizinti": "0/11 soru",
+    "esik_analizi": {
+      "esik": 0.4718,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.515,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "indeksleme_sn": 77.66,
+    "isinma_sn": 2.61,
+    "ortalama_arama_ms": 132.3,
+    "tur_kirilim": {
+      "DOGRUDAN": {
+        "dokuman_hit": "9/9 (%100.0)",
+        "madde_hit": "9/9 (%100.0)"
+      },
+      "GUNLUK_DIL": {
+        "dokuman_hit": "8/9 (%88.9)",
+        "madde_hit": "7/9 (%77.8)"
+      },
+      "ESKI_KURAL": {
+        "dokuman_hit": "9/9 (%100.0)",
+        "madde_hit": "8/9 (%88.9)"
+      },
+      "CAPRAZ": {
+        "dokuman_hit": "4/5 (%80.0)",
+        "madde_hit": "2/5 (%40.0)"
+      },
+      "GIZLI": {
+        "dokuman_hit": "1/2 (%50.0)",
+        "madde_hit": "1/2 (%50.0)"
+      }
+    },
+    "kacan_maddeler": [
+      {
+        "id": "R11",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 4"
+        ]
+      },
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-GAR-003 Madde 2",
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 8"
+        ]
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "bulunan": [
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 2"
+        ]
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 4",
+          "POL-HSR-004 Madde 3"
+        ]
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-IADE-001 Madde 5",
+          "POL-IADE-001 Madde 9",
+          "POL-IADE-001 Madde 4"
+        ]
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6"
+        ]
+      },
+      {
+        "id": "R40",
+        "tur": "GIZLI",
+        "bulunan": [
+          "POL-KMP-009 Madde 10",
+          "POL-GAR-003 Madde 5",
+          "POL-HSR-004 Madde 3"
+        ]
+      }
+    ],
+    "soru_detaylari": [
+      {
+        "id": "R01",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6313,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 5",
+          "POL-IADE-001 Madde 3",
+          "POL-PARA-002 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 74.7
+      },
+      {
+        "id": "R02",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6302,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-IADE-001 Madde 8",
+          "POL-PARA-002 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 85.0
+      },
+      {
+        "id": "R03",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7257,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 3",
+          "POL-GAR-003 Madde 8",
+          "POL-GAR-003 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 88.7
+      },
+      {
+        "id": "R04",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7588,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 4",
+          "POL-HSR-004 Madde 3",
+          "POL-GAR-003 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 117.2
+      },
+      {
+        "id": "R05",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7785,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 2",
+          "POL-DEG-005 Madde 3",
+          "POL-DEG-005 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 85.6
+      },
+      {
+        "id": "R06",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7668,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 5",
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 82.5
+      },
+      {
+        "id": "R07",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.666,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 2",
+          "POL-ESK-007 Madde 1",
+          "POL-ESK-007 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 92.2
+      },
+      {
+        "id": "R08",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6193,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-ILT-008 Madde 4",
+          "POL-ESK-007 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 72.5
+      },
+      {
+        "id": "R09",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6568,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 95.1
+      },
+      {
+        "id": "R10",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.515,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 6",
+          "POL-IADE-001 Madde 5",
+          "POL-HSR-004 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 117.8
+      },
+      {
+        "id": "R11",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5682,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 125.6
+      },
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5407,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 2",
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 134.0
+      },
+      {
+        "id": "R13",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6631,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 7",
+          "POL-HSR-004 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 172.9
+      },
+      {
+        "id": "R14",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6489,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 5",
+          "POL-DEG-005 Madde 6",
+          "POL-IADE-001 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 141.5
+      },
+      {
+        "id": "R15",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6906,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 8",
+          "POL-KRG-006 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 140.5
+      },
+      {
+        "id": "R16",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5619,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 6",
+          "POL-ESK-007 Madde 3",
+          "POL-GAR-003 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 148.9
+      },
+      {
+        "id": "R17",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5961,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-PARA-002 Madde 5",
+          "POL-ILT-008 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 180.9
+      },
+      {
+        "id": "R18",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6898,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 4",
+          "POL-PARA-002 Madde 3",
+          "POL-KMP-009 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 188.2
+      },
+      {
+        "id": "R19",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.599,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 6",
+          "POL-IADE-001 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 130.8
+      },
+      {
+        "id": "R20",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.759,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 8",
+          "POL-PARA-002 Madde 2",
+          "POL-IADE-001 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 138.6
+      },
+      {
+        "id": "R21",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6526,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 5",
+          "POL-HSR-004 Madde 2",
+          "POL-GAR-003 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 171.8
+      },
+      {
+        "id": "R22",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7289,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 7",
+          "POL-KRG-006 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 124.6
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6417,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 148.2
+      },
+      {
+        "id": "R24",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7668,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-DEG-005 Madde 1",
+          "POL-GAR-003 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 118.3
+      },
+      {
+        "id": "R25",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.69,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 3",
+          "POL-ESK-007 Madde 6",
+          "POL-ESK-007 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 154.5
+      },
+      {
+        "id": "R26",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6555,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-ESK-007 Madde 3",
+          "POL-IADE-001 Madde 9"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 151.6
+      },
+      {
+        "id": "R27",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7268,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 5",
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 156.9
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7285,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 4",
+          "POL-HSR-004 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 208.1
+      },
+      {
+        "id": "R29",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6935,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 2",
+          "POL-GAR-003 Madde 4",
+          "POL-GAR-003 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 163.7
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6571,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 5",
+          "POL-IADE-001 Madde 9",
+          "POL-IADE-001 Madde 4"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 162.3
+      },
+      {
+        "id": "R31",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6627,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 4",
+          "POL-ESK-007 Madde 5",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 164.5
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6394,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 173.8
+      },
+      {
+        "id": "R33",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.5653,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 5",
+          "POL-KMP-009 Madde 7",
+          "POL-PARA-002 Madde 4"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 116.1
+      },
+      {
+        "id": "R34",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.5697,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-KRG-006 Madde 2",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 97.9
+      },
+      {
+        "id": "R35",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.6278,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 7",
+          "POL-PARA-002 Madde 4",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 118.4
+      },
+      {
+        "id": "R36",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.6018,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-IADE-001 Madde 8",
+          "POL-IADE-001 Madde 5"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 111.1
+      },
+      {
+        "id": "R37",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.4285,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 3",
+          "POL-DEG-005 Madde 4",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 109.8
+      },
+      {
+        "id": "R38",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.585,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 7",
+          "POL-KRG-006 Madde 5",
+          "POL-DEG-005 Madde 5"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 112.7
+      },
+      {
+        "id": "R39",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.61,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-HSR-004 Madde 2",
+          "POL-DEG-005 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 165.6
+      },
+      {
+        "id": "R40",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5934,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 10",
+          "POL-GAR-003 Madde 5",
+          "POL-HSR-004 Madde 3"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 147.8
+      }
+    ]
+  },
+  "qwen3-embedding:0.6b": {
+    "model": "qwen3-embedding:0.6b",
+    "tarih": "2026-11-23T16:46:35",
+    "ayarlar": {
+      "rerank": true,
+      "semantik_agirlik": 0.7,
+      "k": 8,
+      "top_n": 3,
+      "chunk_size": 900,
+      "parca_sayisi": 96
+    },
+    "cevapli_soru": 34,
+    "cevapsiz_soru": 6,
+    "dokuman_hit_3": "32/34 (%94.1)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_dokuman": "27/34 (%79.4)",
+    "top1_madde": "22/34 (%64.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik_analizi": {
+      "esik": 0.3196,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3372,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "indeksleme_sn": 156.03,
+    "isinma_sn": 2.56,
+    "ortalama_arama_ms": 241.4,
+    "tur_kirilim": {
+      "DOGRUDAN": {
+        "dokuman_hit": "9/9 (%100.0)",
+        "madde_hit": "9/9 (%100.0)"
+      },
+      "GUNLUK_DIL": {
+        "dokuman_hit": "8/9 (%88.9)",
+        "madde_hit": "5/9 (%55.6)"
+      },
+      "ESKI_KURAL": {
+        "dokuman_hit": "8/9 (%88.9)",
+        "madde_hit": "7/9 (%77.8)"
+      },
+      "CAPRAZ": {
+        "dokuman_hit": "5/5 (%100.0)",
+        "madde_hit": "2/5 (%40.0)"
+      },
+      "GIZLI": {
+        "dokuman_hit": "2/2 (%100.0)",
+        "madde_hit": "2/2 (%100.0)"
+      }
+    },
+    "kacan_maddeler": [
+      {
+        "id": "R10",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-ESK-007 Madde 4",
+          "POL-HSR-004 Madde 3",
+          "POL-ESK-007 Madde 3"
+        ]
+      },
+      {
+        "id": "R11",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-PARA-002 Madde 4",
+          "POL-IADE-001 Madde 6",
+          "POL-KMP-009 Madde 9"
+        ]
+      },
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-DEG-005 Madde 2",
+          "POL-HSR-004 Madde 3",
+          "POL-GAR-003 Madde 5"
+        ]
+      },
+      {
+        "id": "R14",
+        "tur": "GUNLUK_DIL",
+        "bulunan": [
+          "POL-DEG-005 Madde 1",
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 4"
+        ]
+      },
+      {
+        "id": "R19",
+        "tur": "ESKI_KURAL",
+        "bulunan": [
+          "POL-KMP-009 Madde 5",
+          "POL-PARA-002 Madde 4",
+          "GZL-TDR-010 Madde 4"
+        ]
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "bulunan": [
+          "POL-DEG-005 Madde 6",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 4"
+        ]
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-KMP-009 Madde 6",
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 2"
+        ]
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-IADE-001 Madde 4",
+          "POL-ESK-007 Madde 4",
+          "POL-IADE-001 Madde 9"
+        ]
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "bulunan": [
+          "POL-DEG-005 Madde 6",
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5"
+        ]
+      }
+    ],
+    "soru_detaylari": [
+      {
+        "id": "R01",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6574,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 3",
+          "POL-PARA-002 Madde 2",
+          "POL-IADE-001 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 123.1
+      },
+      {
+        "id": "R02",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6253,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-PARA-002 Madde 6",
+          "POL-IADE-001 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 121.7
+      },
+      {
+        "id": "R03",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6669,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 3",
+          "POL-GAR-003 Madde 8",
+          "POL-GAR-003 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 131.7
+      },
+      {
+        "id": "R04",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7892,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 4",
+          "POL-HSR-004 Madde 3",
+          "POL-GAR-003 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 237.5
+      },
+      {
+        "id": "R05",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7438,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 2",
+          "POL-DEG-005 Madde 3",
+          "POL-DEG-005 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 176.6
+      },
+      {
+        "id": "R06",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6831,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 5",
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 137.8
+      },
+      {
+        "id": "R07",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5932,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 2",
+          "POL-ESK-007 Madde 1",
+          "POL-ESK-007 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 173.3
+      },
+      {
+        "id": "R08",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5986,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-ILT-008 Madde 4",
+          "POL-ILT-008 Madde 10"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 148.8
+      },
+      {
+        "id": "R09",
+        "tur": "DOGRUDAN",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6515,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 2",
+          "POL-KMP-009 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 174.9
+      },
+      {
+        "id": "R10",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.3372,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 4",
+          "POL-HSR-004 Madde 3",
+          "POL-ESK-007 Madde 3"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 187.7
+      },
+      {
+        "id": "R11",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.51,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 4",
+          "POL-IADE-001 Madde 6",
+          "POL-KMP-009 Madde 9"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 198.7
+      },
+      {
+        "id": "R12",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.3603,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 2",
+          "POL-HSR-004 Madde 3",
+          "POL-GAR-003 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 200.8
+      },
+      {
+        "id": "R13",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5031,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 7",
+          "POL-HSR-004 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 318.7
+      },
+      {
+        "id": "R14",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5102,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 1",
+          "POL-DEG-005 Madde 6",
+          "POL-DEG-005 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 270.7
+      },
+      {
+        "id": "R15",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6566,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 4",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 282.1
+      },
+      {
+        "id": "R16",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.4223,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 4",
+          "POL-ESK-007 Madde 6",
+          "POL-GAR-003 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 277.9
+      },
+      {
+        "id": "R17",
+        "tur": "GUNLUK_DIL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5442,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-PARA-002 Madde 5",
+          "POL-ILT-008 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 322.9
+      },
+      {
+        "id": "R18",
+        "tur": "GUNLUK_DIL",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.511,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 4",
+          "POL-PARA-002 Madde 3",
+          "POL-KMP-009 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 313.8
+      },
+      {
+        "id": "R19",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.4805,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 5",
+          "POL-PARA-002 Madde 4",
+          "GZL-TDR-010 Madde 4"
+        ],
+        "dokuman_hit": false,
+        "madde_hit": false,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 252.0
+      },
+      {
+        "id": "R20",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6095,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 8",
+          "POL-PARA-002 Madde 2",
+          "POL-IADE-001 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 248.4
+      },
+      {
+        "id": "R21",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6669,
+        "kaynaklar": [
+          "POL-GAR-003 Madde 5",
+          "POL-GAR-003 Madde 8",
+          "POL-DEG-005 Madde 7"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 337.5
+      },
+      {
+        "id": "R22",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6473,
+        "kaynaklar": [
+          "POL-HSR-004 Madde 3",
+          "POL-KRG-006 Madde 6",
+          "POL-KRG-006 Madde 3"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 233.3
+      },
+      {
+        "id": "R23",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6384,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 6",
+          "POL-HSR-004 Madde 5",
+          "POL-DEG-005 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 316.0
+      },
+      {
+        "id": "R24",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7277,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-DEG-005 Madde 4",
+          "POL-PARA-002 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 262.1
+      },
+      {
+        "id": "R25",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6459,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 3",
+          "POL-ILT-008 Madde 5",
+          "POL-ESK-007 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 299.8
+      },
+      {
+        "id": "R26",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5774,
+        "kaynaklar": [
+          "POL-ILT-008 Madde 5",
+          "POL-ESK-007 Madde 3",
+          "POL-IADE-001 Madde 9"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 277.1
+      },
+      {
+        "id": "R27",
+        "tur": "ESKI_KURAL",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7197,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 5",
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 305.8
+      },
+      {
+        "id": "R28",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6663,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 6",
+          "POL-HSR-004 Madde 3",
+          "POL-HSR-004 Madde 2"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 435.6
+      },
+      {
+        "id": "R29",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7224,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 2",
+          "POL-GAR-003 Madde 5",
+          "POL-IADE-001 Madde 8"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 295.1
+      },
+      {
+        "id": "R30",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6408,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 4",
+          "POL-ESK-007 Madde 4",
+          "POL-IADE-001 Madde 9"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 286.6
+      },
+      {
+        "id": "R31",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.7367,
+        "kaynaklar": [
+          "POL-ESK-007 Madde 5",
+          "POL-KRG-006 Madde 4",
+          "POL-GAR-003 Madde 6"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 273.7
+      },
+      {
+        "id": "R32",
+        "tur": "CAPRAZ",
+        "erisim": "ic",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.5856,
+        "kaynaklar": [
+          "POL-DEG-005 Madde 6",
+          "POL-IADE-001 Madde 7",
+          "POL-HSR-004 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": false,
+        "top1_dokuman": true,
+        "top1_madde": false,
+        "sure_ms": 287.6
+      },
+      {
+        "id": "R33",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.3909,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 7",
+          "POL-DEG-005 Madde 5",
+          "POL-PARA-002 Madde 4"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 154.2
+      },
+      {
+        "id": "R34",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.5142,
+        "kaynaklar": [
+          "POL-KRG-006 Madde 3",
+          "POL-KRG-006 Madde 2",
+          "POL-KRG-006 Madde 8"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 188.1
+      },
+      {
+        "id": "R35",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.576,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 7",
+          "POL-PARA-002 Madde 4",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 209.1
+      },
+      {
+        "id": "R36",
+        "tur": "CEVAPSIZ",
+        "erisim": "ic",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.466,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 1",
+          "POL-PARA-002 Madde 4",
+          "POL-KMP-009 Madde 10"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 198.7
+      },
+      {
+        "id": "R37",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.302,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 3",
+          "POL-KMP-009 Madde 4",
+          "POL-KMP-009 Madde 9"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 209.6
+      },
+      {
+        "id": "R38",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": false,
+        "sizinti": false,
+        "top1_benzerlik": 0.4912,
+        "kaynaklar": [
+          "POL-IADE-001 Madde 7",
+          "POL-KRG-006 Madde 4",
+          "POL-KRG-006 Madde 5"
+        ],
+        "dokuman_hit": null,
+        "madde_hit": null,
+        "top1_dokuman": null,
+        "top1_madde": null,
+        "sure_ms": 154.5
+      },
+      {
+        "id": "R39",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.6134,
+        "kaynaklar": [
+          "POL-PARA-002 Madde 3",
+          "POL-HSR-004 Madde 2",
+          "POL-DEG-005 Madde 4"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": true,
+        "top1_madde": true,
+        "sure_ms": 371.0
+      },
+      {
+        "id": "R40",
+        "tur": "GIZLI",
+        "erisim": "musteri",
+        "cevapli": true,
+        "sizinti": false,
+        "top1_benzerlik": 0.4075,
+        "kaynaklar": [
+          "POL-KMP-009 Madde 6",
+          "POL-KMP-009 Madde 5",
+          "POL-ESK-007 Madde 5"
+        ],
+        "dokuman_hit": true,
+        "madde_hit": true,
+        "top1_dokuman": false,
+        "top1_madde": false,
+        "sure_ms": 261.2
+      }
+    ]
+  }
+}

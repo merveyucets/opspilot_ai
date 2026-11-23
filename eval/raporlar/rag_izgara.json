@@ -1,0 +1,741 @@
+[
+  {
+    "model": "bge-m3",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "29/34 (%85.3)",
+    "top1_madde": "26/34 (%76.5)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "8/9 (%88.9)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.486,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.5397,
+      "cevapsiz_max": 0.6877,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 130.7,
+    "kacan": [
+      "R12",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "32/34 (%94.1)",
+    "madde_hit_3": "28/34 (%82.4)",
+    "top1_madde": "25/34 (%73.5)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "8/9 (%88.9)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4718,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.515,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 140.3,
+    "kacan": [
+      "R12",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "30/34 (%88.2)",
+    "madde_hit_3": "28/34 (%82.4)",
+    "top1_madde": "24/34 (%70.6)",
+    "capraz_madde_hit": "1/5 (%20.0)",
+    "gunluk_dil_madde_hit": "8/9 (%88.9)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.486,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.5397,
+      "cevapsiz_max": 0.6877,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 124.2,
+    "kacan": [
+      "R12",
+      "R28",
+      "R29",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "28/34 (%82.4)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "8/9 (%88.9)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4743,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.52,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 141.5,
+    "kacan": [
+      "R11",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "30/34 (%88.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_madde": "25/34 (%73.5)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.482,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.5355,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 144.3,
+    "kacan": [
+      "R11",
+      "R12",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_madde": "24/34 (%70.6)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4105,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4734,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 73.3,
+    "kacan": [
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_madde": "23/34 (%67.6)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4718,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.515,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 141.6,
+    "kacan": [
+      "R11",
+      "R12",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "4/5 (%80.0)",
+    "gunluk_dil_madde_hit": "5/9 (%55.6)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3196,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3372,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 268.4,
+    "kacan": [
+      "R10",
+      "R11",
+      "R12",
+      "R14",
+      "R19",
+      "R23",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "27/34 (%79.4)",
+    "top1_madde": "21/34 (%61.8)",
+    "capraz_madde_hit": "4/5 (%80.0)",
+    "gunluk_dil_madde_hit": "5/9 (%55.6)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3033,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3045,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 261.1,
+    "kacan": [
+      "R10",
+      "R11",
+      "R12",
+      "R14",
+      "R19",
+      "R23",
+      "R32"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "29/34 (%85.3)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "23/34 (%67.6)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4105,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4734,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 51.9,
+    "kacan": [
+      "R01",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.8,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "23/34 (%67.6)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3958,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4439,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 74.8,
+    "kacan": [
+      "R01",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3958,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4439,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 72.6,
+    "kacan": [
+      "R01",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4875,
+      "yanlis_alarm": 1,
+      "kacan": 3,
+      "cevapli_min": 0.4359,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 78.9,
+    "kacan": [
+      "R11",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "8/9 (%88.9)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4743,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.52,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 146.1,
+    "kacan": [
+      "R01",
+      "R09",
+      "R11",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "32/34 (%94.1)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "21/34 (%61.8)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3196,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3372,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 261.7,
+    "kacan": [
+      "R10",
+      "R11",
+      "R12",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.6,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "21/34 (%61.8)",
+    "capraz_madde_hit": "3/5 (%60.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3033,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3045,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 266.5,
+    "kacan": [
+      "R10",
+      "R11",
+      "R12",
+      "R19",
+      "R23",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "29/34 (%85.3)",
+    "madde_hit_3": "26/34 (%76.5)",
+    "top1_madde": "20/34 (%58.8)",
+    "capraz_madde_hit": "1/5 (%20.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4007,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4537,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 51.8,
+    "kacan": [
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R29",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "bge-m3",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_madde": "23/34 (%67.6)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4718,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.515,
+      "cevapsiz_max": 0.6278,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 143.9,
+    "kacan": [
+      "R01",
+      "R09",
+      "R11",
+      "R12",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "7/9 (%77.8)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3958,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.4439,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 72.8,
+    "kacan": [
+      "R01",
+      "R09",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "29/34 (%85.3)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_madde": "21/34 (%61.8)",
+    "capraz_madde_hit": "4/5 (%80.0)",
+    "gunluk_dil_madde_hit": "4/9 (%44.4)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3279,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3372,
+      "cevapsiz_max": 0.6109,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 245.6,
+    "kacan": [
+      "R10",
+      "R11",
+      "R12",
+      "R14",
+      "R17",
+      "R19",
+      "R22",
+      "R23",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "32/34 (%94.1)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_madde": "21/34 (%61.8)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3196,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3372,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 253.4,
+    "kacan": [
+      "R01",
+      "R10",
+      "R11",
+      "R12",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 1.0,
+    "dokuman_hit_3": "30/34 (%88.2)",
+    "madde_hit_3": "25/34 (%73.5)",
+    "top1_madde": "19/34 (%55.9)",
+    "capraz_madde_hit": "4/5 (%80.0)",
+    "gunluk_dil_madde_hit": "5/9 (%55.6)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3211,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3236,
+      "cevapsiz_max": 0.6109,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 251.0,
+    "kacan": [
+      "R03",
+      "R10",
+      "R11",
+      "R12",
+      "R14",
+      "R19",
+      "R22",
+      "R23",
+      "R32"
+    ]
+  },
+  {
+    "model": "embeddinggemma",
+    "chunk_size": 900,
+    "parca_sayisi": 96,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "31/34 (%91.2)",
+    "madde_hit_3": "24/34 (%70.6)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "1/5 (%20.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.4875,
+      "yanlis_alarm": 1,
+      "kacan": 3,
+      "cevapli_min": 0.4359,
+      "cevapsiz_max": 0.6322,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 73.4,
+    "kacan": [
+      "R09",
+      "R11",
+      "R12",
+      "R17",
+      "R19",
+      "R23",
+      "R28",
+      "R29",
+      "R30",
+      "R32"
+    ]
+  },
+  {
+    "model": "qwen3-embedding:0.6b",
+    "chunk_size": 1600,
+    "parca_sayisi": 80,
+    "semantik_agirlik": 0.4,
+    "dokuman_hit_3": "30/34 (%88.2)",
+    "madde_hit_3": "24/34 (%70.6)",
+    "top1_madde": "22/34 (%64.7)",
+    "capraz_madde_hit": "2/5 (%40.0)",
+    "gunluk_dil_madde_hit": "6/9 (%66.7)",
+    "gizli_sizinti": "0/11 soru",
+    "esik": {
+      "esik": 0.3033,
+      "yanlis_alarm": 0,
+      "kacan": 5,
+      "cevapli_min": 0.3045,
+      "cevapsiz_max": 0.576,
+      "tam_ayrisiyor": false
+    },
+    "ortalama_arama_ms": 313.5,
+    "kacan": [
+      "R01",
+      "R10",
+      "R11",
+      "R12",
+      "R19",
+      "R23",
+      "R28",
+      "R30",
+      "R32",
+      "R40"
+    ]
+  }
+]

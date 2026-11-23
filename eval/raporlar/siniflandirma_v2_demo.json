@@ -1,0 +1,111 @@
+[
+  {
+    "aday": "qwen3:8b (think=kapalı)",
+    "set": "demo",
+    "model": "qwen3:8b",
+    "tanim_surumu": "v2",
+    "think": false,
+    "options": {
+      "temperature": 0,
+      "num_predict": 200,
+      "seed": 42
+    },
+    "tarih": "2026-11-23T18:59:42",
+    "talep_sayisi": 6,
+    "sema_gecerlilik": "6/6 (%100.0)",
+    "kategori_dogrulugu": "4/6 (%66.7)",
+    "ortalama_sure_sn": 24.3,
+    "en_uzun_sure_sn": 25.92,
+    "token_sinirina_takilan": 0,
+    "dusunme_olan_yanit": 0,
+    "ortalama_dusunme_karakter": 0,
+    "yanlislar": [
+      {
+        "id": "D02",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "D04",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      }
+    ],
+    "detay": [
+      {
+        "id": "D01",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 22.8,
+        "token": 63,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "D02",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 25.5,
+        "token": 77,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "D03",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 25.92,
+        "token": 74,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "D04",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 22.87,
+        "token": 71,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "D05",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 23.87,
+        "token": 78,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "D06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 24.82,
+        "token": 75,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      }
+    ]
+  }
+]

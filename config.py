@@ -13,9 +13,12 @@ COLLECTION = "opspilot_politikalar_v1"
 
 # --- Ollama (Gün 1-4) ---
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-EMBED_MODEL = os.getenv("EMBED_MODEL", "embeddinggemma")
-# GPU yok → CPU. Sınıflandırma için küçük/hızlı model, taslak için daha güçlü model.
-CLASSIFIER_MODEL = os.getenv("CLASSIFIER_MODEL", "qwen2.5:1.5b")
+# Faz 3 ızgarasıyla seçildi (eval/raporlar/rag_izgara.md): bge-m3 + 900 parçalama + rerank ağırlığı 1.0
+EMBED_MODEL = os.getenv("EMBED_MODEL", "bge-m3")
+# GPU yok → CPU. Sınıflandırıcı Faz 3 ölçümüyle seçildi (eval/raporlar/siniflandirma_*.md):
+# qwen3:8b düşünme kapalı — v1 21/30, v2 26/30 (iyimser), görülmemiş demo seti 4/6, ~22 sn/talep.
+CLASSIFIER_MODEL = os.getenv("CLASSIFIER_MODEL", "qwen3:8b")
+CLASSIFIER_THINK = False   # düşünme açıkken +2 doğru ama ~4 kat süre (89 sn/talep)
 WRITER_MODEL = os.getenv("WRITER_MODEL", "qwen2.5:latest")
 
 # --- RAG parametreleri (Gün 5-6, "Temel Kavramlar" rehberi §2-4, §8) ---
@@ -23,7 +26,17 @@ CHUNK_SIZE = 900          # karakter; başlık bazlı bölümlemeden sonra uzun 
 CHUNK_OVERLAP = 120
 RETRIEVAL_K = 8           # ilk vektör aramasında aday sayısı
 RERANK_TOP_N = 3          # LLM'e verilecek son parça sayısı
+# Hibrit rerank: skor = SEMANTIK_AGIRLIK * anlamsal benzerlik + (1 - SEMANTIK_AGIRLIK) * kelime örtüşmesi.
+# Faz 3 ızgarasında bge-m3 için en iyi değer 1.0 çıktı (kelime örtüşmesi katkı sağlamadı); eval/raporlar/rag_izgara.md
+SEMANTIK_AGIRLIK = float(os.getenv("SEMANTIK_AGIRLIK", "1.0"))
+# Faz 3 embedding karşılaştırmasının adayları (eval/rag_eval.py --all)
+EMBED_MODEL_ADAYLARI = ["embeddinggemma", "bge-m3", "qwen3-embedding:0.6b"]
 CLASSIFY_OPTIONS = {"temperature": 0, "num_predict": 200, "seed": 42}
+# Düşünme (thinking) açık modellerde düşünme metni de token bütçesinden yer; 200 token yetmez (ölçüldü: qwen3:8b).
+CLASSIFY_THINK_OPTIONS = {"temperature": 0, "num_predict": 1536, "seed": 42}
+LLM_TIMEOUT_SN = int(os.getenv("LLM_TIMEOUT_SN", "600"))   # CPU'da 7-8B modeller için
+# Faz 3 sınıflandırma karşılaştırmasının adayları: (model, think) — think=None: parametre gönderilmez
+LLM_ADAYLARI = [("qwen2.5:1.5b", None), ("qwen2.5:latest", None), ("qwen3:8b", False), ("qwen3:8b", True)]
 WRITER_OPTIONS = {"temperature": 0.2, "top_p": 0.9, "num_ctx": 4096, "num_predict": 700, "seed": 42}
 
 # --- Servisler (Gün 7-8) ---

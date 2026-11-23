@@ -1,0 +1,1804 @@
+[
+  {
+    "aday": "qwen2.5:1.5b",
+    "model": "qwen2.5:1.5b",
+    "think": null,
+    "options": {
+      "temperature": 0,
+      "num_predict": 200,
+      "seed": 42
+    },
+    "tarih": "2026-11-23T17:03:27",
+    "talep_sayisi": 30,
+    "sema_gecerlilik": "30/30 (%100.0)",
+    "kategori_dogrulugu": "13/30 (%43.3)",
+    "ortalama_sure_sn": 5.75,
+    "en_uzun_sure_sn": 7.67,
+    "token_sinirina_takilan": 0,
+    "dusunme_olan_yanit": 0,
+    "ortalama_dusunme_karakter": 0,
+    "yanlislar": [
+      {
+        "id": "T01",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T03",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T08",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T09",
+        "beklenen": "KAMPANYA",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T12",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KARGO",
+        "hata": ""
+      },
+      {
+        "id": "T20",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T21",
+        "beklenen": "KARGO",
+        "tahmin": "GENEL",
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "GENEL",
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T30",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      }
+    ],
+    "detay": [
+      {
+        "id": "T01",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 6.06,
+        "token": 77,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 6.85,
+        "token": 82,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T03",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.21,
+        "token": 64,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 7.22,
+        "token": 95,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T05",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.94,
+        "token": 80,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 6.46,
+        "token": 87,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 6.71,
+        "token": 70,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T08",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.44,
+        "token": 64,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T09",
+        "beklenen": "KAMPANYA",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.99,
+        "token": 76,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T10",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 7.38,
+        "token": 91,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 4.78,
+        "token": 56,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T12",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 7.06,
+        "token": 76,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 6.05,
+        "token": 73,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 7.67,
+        "token": 115,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.83,
+        "token": 74,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T16",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 4.89,
+        "token": 62,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T17",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.11,
+        "token": 63,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T18",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 4.53,
+        "token": 56,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 4.88,
+        "token": 55,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T20",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.44,
+        "token": 69,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T21",
+        "beklenen": "KARGO",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 4.21,
+        "token": 50,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 4.94,
+        "token": 57,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.59,
+        "token": 75,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T24",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 4.79,
+        "token": 60,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T25",
+        "beklenen": "PARA_IADESI",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.29,
+        "token": 58,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T26",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 4.97,
+        "token": 55,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T27",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.65,
+        "token": 75,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T28",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 5.6,
+        "token": 68,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 6.27,
+        "token": 85,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T30",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 5.55,
+        "token": 70,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      }
+    ]
+  },
+  {
+    "aday": "qwen2.5:latest",
+    "model": "qwen2.5:latest",
+    "think": null,
+    "options": {
+      "temperature": 0,
+      "num_predict": 200,
+      "seed": 42
+    },
+    "tarih": "2026-11-23T17:11:46",
+    "talep_sayisi": 30,
+    "sema_gecerlilik": "30/30 (%100.0)",
+    "kategori_dogrulugu": "18/30 (%60.0)",
+    "ortalama_sure_sn": 15.02,
+    "en_uzun_sure_sn": 24.23,
+    "token_sinirina_takilan": 0,
+    "dusunme_olan_yanit": 0,
+    "ortalama_dusunme_karakter": 0,
+    "yanlislar": [
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "IADE",
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T28",
+        "beklenen": "GENEL",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "IADE",
+        "hata": ""
+      }
+    ],
+    "detay": [
+      {
+        "id": "T01",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 13.94,
+        "token": 51,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 16.55,
+        "token": 66,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T03",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 16.48,
+        "token": 65,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 14.86,
+        "token": 59,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T05",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 14.66,
+        "token": 60,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 13.12,
+        "token": 54,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 17.2,
+        "token": 65,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T08",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 14.08,
+        "token": 57,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T09",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 16.39,
+        "token": 66,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T10",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 15.8,
+        "token": 66,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 12.2,
+        "token": 52,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T12",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 14.24,
+        "token": 59,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 14.89,
+        "token": 61,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 15.12,
+        "token": 65,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 15.36,
+        "token": 63,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T16",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 14.07,
+        "token": 58,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T17",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 13.33,
+        "token": 53,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T18",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 11.81,
+        "token": 52,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 14.69,
+        "token": 56,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T20",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 13.28,
+        "token": 56,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T21",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 13.0,
+        "token": 54,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 12.33,
+        "token": 53,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 15.81,
+        "token": 71,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T24",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 12.52,
+        "token": 55,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T25",
+        "beklenen": "PARA_IADESI",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 15.16,
+        "token": 58,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T26",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 13.52,
+        "token": 56,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T27",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 16.44,
+        "token": 73,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T28",
+        "beklenen": "GENEL",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 15.3,
+        "token": 61,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 20.27,
+        "token": 64,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T30",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 24.23,
+        "token": 63,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      }
+    ]
+  },
+  {
+    "aday": "qwen3:8b (think=kapalı)",
+    "model": "qwen3:8b",
+    "think": false,
+    "options": {
+      "temperature": 0,
+      "num_predict": 200,
+      "seed": 42
+    },
+    "tarih": "2026-11-23T17:23:47",
+    "talep_sayisi": 30,
+    "sema_gecerlilik": "30/30 (%100.0)",
+    "kategori_dogrulugu": "21/30 (%70.0)",
+    "ortalama_sure_sn": 21.71,
+    "en_uzun_sure_sn": 28.74,
+    "token_sinirina_takilan": 0,
+    "dusunme_olan_yanit": 0,
+    "ortalama_dusunme_karakter": 0,
+    "yanlislar": [
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "GENEL",
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      }
+    ],
+    "detay": [
+      {
+        "id": "T01",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 27.59,
+        "token": 84,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 27.14,
+        "token": 83,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T03",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 23.81,
+        "token": 75,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 24.99,
+        "token": 74,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T05",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 24.41,
+        "token": 75,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 22.77,
+        "token": 72,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 28.74,
+        "token": 96,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T08",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 26.05,
+        "token": 67,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T09",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 24.49,
+        "token": 86,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T10",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 22.77,
+        "token": 85,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 16.56,
+        "token": 65,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T12",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 20.48,
+        "token": 82,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 17.89,
+        "token": 64,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 19.28,
+        "token": 71,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 21.31,
+        "token": 81,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T16",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 17.24,
+        "token": 63,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T17",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 21.69,
+        "token": 76,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T18",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 15.77,
+        "token": 61,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 20.98,
+        "token": 77,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T20",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 21.8,
+        "token": 83,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T21",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 18.11,
+        "token": 68,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 18.65,
+        "token": 72,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 19.14,
+        "token": 69,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T24",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 17.4,
+        "token": 65,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T25",
+        "beklenen": "PARA_IADESI",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 23.0,
+        "token": 80,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T26",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 17.75,
+        "token": 64,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T27",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 23.69,
+        "token": 87,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T28",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 21.17,
+        "token": 77,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 20.91,
+        "token": 77,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      },
+      {
+        "id": "T30",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 25.78,
+        "token": 94,
+        "bitis": "stop",
+        "dusunme_karakter": 0,
+        "hata": ""
+      }
+    ]
+  },
+  {
+    "aday": "qwen3:8b (think=açık)",
+    "model": "qwen3:8b",
+    "think": true,
+    "options": {
+      "temperature": 0,
+      "num_predict": 1536,
+      "seed": 42
+    },
+    "tarih": "2026-11-23T18:09:53",
+    "talep_sayisi": 30,
+    "sema_gecerlilik": "30/30 (%100.0)",
+    "kategori_dogrulugu": "23/30 (%76.7)",
+    "ortalama_sure_sn": 89.47,
+    "en_uzun_sure_sn": 136.77,
+    "token_sinirina_takilan": 0,
+    "dusunme_olan_yanit": 30,
+    "ortalama_dusunme_karakter": 1406,
+    "yanlislar": [
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "IADE",
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "hata": ""
+      }
+    ],
+    "detay": [
+      {
+        "id": "T01",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 135.13,
+        "token": 596,
+        "bitis": "stop",
+        "dusunme_karakter": 2287,
+        "hata": ""
+      },
+      {
+        "id": "T02",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 72.93,
+        "token": 322,
+        "bitis": "stop",
+        "dusunme_karakter": 1164,
+        "hata": ""
+      },
+      {
+        "id": "T03",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 85.47,
+        "token": 364,
+        "bitis": "stop",
+        "dusunme_karakter": 1362,
+        "hata": ""
+      },
+      {
+        "id": "T04",
+        "beklenen": "IADE",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 109.38,
+        "token": 466,
+        "bitis": "stop",
+        "dusunme_karakter": 1595,
+        "hata": ""
+      },
+      {
+        "id": "T05",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 74.61,
+        "token": 341,
+        "bitis": "stop",
+        "dusunme_karakter": 1184,
+        "hata": ""
+      },
+      {
+        "id": "T06",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 62.82,
+        "token": 289,
+        "bitis": "stop",
+        "dusunme_karakter": 940,
+        "hata": ""
+      },
+      {
+        "id": "T07",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 116.93,
+        "token": 530,
+        "bitis": "stop",
+        "dusunme_karakter": 1948,
+        "hata": ""
+      },
+      {
+        "id": "T08",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 136.77,
+        "token": 624,
+        "bitis": "stop",
+        "dusunme_karakter": 2577,
+        "hata": ""
+      },
+      {
+        "id": "T09",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 80.09,
+        "token": 364,
+        "bitis": "stop",
+        "dusunme_karakter": 1312,
+        "hata": ""
+      },
+      {
+        "id": "T10",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 88.13,
+        "token": 398,
+        "bitis": "stop",
+        "dusunme_karakter": 1370,
+        "hata": ""
+      },
+      {
+        "id": "T11",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 67.91,
+        "token": 308,
+        "bitis": "stop",
+        "dusunme_karakter": 897,
+        "hata": ""
+      },
+      {
+        "id": "T12",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 90.41,
+        "token": 416,
+        "bitis": "stop",
+        "dusunme_karakter": 1591,
+        "hata": ""
+      },
+      {
+        "id": "T13",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 80.67,
+        "token": 371,
+        "bitis": "stop",
+        "dusunme_karakter": 1363,
+        "hata": ""
+      },
+      {
+        "id": "T14",
+        "beklenen": "IADE",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 101.37,
+        "token": 460,
+        "bitis": "stop",
+        "dusunme_karakter": 1763,
+        "hata": ""
+      },
+      {
+        "id": "T15",
+        "beklenen": "KAMPANYA",
+        "tahmin": "KAMPANYA",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 98.56,
+        "token": 410,
+        "bitis": "stop",
+        "dusunme_karakter": 1462,
+        "hata": ""
+      },
+      {
+        "id": "T16",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 108.54,
+        "token": 472,
+        "bitis": "stop",
+        "dusunme_karakter": 1650,
+        "hata": ""
+      },
+      {
+        "id": "T17",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 51.65,
+        "token": 218,
+        "bitis": "stop",
+        "dusunme_karakter": 660,
+        "hata": ""
+      },
+      {
+        "id": "T18",
+        "beklenen": "GARANTI",
+        "tahmin": "GARANTI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 61.25,
+        "token": 268,
+        "bitis": "stop",
+        "dusunme_karakter": 1038,
+        "hata": ""
+      },
+      {
+        "id": "T19",
+        "beklenen": "KAMPANYA",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 103.89,
+        "token": 443,
+        "bitis": "stop",
+        "dusunme_karakter": 1577,
+        "hata": ""
+      },
+      {
+        "id": "T20",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 112.37,
+        "token": 484,
+        "bitis": "stop",
+        "dusunme_karakter": 1852,
+        "hata": ""
+      },
+      {
+        "id": "T21",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 93.67,
+        "token": 404,
+        "bitis": "stop",
+        "dusunme_karakter": 1430,
+        "hata": ""
+      },
+      {
+        "id": "T22",
+        "beklenen": "KAMPANYA",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 57.73,
+        "token": 241,
+        "bitis": "stop",
+        "dusunme_karakter": 804,
+        "hata": ""
+      },
+      {
+        "id": "T23",
+        "beklenen": "HASARLI_URUN",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 78.73,
+        "token": 336,
+        "bitis": "stop",
+        "dusunme_karakter": 1177,
+        "hata": ""
+      },
+      {
+        "id": "T24",
+        "beklenen": "DEGISIM",
+        "tahmin": "DEGISIM",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 119.78,
+        "token": 512,
+        "bitis": "stop",
+        "dusunme_karakter": 1741,
+        "hata": ""
+      },
+      {
+        "id": "T25",
+        "beklenen": "PARA_IADESI",
+        "tahmin": "PARA_IADESI",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 71.3,
+        "token": 284,
+        "bitis": "stop",
+        "dusunme_karakter": 977,
+        "hata": ""
+      },
+      {
+        "id": "T26",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 63.63,
+        "token": 269,
+        "bitis": "stop",
+        "dusunme_karakter": 967,
+        "hata": ""
+      },
+      {
+        "id": "T27",
+        "beklenen": "KARGO",
+        "tahmin": "KARGO",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 86.83,
+        "token": 367,
+        "bitis": "stop",
+        "dusunme_karakter": 1301,
+        "hata": ""
+      },
+      {
+        "id": "T28",
+        "beklenen": "GENEL",
+        "tahmin": "GENEL",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 95.54,
+        "token": 389,
+        "bitis": "stop",
+        "dusunme_karakter": 1473,
+        "hata": ""
+      },
+      {
+        "id": "T29",
+        "beklenen": "GARANTI",
+        "tahmin": "HASARLI_URUN",
+        "sema_gecerli": true,
+        "dogru": false,
+        "sure_sn": 82.89,
+        "token": 344,
+        "bitis": "stop",
+        "dusunme_karakter": 1184,
+        "hata": ""
+      },
+      {
+        "id": "T30",
+        "beklenen": "IADE",
+        "tahmin": "IADE",
+        "sema_gecerli": true,
+        "dogru": true,
+        "sure_sn": 95.21,
+        "token": 399,
+        "bitis": "stop",
+        "dusunme_karakter": 1537,
+        "hata": ""
+      }
+    ]
+  }
+]
