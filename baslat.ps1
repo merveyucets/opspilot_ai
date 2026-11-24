@@ -35,10 +35,10 @@ else {
 }
 
 # Modeli arka planda bellege yukle (ilk analiz yavas olmasin). num_ctx config.py ile ayni olmali; farkliysa Ollama yeniden yukler.
-Start-Job -ScriptBlock {
-    $govde = @{ model = "qwen3:8b"; prompt = ""; keep_alive = "60m"; options = @{ num_ctx = 6144 } } | ConvertTo-Json
-    try { Invoke-RestMethod "http://localhost:11434/api/generate" -Method Post -Body $govde -ContentType "application/json" -TimeoutSec 600 | Out-Null } catch {}
-} | Out-Null
+# Ayri gizli islemde: bu betik kapandiginda isitma yarida kalmasin (Start-Job betikle birlikte sonlanir).
+$isit = '$g = @{ model = "qwen3:8b"; prompt = ""; keep_alive = "60m"; options = @{ num_ctx = 6144 } } | ConvertTo-Json; ' +
+        'try { Invoke-RestMethod "http://localhost:11434/api/generate" -Method Post -Body $g -ContentType "application/json" -TimeoutSec 600 | Out-Null } catch {}'
+Start-Process powershell -WindowStyle Hidden -ArgumentList "-NoProfile", "-Command", $isit
 Write-Host "Model bellege yukleniyor (ust cubuktaki 'Model hazir' yesil olunca analizler hizlanir)."
 
 Start-Process "http://127.0.0.1:8000"
