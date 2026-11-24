@@ -98,6 +98,17 @@ ollama pull bge-m3; ollama pull qwen3:8b
 .\.venv\Scripts\python.exe -m app.agent.konsol --talep D03
 ```
 
+**macOS / Linux** (kod platformdan bağımsızdır; yalnızca Windows 11'de test edildi):
+
+```bash
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.lock.txt
+ollama pull bge-m3; ollama pull qwen3:8b
+.venv/bin/python -m app.veritabani --seed && .venv/bin/python -m app.rag.indexer && .venv/bin/python -m unittest
+.venv/bin/python -m app.mcp_sunucusu                                   # 1. terminal
+.venv/bin/python -m uvicorn app.api:app --host 127.0.0.1 --port 8000   # 2. terminal → http://127.0.0.1:8000
+```
+
 **n8n:** `n8n/opspilot_talep_alma.json` dosyasını n8n'e içe aktarın. Webhook `POST /webhook/opspilot-talep` gövdesi: `{"mesaj": "...", "siparis_no": "SP-2011", "musteri_id": "MUS-111"}`. API'ye `host.docker.internal:8000` üzerinden ulaşır. `OPSPILOT_INGEST_KEY` tanımlanırsa `X-API-Key` başlığı zorunlu olur.
 
 ## 5. Demo senaryoları
