@@ -4,7 +4,7 @@
 
 Destek uzmanına gelen iade, garanti, kargo ve şikâyet taleplerini şirket politikaları üzerinden **yerel RAG** ile analiz eder; ilgili maddeyi **kaynak göstererek** öneri ve müşteri yanıt taslağı hazırlar. **Son kararı her zaman çalışan verir** (human-in-the-loop). Tüm modeller yerelde (Ollama) çalışır; müşteri verisi bilgisayardan çıkmaz.
 
-> Tüm şirket (NovaSepet A.Ş.), müşteri, sipariş ve politika verileri **kurgusaldır**. Politikalar Türk tüketici mevzuatının asgari şartlarını karşılayacak şekilde yazılmıştır (`kaynaklar/MEVZUAT_OZETI.md`).
+> Tüm şirket (NovaSepet A.Ş.), müşteri, sipariş ve politika verileri **kurgusaldır**. Politikalar Türk tüketici mevzuatının asgari şartlarını karşılayacak şekilde yazılmıştır.
 
 **Teknolojiler:** Ollama · LangChain · ChromaDB · LangGraph (interrupt + SQLite checkpoint) · MCP (streamable HTTP) · FastAPI · n8n
 
