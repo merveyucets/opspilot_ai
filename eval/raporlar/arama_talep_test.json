@@ -1,0 +1,2086 @@
+{
+  "ozet": {
+    "mesaj_top3": {
+      "hepsi": 7,
+      "biri": 19,
+      "bulunan": 21,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 6.740923999808729
+    },
+    "mesaj_top5": {
+      "hepsi": 10,
+      "biri": 23,
+      "bulunan": 27,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 6.72551250027027
+    },
+    "rrf_top3": {
+      "hepsi": 5,
+      "biri": 16,
+      "bulunan": 18,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 16.07576819998212
+    },
+    "rrf_top5": {
+      "hepsi": 9,
+      "biri": 21,
+      "bulunan": 26,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 16.041712999693118
+    },
+    "donusumlu_top3": {
+      "hepsi": 6,
+      "biri": 17,
+      "bulunan": 19,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 16.148203199729323
+    },
+    "donusumlu_top5": {
+      "hepsi": 9,
+      "biri": 23,
+      "bulunan": 26,
+      "beklenen": 58,
+      "gizli": 0,
+      "sure": 16.184519300004467
+    }
+  },
+  "secim": "mesaj_top5",
+  "satirlar": [
+    {
+      "id": "T01",
+      "beklenen": [
+        "POL-IADE-001 Md.3",
+        "POL-IADE-001 Md.5",
+        "POL-IADE-001 Md.7",
+        "POL-PARA-002 Md.3"
+      ],
+      "sorular": [
+        "El blender seti iade edilebilir mi?",
+        "Kutuya geri konulan ürün için iade süreci nasıl çalışır?",
+        "Ürünün tesliminden 7 gün içinde arızası olmamışsa iade süreci ne şekilde yürütülür?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "1/4"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.6"
+        ],
+        "kesisim": "1/4"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.2"
+        ],
+        "kesisim": "1/4"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.2",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.4"
+        ],
+        "kesisim": "1/4"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.5"
+        ],
+        "kesisim": "1/4"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.5",
+          "POL-HSR-004 Md.2",
+          "POL-KMP-009 Md.10"
+        ],
+        "kesisim": "1/4"
+      }
+    },
+    {
+      "id": "T02",
+      "beklenen": [
+        "POL-IADE-001 Md.3",
+        "POL-PARA-002 Md.3"
+      ],
+      "sorular": [
+        "Dizüstü bilgisayar iade edilebilir mi?",
+        "Dizüstü bilgisayar için değişim yapılır mı?",
+        "İade süreci tamamlandıktan sonra taksit taksit para iadesi yapılır mı?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-HSR-004 Md.6",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-HSR-004 Md.6",
+          "POL-PARA-002 Md.4",
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.6",
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.6",
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.4",
+          "POL-ILT-008 Md.9",
+          "POL-GAR-003 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-IADE-001 Md.6",
+          "POL-DEG-005 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-IADE-001 Md.6",
+          "POL-DEG-005 Md.6",
+          "POL-HSR-004 Md.6",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T03",
+      "beklenen": [
+        "POL-IADE-001 Md.2",
+        "POL-IADE-001 Md.3"
+      ],
+      "sorular": [
+        "Robot süpürge için iade süresi ne kadardır?",
+        "Kusursuz ürün iade edilebilir mi?",
+        "İade süreci başlatılmışsa para ne zaman iade edilir?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-HSR-004 Md.2",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-HSR-004 Md.2",
+          "POL-IADE-001 Md.8",
+          "POL-ILT-008 Md.9",
+          "POL-KRG-006 Md.3"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-HSR-004 Md.2",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-HSR-004 Md.2",
+          "POL-PARA-002 Md.6",
+          "POL-IADE-001 Md.8",
+          "POL-ILT-008 Md.9"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-KMP-009 Md.8",
+          "POL-HSR-004 Md.2"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.2",
+          "POL-KMP-009 Md.8",
+          "POL-HSR-004 Md.2",
+          "POL-GAR-003 Md.4",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "0/2"
+      }
+    },
+    {
+      "id": "T04",
+      "beklenen": [
+        "POL-IADE-001 Md.3",
+        "POL-IADE-001 Md.6"
+      ],
+      "sorular": [
+        "Yanlış modelde ürün gönderildiğinde iade edilebilir mi?",
+        "Mühürlü ambalaj açılmadan iade işlemini gerçekleştirmek mümkün mü?",
+        "Yanlış model ürün için ne tür belgeler gereklidir?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "HASARLI_URUN",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.5",
+          "POL-KMP-009 Md.8",
+          "POL-HSR-004 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.9"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.9",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-HSR-004 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-DEG-005 Md.3"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T05",
+      "beklenen": [
+        "POL-DEG-005 Md.2",
+        "POL-DEG-005 Md.3",
+        "POL-DEG-005 Md.5"
+      ],
+      "sorular": [
+        "Kapüşonlu mont için değişim yapılır mı?",
+        "Beden değişim isteğinde hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "DEGISIM",
+      "kategori": "DEGISIM",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "2/3"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "2/3"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "2/3"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "2/3"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "2/3"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "2/3"
+      }
+    },
+    {
+      "id": "T06",
+      "beklenen": [
+        "POL-DEG-005 Md.1",
+        "POL-HSR-004 Md.5"
+      ],
+      "sorular": [
+        "Kargo sırasında ürünün yanlış renk ve beden gönderildi mi?",
+        "Yanlış ürün gönderildiğinde ne yapılır?",
+        "Kargo sırasında ürünün hasarlı olup olmadığı kontrol edilir mi?"
+      ],
+      "kategori_beklenen": "HASARLI_URUN",
+      "kategori": "HASARLI_URUN",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-DEG-005 Md.6",
+          "POL-KMP-009 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-DEG-005 Md.6",
+          "POL-KMP-009 Md.6",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "2/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-HSR-004 Md.1"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-HSR-004 Md.1",
+          "POL-DEG-005 Md.6",
+          "POL-HSR-004 Md.7"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-DEG-005 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-HSR-004 Md.1",
+          "POL-KMP-009 Md.6"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T07",
+      "beklenen": [
+        "POL-HSR-004 Md.4",
+        "POL-KMP-009 Md.6",
+        "POL-KMP-009 Md.8",
+        "POL-PARA-002 Md.2"
+      ],
+      "sorular": [
+        "Filtre kahve makinesi iade edilebilir mi?",
+        "Kargoda hasarlı ürün için ne yapılır?",
+        "İade edilen ürünün para iadesi nasıl yapılır?"
+      ],
+      "kategori_beklenen": "HASARLI_URUN",
+      "kategori": "HASARLI_URUN",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-KMP-009 Md.9"
+        ],
+        "kesisim": "0/4"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-KMP-009 Md.9",
+          "POL-PARA-002 Md.3",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "0/4"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3"
+        ],
+        "kesisim": "0/4"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3",
+          "POL-KMP-009 Md.9",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "0/4"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "0/4"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-IADE-001 Md.9",
+          "POL-HSR-004 Md.1"
+        ],
+        "kesisim": "0/4"
+      }
+    },
+    {
+      "id": "T08",
+      "beklenen": [
+        "POL-GAR-003 Md.3",
+        "POL-GAR-003 Md.6"
+      ],
+      "sorular": [
+        "Telefon arızası garanti süresi içinde mi?",
+        "Telefonun arızası kusur sayılır mı?",
+        "Arıza nedeniyle garanti kapsamında onarım yapılır mı?"
+      ],
+      "kategori_beklenen": "GARANTI",
+      "kategori": "GARANTI",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.2",
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.4",
+          "POL-GAR-003 Md.7"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.4",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.3"
+        ],
+        "kesisim": "2/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.4",
+          "POL-HSR-004 Md.4",
+          "POL-GAR-003 Md.2"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T09",
+      "beklenen": [
+        "POL-KMP-009 Md.2",
+        "POL-KMP-009 Md.4"
+      ],
+      "sorular": [
+        "3 Al 2 Öde kampanyasında ürün iade edildiğinde diğer ürünler için ek ücret alınır mı?",
+        "Kampanya kapsamında alınan ürünlerden birinin iade edilmesi durumunda ne yapılır?",
+        "Kampanya süresi sona erdikten sonra ürün iade edilmesi durumunda ne yapılır?"
+      ],
+      "kategori_beklenen": "KAMPANYA",
+      "kategori": "KAMPANYA",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.1"
+        ],
+        "kesisim": "2/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.1",
+          "POL-KMP-009 Md.3",
+          "POL-KMP-009 Md.6"
+        ],
+        "kesisim": "2/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.9"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.9",
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.1"
+        ],
+        "kesisim": "2/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.8"
+        ],
+        "kesisim": "2/2"
+      }
+    },
+    {
+      "id": "T10",
+      "beklenen": [
+        "POL-ESK-007 Md.5",
+        "POL-KRG-006 Md.4"
+      ],
+      "sorular": [
+        "Kargoda kalmış ürün için gecikme süresi ne kadardır?",
+        "Kargoda kalmış ürünler için indirim kuponu tanımlanabilir mi?",
+        "Kargoda kalmış ürünün teslimat süresi ne kadardır?"
+      ],
+      "kategori_beklenen": "KARGO",
+      "kategori": "KARGO",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6",
+          "POL-PARA-002 Md.2",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6",
+          "POL-IADE-001 Md.3",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KMP-009 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KMP-009 Md.5",
+          "POL-KMP-009 Md.8",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T11",
+      "beklenen": [
+        "POL-ESK-007 Md.4",
+        "POL-IADE-001 Md.3"
+      ],
+      "sorular": [
+        "Koşu ayakkabısı iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-DEG-005 Md.2",
+          "POL-IADE-001 Md.1"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-DEG-005 Md.2",
+          "POL-IADE-001 Md.1",
+          "POL-HSR-004 Md.3",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.1",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.1",
+          "POL-DEG-005 Md.2",
+          "POL-PARA-002 Md.6",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.1",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.1",
+          "POL-DEG-005 Md.2",
+          "POL-IADE-001 Md.9",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "0/2"
+      }
+    },
+    {
+      "id": "T12",
+      "beklenen": [
+        "POL-IADE-001 Md.6"
+      ],
+      "sorular": [
+        "Çekirdek kahve iade edilebilir mi?",
+        "Kahve tadını beğenmedikten sonra iade süreci nasıl çalışır?",
+        "İade edilen ürünün miktarı ne kadar olursa iade işlemini tamamlar mı?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.7",
+          "POL-KMP-009 Md.6",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "0/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.7",
+          "POL-KMP-009 Md.6",
+          "POL-PARA-002 Md.4",
+          "POL-HSR-004 Md.3",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.3",
+          "POL-IADE-001 Md.9"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.3",
+          "POL-IADE-001 Md.9",
+          "POL-PARA-002 Md.4",
+          "POL-KMP-009 Md.7"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.7",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.7",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.3"
+        ],
+        "kesisim": "0/1"
+      }
+    },
+    {
+      "id": "T13",
+      "beklenen": [
+        "POL-DEG-005 Md.3",
+        "POL-IADE-001 Md.6"
+      ],
+      "sorular": [
+        "Kıyafet için değişim yapılır mı?",
+        "Renk tercihindeki farklılık durumunda ne yapılır?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "DEGISIM",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4",
+          "POL-HSR-004 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T14",
+      "beklenen": [
+        "POL-IADE-001 Md.6"
+      ],
+      "sorular": [
+        "Dijital hediye kartı için para iadesi süreci başlatıldı mı?",
+        "Dijital hediye kartı iade edildiğinde para ne şekilde geri çevrilir?",
+        "Dijital hediye kartı iade talebi için hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "PARA_IADESI",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3",
+          "POL-KMP-009 Md.5",
+          "POL-ILT-008 Md.9"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.3",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.6",
+          "POL-IADE-001 Md.6",
+          "POL-PARA-002 Md.3",
+          "POL-IADE-001 Md.5",
+          "POL-KMP-009 Md.5"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T15",
+      "beklenen": [
+        "POL-KMP-009 Md.9"
+      ],
+      "sorular": [
+        "Kampanyalı siparişte kısmi iade tutarı nasıl hesaplanır?",
+        "Fiyat farkı durumunda ne yapılır?",
+        "Kahve öğütücüsü için kampanya kapsamında iade yapılabilir mi?"
+      ],
+      "kategori_beklenen": "KAMPANYA",
+      "kategori": "KAMPANYA",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.9"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.9",
+          "POL-KMP-009 Md.3",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.8",
+          "POL-KMP-009 Md.5"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.2",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.2",
+          "POL-DEG-005 Md.4",
+          "POL-KMP-009 Md.6",
+          "POL-KMP-009 Md.9"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T16",
+      "beklenen": [
+        "POL-DEG-005 Md.2"
+      ],
+      "sorular": [
+        "Gömlek için değişim yapılır mı?",
+        "Beden değiştirme işleminde hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "DEGISIM",
+      "kategori": "DEGISIM",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.6"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T17",
+      "beklenen": [
+        "POL-DEG-005 Md.2",
+        "POL-IADE-001 Md.3"
+      ],
+      "sorular": [
+        "Kulaklık için değişim yapılır mı?",
+        "Renk değişikliği durumunda ne yapılır?"
+      ],
+      "kategori_beklenen": "DEGISIM",
+      "kategori": "DEGISIM",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.7"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.2",
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.7"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.7"
+        ],
+        "kesisim": "0/2"
+      }
+    },
+    {
+      "id": "T18",
+      "beklenen": [
+        "POL-GAR-003 Md.2",
+        "POL-GAR-003 Md.7",
+        "POL-ILT-008 Md.8"
+      ],
+      "sorular": [
+        "Blender ürününde teslimden 7 günden sonra arıza tespit edildi mi?",
+        "Blender ürününün garanti süresi içinde ücretsiz tamir edilmesi için hangi belgeler gereklidir?",
+        "Blender ürününde arıza durumunda ne tür bir işlem yapılır?"
+      ],
+      "kategori_beklenen": "GARANTI",
+      "kategori": "GARANTI",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.5",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.4"
+        ],
+        "kesisim": "1/3"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.5",
+          "POL-GAR-003 Md.7",
+          "POL-GAR-003 Md.4",
+          "POL-GAR-003 Md.6",
+          "POL-GAR-003 Md.8"
+        ],
+        "kesisim": "1/3"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.3",
+          "POL-GAR-003 Md.4"
+        ],
+        "kesisim": "0/3"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.3",
+          "POL-GAR-003 Md.4",
+          "POL-GAR-003 Md.5",
+          "POL-GAR-003 Md.6"
+        ],
+        "kesisim": "0/3"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-GAR-003 Md.5",
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.4"
+        ],
+        "kesisim": "0/3"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-GAR-003 Md.5",
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.4",
+          "POL-GAR-003 Md.7",
+          "POL-HSR-004 Md.4"
+        ],
+        "kesisim": "1/3"
+      }
+    },
+    {
+      "id": "T19",
+      "beklenen": [
+        "POL-ESK-007 Md.5"
+      ],
+      "sorular": [
+        "Kampanyalı siparişte kısmi iade tutarı nasıl hesaplanır?",
+        "Sipariş gecikmesi nedeniyle verilen kuponun nakit olarak iade edilmesi mümkün müdür?",
+        "Kampanyalı siparişte kuponun nakit olarak iade edilmesi süreci nedir?"
+      ],
+      "kategori_beklenen": "KAMPANYA",
+      "kategori": "KAMPANYA",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-ESK-007 Md.5",
+          "POL-KMP-009 Md.2"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-ESK-007 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.1",
+          "POL-PARA-002 Md.1"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.1"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-KMP-009 Md.1",
+          "POL-KMP-009 Md.8",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-ESK-007 Md.5"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KMP-009 Md.5",
+          "POL-KMP-009 Md.2",
+          "POL-ESK-007 Md.5",
+          "POL-KMP-009 Md.4",
+          "POL-KMP-009 Md.1"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T20",
+      "beklenen": [
+        "POL-IADE-001 Md.6"
+      ],
+      "sorular": [
+        "Konsol oyunu iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?",
+        "İade edilen ürünün ambalajı açılmışsa ne yapılır?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-HSR-004 Md.3",
+          "POL-IADE-001 Md.3",
+          "POL-IADE-001 Md.8"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.9"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.9",
+          "POL-HSR-004 Md.3",
+          "POL-IADE-001 Md.1"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.9"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.9",
+          "POL-HSR-004 Md.3",
+          "POL-IADE-001 Md.1"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T21",
+      "beklenen": [
+        "POL-KRG-006 Md.8"
+      ],
+      "sorular": [
+        "Kargonun teslimat süresi ne kadardır?",
+        "Kargonun gecikme süresi ne kadardır?",
+        "Kargonun takip numarası ve durumu nedir?"
+      ],
+      "kategori_beklenen": "KARGO",
+      "kategori": "KARGO",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "0/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.8",
+          "POL-KRG-006 Md.5"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.8",
+          "POL-KRG-006 Md.5"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.4",
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.8",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T22",
+      "beklenen": [
+        "POL-KMP-009 Md.10",
+        "POL-KMP-009 Md.2"
+      ],
+      "sorular": [
+        "Ürün iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?",
+        "İade tutarı ne kadar olur?"
+      ],
+      "kategori_beklenen": "KAMPANYA",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.4",
+          "POL-IADE-001 Md.5"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.4",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.3",
+          "POL-KMP-009 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.6",
+          "POL-PARA-002 Md.4",
+          "POL-KMP-009 Md.2"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.4"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.4",
+          "POL-IADE-001 Md.9",
+          "POL-KMP-009 Md.2"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T23",
+      "beklenen": [
+        "POL-HSR-004 Md.4"
+      ],
+      "sorular": [
+        "Bluetooth hoparlör iade edilebilir mi?",
+        "Kargoda hasarlı ürün için ne yapılır?",
+        "Şarj olmayan ürün için değişim yapılır mı?"
+      ],
+      "kategori_beklenen": "HASARLI_URUN",
+      "kategori": "HASARLI_URUN",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-GAR-003 Md.3",
+          "POL-DEG-005 Md.3"
+        ],
+        "kesisim": "0/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-GAR-003 Md.3",
+          "POL-DEG-005 Md.3",
+          "POL-KRG-006 Md.3",
+          "POL-HSR-004 Md.1"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.3",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "0/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-DEG-005 Md.3",
+          "POL-HSR-004 Md.3",
+          "POL-HSR-004 Md.1",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.3"
+        ],
+        "kesisim": "0/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.2",
+          "POL-IADE-001 Md.6",
+          "POL-HSR-004 Md.3",
+          "POL-DEG-005 Md.3",
+          "POL-GAR-003 Md.3"
+        ],
+        "kesisim": "0/1"
+      }
+    },
+    {
+      "id": "T24",
+      "beklenen": [
+        "POL-DEG-005 Md.1",
+        "POL-DEG-005 Md.6"
+      ],
+      "sorular": [
+        "Elbise için değişim yapılır mı?",
+        "Değişim işleminde hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "DEGISIM",
+      "kategori": "DEGISIM",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "2/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.3"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.7",
+          "POL-DEG-005 Md.1"
+        ],
+        "kesisim": "2/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.3"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-DEG-005 Md.6",
+          "POL-DEG-005 Md.2",
+          "POL-DEG-005 Md.3",
+          "POL-DEG-005 Md.4",
+          "POL-DEG-005 Md.7"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T25",
+      "beklenen": [
+        "POL-ILT-008 Md.6",
+        "POL-PARA-002 Md.3"
+      ],
+      "sorular": [
+        "Kapıda nakit ödeme durumunda para iadesi nasıl yapılır?",
+        "Nakit ödemelerde iade tutarı ne şekilde hesaplanır?",
+        "Para iadesi için gerekli olan hesap bilgileri nelerdir?"
+      ],
+      "kategori_beklenen": "PARA_IADESI",
+      "kategori": "PARA_IADESI",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.5",
+          "POL-ILT-008 Md.9"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.5",
+          "POL-ILT-008 Md.9",
+          "POL-IADE-001 Md.8",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.6",
+          "POL-PARA-002 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-PARA-002 Md.6",
+          "POL-PARA-002 Md.5",
+          "POL-IADE-001 Md.8",
+          "POL-PARA-002 Md.1"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-KMP-009 Md.2",
+          "POL-PARA-002 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.3",
+          "POL-KMP-009 Md.2",
+          "POL-PARA-002 Md.5",
+          "POL-PARA-002 Md.4",
+          "POL-ILT-008 Md.9"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T26",
+      "beklenen": [
+        "POL-ESK-007 Md.6"
+      ],
+      "sorular": [
+        "Kişisel veri silme talepleri nasıl işlenir?",
+        "Müşteri verilerinin silinmesi süreci ne şekilde yürütülür?"
+      ],
+      "kategori_beklenen": "GENEL",
+      "kategori": "GENEL",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.6",
+          "POL-IADE-001 Md.4",
+          "POL-ESK-007 Md.6"
+        ],
+        "kesisim": "1/1"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.6",
+          "POL-IADE-001 Md.4",
+          "POL-ESK-007 Md.6",
+          "POL-ESK-007 Md.3",
+          "POL-ILT-008 Md.8"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-ESK-007 Md.6",
+          "POL-ILT-008 Md.6",
+          "POL-PARA-002 Md.5"
+        ],
+        "kesisim": "1/1"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-ESK-007 Md.6",
+          "POL-ILT-008 Md.6",
+          "POL-PARA-002 Md.5",
+          "POL-ESK-007 Md.3",
+          "POL-KRG-006 Md.3"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-ILT-008 Md.6",
+          "POL-ESK-007 Md.6",
+          "POL-IADE-001 Md.4"
+        ],
+        "kesisim": "1/1"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-ILT-008 Md.6",
+          "POL-ESK-007 Md.6",
+          "POL-IADE-001 Md.4",
+          "POL-ESK-007 Md.8",
+          "POL-ILT-008 Md.4"
+        ],
+        "kesisim": "1/1"
+      }
+    },
+    {
+      "id": "T27",
+      "beklenen": [
+        "POL-ESK-007 Md.6",
+        "POL-KRG-006 Md.4"
+      ],
+      "sorular": [
+        "Şarjlı süpürgenin kargoda kalma süresi ne kadardır?",
+        "Kargoda kalmış ürünün takip bilgisi nasıl sağlanır?",
+        "Kargoda kalmış ürünün teslimat süresi ne kadardır?"
+      ],
+      "kategori_beklenen": "KARGO",
+      "kategori": "KARGO",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.4"
+        ],
+        "kesisim": "1/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.8"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.5"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.4",
+          "POL-KRG-006 Md.5",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "1/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-HSR-004 Md.3",
+          "POL-KRG-006 Md.2",
+          "POL-KRG-006 Md.6",
+          "POL-HSR-004 Md.1",
+          "POL-KRG-006 Md.4"
+        ],
+        "kesisim": "1/2"
+      }
+    },
+    {
+      "id": "T28",
+      "beklenen": [
+        "POL-ESK-007 Md.6",
+        "POL-ILT-008 Md.6"
+      ],
+      "sorular": [
+        "Kişisel hesap güvenliği ile ilgili kullanıcı hesabında bilinmeden yapılan işlem durumunda ne yapılır?",
+        "Kullanıcının hesabına bilinmeden yapılan siparişler için hangi bilgi veya belge gerekir?",
+        "Hesap güvenliği ihlalleri durumunda kullanıcıya ne tür destek sağlanır?"
+      ],
+      "kategori_beklenen": "GENEL",
+      "kategori": "GENEL",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.5",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.7"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.5",
+          "POL-KRG-006 Md.6",
+          "POL-KRG-006 Md.7",
+          "POL-ESK-007 Md.5",
+          "POL-KRG-006 Md.8"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-ESK-007 Md.6",
+          "POL-PARA-002 Md.5",
+          "POL-ILT-008 Md.6"
+        ],
+        "kesisim": "2/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-ESK-007 Md.6",
+          "POL-PARA-002 Md.5",
+          "POL-ILT-008 Md.6",
+          "POL-ESK-007 Md.9",
+          "POL-HSR-004 Md.7"
+        ],
+        "kesisim": "2/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-PARA-002 Md.5",
+          "POL-ESK-007 Md.6",
+          "POL-ILT-008 Md.6"
+        ],
+        "kesisim": "2/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-PARA-002 Md.5",
+          "POL-ESK-007 Md.6",
+          "POL-ILT-008 Md.6",
+          "POL-KRG-006 Md.6",
+          "POL-ESK-007 Md.9"
+        ],
+        "kesisim": "2/2"
+      }
+    },
+    {
+      "id": "T29",
+      "beklenen": [
+        "POL-ESK-007 Md.6",
+        "POL-ESK-007 Md.7",
+        "POL-GAR-003 Md.4"
+      ],
+      "sorular": [
+        "Saç kurutma makinesi iade edilebilir mi?",
+        "Makine kullanırken duman ve yanık kokusu geldi durumunda ne yapılır?",
+        "Kullanım sırasında arıza yaşanan ürün için hangi bilgi veya belge gerekir?"
+      ],
+      "kategori_beklenen": "GARANTI",
+      "kategori": "HASARLI_URUN",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.4"
+        ],
+        "kesisim": "0/3"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.4",
+          "POL-IADE-001 Md.3",
+          "POL-KMP-009 Md.6"
+        ],
+        "kesisim": "0/3"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-GAR-003 Md.8"
+        ],
+        "kesisim": "0/3"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-GAR-003 Md.8",
+          "POL-ESK-007 Md.6",
+          "POL-IADE-001 Md.3"
+        ],
+        "kesisim": "1/3"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-ESK-007 Md.6"
+        ],
+        "kesisim": "1/3"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-ESK-007 Md.6",
+          "POL-GAR-003 Md.8",
+          "POL-GAR-003 Md.6"
+        ],
+        "kesisim": "1/3"
+      }
+    },
+    {
+      "id": "T30",
+      "beklenen": [
+        "POL-ESK-007 Md.4",
+        "POL-IADE-001 Md.3"
+      ],
+      "sorular": [
+        "Hava temizleyici iade edilebilir mi?",
+        "Kullanılmadığı belgelenmiş ürün için iade süresi geçtiğinde ne yapılır?",
+        "İade süreci için hangi belgeler gerekir?"
+      ],
+      "kategori_beklenen": "IADE",
+      "kategori": "IADE",
+      "mesaj_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-DEG-005 Md.3"
+        ],
+        "kesisim": "0/2"
+      },
+      "mesaj_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-DEG-005 Md.3",
+          "POL-GAR-003 Md.5",
+          "POL-IADE-001 Md.3"
+        ],
+        "kesisim": "1/2"
+      },
+      "rrf_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.9"
+        ],
+        "kesisim": "0/2"
+      },
+      "rrf_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.5",
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.9",
+          "POL-ILT-008 Md.9",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top3": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.6"
+        ],
+        "kesisim": "0/2"
+      },
+      "donusumlu_top5": {
+        "bulunan": [
+          "POL-IADE-001 Md.6",
+          "POL-IADE-001 Md.5",
+          "POL-PARA-002 Md.6",
+          "POL-DEG-005 Md.3",
+          "POL-IADE-001 Md.1"
+        ],
+        "kesisim": "0/2"
+      }
+    }
+  ]
+}

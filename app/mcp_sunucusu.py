@@ -20,7 +20,7 @@ from mcp.server.fastmcp import FastMCP
 
 from config import MCP_HOST, MCP_PORT
 from app import veritabani as V
-from app.rag.search import ara
+from app.rag.search import ara, coklu_ara
 
 mcp = FastMCP("OpsPilot AI", host=MCP_HOST, port=MCP_PORT, stateless_http=True, json_response=True)
 
@@ -55,9 +55,15 @@ def trace_tool(func):
 
 @mcp.tool()
 @trace_tool
-def politika_ara(soru: str, erisim_modu: str = "ic") -> dict:
-    """Politika maddelerini arar (bge-m3 + Chroma). erisim_modu='musteri' ise gizli dokümanlar aramaya girmez."""
-    sonuclar, sure = ara(soru, erisim_modu=erisim_modu)
+def politika_ara(soru: str, erisim_modu: str = "ic", ek_sorgular: list[str] | None = None,
+                 yontem: str = "donusumlu", top_n: int = 3) -> dict:
+    """Politika maddelerini arar (bge-m3 + Chroma). erisim_modu='musteri' ise gizli dokümanlar aramaya girmez.
+    ek_sorgular verilirse (LLM'in politika diliyle yazdığı sorular) soru ile birlikte aranır ve birleştirilir."""
+    top_n = max(1, min(int(top_n), 8))
+    if ek_sorgular:
+        sonuclar, sure = coklu_ara([soru] + list(ek_sorgular)[:4], erisim_modu=erisim_modu, top_n=top_n, yontem=yontem)
+    else:
+        sonuclar, sure = ara(soru, erisim_modu=erisim_modu, top_n=top_n)
     return {"sure_sn": sure, "sonuclar": [
         {"kaynak": s.kaynak, "kod": s.kod, "madde_no": s.madde_no, "madde_baslik": s.madde_baslik,
          "erisim": s.erisim, "benzerlik": s.benzerlik, "icerik": s.icerik} for s in sonuclar]}

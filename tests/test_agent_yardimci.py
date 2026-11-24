@@ -2,9 +2,11 @@
 import json
 import unittest
 from datetime import date
+from unittest import mock
 
 from config import DATA_DIR
 from app import kurallar as K
+from app.agent import graf
 from app.agent.graf import atif_normalize, bilgi_metni, maskele, yanit_taslagi
 
 P = [{"kod": "POL-HSR-004", "madde_no": 3, "etiket": "K1"}]
@@ -31,9 +33,13 @@ class TestAgentYardimci(unittest.TestCase):
     def test_ekler_dogrulama_ve_bilgi_metni(self):
         b = K.bilgileri_hesapla(None, None, "Ürün kırık geldi", date(2026, 11, 23), ["fotograf", "uydurma<script>"])
         self.assertEqual(b["ekler"], ["fotograf"])          # bilinmeyen tür modele gitmez
-        self.assertIn("EKLEMİŞ: fotoğraf", bilgi_metni(b))
-        b = K.bilgileri_hesapla(None, None, "Ürün kırık geldi", date(2026, 11, 23))
-        self.assertIn("EKLEMEMİŞ", bilgi_metni(b))
+        bos = K.bilgileri_hesapla(None, None, "Ürün kırık geldi", date(2026, 11, 23))
+        with mock.patch.object(graf, "KARAR_TALIMAT_SURUMU", "v1"):   # v1 ölçümü ek bilgisi olmadan yapıldı
+            self.assertNotIn("EKLEMİŞ", bilgi_metni(b))
+            self.assertNotIn("eklenmemiş", bilgi_metni(bos))
+        with mock.patch.object(graf, "KARAR_TALIMAT_SURUMU", "v3"):
+            self.assertIn("EKLEMİŞ: fotoğraf", bilgi_metni(b))
+            self.assertIn("eklenmemiş", bilgi_metni(bos))
 
     def test_ekler_veri_setinde_tanimli(self):
         veri = json.loads((DATA_DIR / "ornek_talepler.json").read_text(encoding="utf-8"))

@@ -5,6 +5,7 @@ Ders kodu `d5_05_search.py` (similarity_search + metadata filtresi) ve `d6_01_re
 - Rerank'te sıra yerine gerçek kosinüs benzerliği kullanılır (benim_rag/rerank_karsilastirma deneyi)
 - Müşteri modunda gizli dokümanlar aramaya hiç girmez; bilinmeyen mod hata verir (sessizce filtresiz aramaz)
 - Aynı maddenin bölünmüş parçaları sonuçta tek kez yer alır
+- Çoklu sorgu + RRF birleştirme (Faz 9: müşteri mesajı tek başına doğru maddeyi bulmakta zayıf kaldı)
 """
 import sys
 import time
@@ -12,7 +13,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
-from config import EMBED_MODEL, RETRIEVAL_K, RERANK_TOP_N, SEMANTIK_AGIRLIK, CHUNK_SIZE  # noqa: E402
+from config import EMBED_MODEL, RETRIEVAL_K, RERANK_TOP_N, SEMANTIK_AGIRLIK, CHUNK_SIZE, RRF_SABITI  # noqa: E402
 from app.rag.indexer import get_store  # noqa: E402
 from app.rag.kalite import lexical_score  # noqa: E402
 
@@ -105,6 +106,48 @@ def ara(
 
     adaylar.sort(key=lambda x: x.hibrit_skor, reverse=True)
     return tekillestir(adaylar)[:top_n], round(time.perf_counter() - t0, 4)
+
+
+def rrf_birlestir(listeler: list[list[AramaSonucu]], top_n: int, sabit: int = RRF_SABITI) -> list[AramaSonucu]:
+    """Reciprocal Rank Fusion: her listede r. sıradaki madde 1/(sabit + r) puan alır, puanlar toplanır.
+    Farklı sorguların benzerlik skorları birbiriyle kıyaslanamayabilir; RRF yalnızca sıralamayı kullanır.
+    Aynı madde birden çok sorguda çıkarsa öne geçer. Dönen nesnede benzerlik = sorgular arasındaki en yüksek."""
+    puan, en_iyi = {}, {}
+    for liste in listeler:
+        for r, s in enumerate(liste, 1):
+            anahtar = (s.kod, s.madde_no)
+            puan[anahtar] = puan.get(anahtar, 0.0) + 1.0 / (sabit + r)
+            if anahtar not in en_iyi or s.benzerlik > en_iyi[anahtar].benzerlik:
+                en_iyi[anahtar] = s
+    sirali = sorted(puan, key=lambda a: (-puan[a], -en_iyi[a].benzerlik))
+    return [en_iyi[a] for a in sirali[:top_n]]
+
+
+def donusumlu_birlestir(listeler: list[list[AramaSonucu]], top_n: int) -> list[AramaSonucu]:
+    """Dönüşümlü birleştirme: önce her listenin 1. sonucu (liste sırasıyla), sonra 2. sonuçları...
+    RRF'nin aksine yalnızca bir sorguda çıkan özel madde de (ör. bir arama sorusunun en iyi sonucu) içeri girer."""
+    gorulen, sonuc = set(), []
+    for r in range(max((len(x) for x in listeler), default=0)):
+        for liste in listeler:
+            if r < len(liste) and (liste[r].kod, liste[r].madde_no) not in gorulen:
+                gorulen.add((liste[r].kod, liste[r].madde_no))
+                sonuc.append(liste[r])
+                if len(sonuc) == top_n:
+                    return sonuc
+    return sonuc
+
+
+BIRLESTIRME = {"rrf": rrf_birlestir, "donusumlu": donusumlu_birlestir}
+
+
+def coklu_ara(sorgular: list[str], erisim_modu: str = "ic", top_n: int = RERANK_TOP_N, yontem: str = "donusumlu",
+              embed_model: str = EMBED_MODEL) -> tuple[list[AramaSonucu], float]:
+    """Birden çok sorguyla arar (ör. müşteri mesajı + LLM'in politika diliyle yazdığı sorular) ve birleştirir.
+    Her sorgu için k aday tekilleştirilmiş sırayla alınır. yontem: 'donusumlu' veya 'rrf'."""
+    t0 = time.perf_counter()
+    listeler = [ara(s, embed_model=embed_model, erisim_modu=erisim_modu, top_n=RETRIEVAL_K)[0]
+                for s in sorgular if s and s.strip()]
+    return BIRLESTIRME[yontem](listeler, top_n), round(time.perf_counter() - t0, 4)
 
 
 if __name__ == "__main__":

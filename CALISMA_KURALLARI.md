@@ -50,7 +50,7 @@ Durumlar: ⬜ başlamadı · 🔄 devam ediyor · ✅ tamamlandı ve onaylandı
 | 4 | Araçlar, kurallar, güvenlik katmanı, SQLite, MCP Server/Client | ✅ |
 | 5 | LangGraph agent + interrupt + checkpoint | ✅ |
 | 6 | FastAPI (SSE kapsam dışı; adımlar analiz sonrası listelenir) | ✅ |
-| 7 | Web paneli (tek sayfa, mockup aşaması atlandı) | ✅ |
+| 7 | Web paneli: müşteri + temsilci ekranı (taslak v2 onaylandı, Faz 9'da yeniden yazıldı) | ✅ |
 | 8 | n8n talep alma akışı (diğer 2 akış ve docker-compose kapsam dışı) | ✅ |
 | 9 | Değerlendirme raporu, güvenlik testleri, README (sunum + yedek video: Merve) | 🔄 |
 
@@ -80,6 +80,12 @@ Alınan her mimari kararın kısa gerekçesi. Yeni karar alındıkça en alta ek
 | 2026-11-23 | "Kaynak yok" kararı arama skoru eşiğiyle verilmez; cevap üretiminde LLM'e bırakılır ve ölçülür | Üç embedding modelinde de cevaplı/cevapsız soruların skorları ayrışmadı (`rag_karsilastirma.md` §2). |
 | 2026-11-23 | Sınıflandırıcı: qwen3:8b, düşünme kapalı, JSON şemalı çıktı, kategori tanımları v2; öneri sınıflandırmada üretilmez | v1 21/30, v2 26/30 (tanımlar hatalar görüldükten sonra değişti → iyimser), görülmemiş demo seti 4/6; düşünme açık +2 doğru ama 89 sn/talep. |
 | 2026-11-23 | Kategori karar girdisi veya filtre olarak kullanılmaz; HASARLI_URUN / GARANTI ayrımını teslim tarihine göre Python yapar (POL-HSR-004 1.3, POL-GAR-003 1.2) | Kategori doğruluğu ~%70–87; kalan hataların çoğu bu ayrımda ve v2 HASARLI_URUN'a yanlı. Tarih kuralı deterministiktir (altın kural 1, ders: kurallar.py). |
+| 2026-11-24 | Talep ekleri (fotoğraf, video, fiş, rapor) yalnızca TÜRÜYLE agent'a iletilir; içerik doğrulanmaz, uzman kontrol eder | Fotoğraflı taleplerde model "ek yok" sanıyordu. Dosya yükleme/görüntü analizi kapsam dışı. |
+| 2026-11-24 | Agent araması: müşteri mesajı tek sorgu. LLM'in yazdığı arama sorularıyla çoklu sorgu (RRF / dönüşümlü) denendi, iyileştirmedi. 5 madde aramada daha iyi, ancak teslim varsayılanı ölçülmüş v1 ile aynı kalsın diye 3 | `eval/raporlar/arama_talep_test.md`: beklenen maddelerin hepsi 3 maddeyle 7/30, 5 maddeyle 10/30, çoklu sorguyla 9/30. Seçim kuralı ölçümden önce yazıldı. Sorgu örnekleri test taleplerine benzediği fark edilince genel kalıplarla değiştirildi. |
+| 2026-11-24 | Panel iki ekran: müşteri (yardım merkezi) + temsilci. Müşteri uç noktaları yalnızca aşamayı ve ONAYLANMIŞ yanıtı döndürür; analiz arka planda tek işçili kuyrukta; eski panel `/eski` | Sunumda "madalyonun iki yüzü" (Merve). Taslak v2 onaylandı. Altın kural 2 ve 4 müşteri uç noktasında tek fonksiyonda (`app/panel.musteri_gorunumu`) ve testle korunur. |
+| 2026-11-24 | Seed, demo/ölçüm günü yeniden çalıştırılır | Gece yarısını geçen ölçümde gün sayıları 1 kaydı (T03 14→15. gün); ölçüm durdurulup seed ile yeniden başlatıldı. |
+| 2026-11-24 | Teslim varsayılanı öneri talimatı **v1** (16/30 ölçüldü). v2 (ek bilgisi + 5 madde) 12/30 ile geriledi, geri alındı; v3 (politikanın karar adımları) ayarla açılır, teslim saatinde ölçülüyordu | Yalnızca ölçülmüş sürüm varsayılan olur (altın kural 6). v2'de "ek eklenmemiş" satırı gereksiz EKSIK_BILGI'ye itti (7 talep). v3 adımları test hatalarından sonra yazıldı → iyimser. |
+| 2026-11-24 | Docker/docker-compose eklenmedi; yerine test edilmiş `kurulum.ps1` / `baslat.ps1` + `requirements.lock.txt` | Teslime 2 saat kala Docker imajı + 6,5 GB model test edilemezdi; denenmemiş compose dosyası değerlendiricide hata verir. |
 
 ## 5. Kod ve veri standartları
 
@@ -122,11 +128,11 @@ Donanım notu: GPU yok, tüm model çıkarımı CPU'da. Süre ölçümleri buna 
 
 > Her çalışma oturumunun sonunda bu bölüm güncellenir. Yeni oturum buradan devam eder.
 
-**Son güncelleme:** 2026-11-23
+**Son güncelleme:** 2026-11-24 (kod teslimi 12:00)
 
-**Durum:** Faz 0–8 tamamlandı (2026-11-23, Merve'nin "bu akşam bitir" talebiyle kapsam daraltıldı: SSE, panel mockup'ı, n8n'in 2 akışı ve docker-compose kapsam dışı). Faz 9'da karar değerlendirmesi (`eval/karar_eval.py`) çalıştırıldı; sonuçlar `eval/raporlar/karar_degerlendirme_test.md` ve README §6'da.
+**Durum:** Faz 0–8 tamamlandı. Faz 9 (2026-11-24): talep ekleri, talep mesajlarıyla arama ölçümü, karar ölçümü v1/v2 (+ demo seti), yeni panel (müşteri + temsilci ekranı), `kurulum.ps1` / `baslat.ps1`, README sonuçları. Teslim varsayılanı öneri talimatı v1 (16/30). v3 talimatı (politikanın karar adımları) teslim saatinde ölçülüyordu; ilk 8 talepte 7/8 (v1 5/8) — tam sonuç `eval/raporlar/karar_degerlendirme_test.md`; v1'den iyiyse `config.KARAR_TALIMAT_SURUMU="v3"` ve `AGENT_ARAMA_TOP_N=5` yapılıp README §6 güncellenir.
 
-**Çalıştırma:** README §4. Sıra: `app.veritabani --seed` → `app.mcp_sunucusu` → `uvicorn app.api:app` → panel http://127.0.0.1:8000.
+**Çalıştırma:** `kurulum.ps1` bir kez, sonra `baslat.ps1` (README "Hızlı başlangıç"). Elle: `app.veritabani --seed` (her demo/ölçüm GÜNÜ) → `app.mcp_sunucusu` → `uvicorn app.api:app` → panel http://127.0.0.1:8000 (eski panel `/eski`).
 
 **Önemli tasarım notları:**
 - Modeller: arama bge-m3 (900 parçalama, rerank ağırlığı 1.0); sınıflandırma ve öneri/taslak qwen3:8b düşünme kapalı. CLASSIFY_OPTIONS ve KARAR_OPTIONS aynı `num_ctx` (6144) kullanır; farklı olursa Ollama modeli her çağrıda yeniden yükler (talep süresi 282 → ~155-190 sn).
@@ -135,6 +141,8 @@ Donanım notu: GPU yok, tüm model çıkarımı CPU'da. Süre ölçümleri buna 
 - Agent politika aramasını daima müşteri modunda yapar (gizli doküman LLM bağlamına girmez).
 - Ayrı cevap ölçümü (`eval/cevap_eval.py`) süre nedeniyle tamamlanmadı; atıf geçerliliği karar değerlendirmesinde ölçülür.
 
-**Kalan (Merve):** sunum, demo provası (D01–D06 önceden analiz edilir), yedek video, README §6'daki karar sonuçlarının yorumu.
+- Bilgisayar pil ile uykuya geçerse uzun ölçümler yarıda kalır (2026-11-24 gecesi 6 saat kayıp). Ölçümden önce şarja takılı ve uyku kapalı olmalı.
+
+**Kalan (Merve):** v3 sonucunun yorumu ve gerekirse varsayılan ayarın değiştirilmesi, sunum, demo provası (D01–D06 panelden önceden analiz edilir), yedek video. İsteğe bağlı: n8n container'ını `-p 127.0.0.1:5678:5678` ile yeniden başlatmak (altın kural 9).
 
 **Referans kodlar (ders):** `../BTK_Ollama_Project/rag_kodlar/` (Gün 5-7), `../BTK_Ollama_Project/rag_kodlar/7. Gün Kodlar Tekrar/`, `../BTK_Ollama_Project/benim_rag/rerank_karsilastirma.py`.

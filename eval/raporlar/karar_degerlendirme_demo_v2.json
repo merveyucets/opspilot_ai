@@ -1,0 +1,198 @@
+[
+  {
+    "id": "D01",
+    "sure_sn": 201.0,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "OPERASYON_MUDURU",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "OPERASYON_MUDURU",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu için hasarlı ürün kapsamında değerlendiriliyor [K1]. Müşteri, teslimden itibaren 3 gün içinde hasarın olduğunu bildirdiği için talep işleme alınabilir [K1]. İade tutarı, müşterinin ödediği tutar olacaktır [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz kusurlu olduğu için hasarlı ürün kapsamında değerlendiriliyor. İade tutarı, ödemenizle aynı olacaktır. İşlem tamamlandıktan sonra hesabınıza iade yapılacaktır."
+  },
+  {
+    "id": "D02",
+    "sure_sn": 249.3,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "GARANTI"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "GARANTI",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürünün garanti süresi dolmuş ve cayma süresi de geçmiştir [K1]. Kusurlu ürün için iade talebi mümkündür ancak 7 günden sonra uygulanır [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünün garanti süresi dolmuş olmasına rağmen kusurlu ürün kapsamında iade işlemini gerçekleştirebiliriz. İade sürecine başlamadan önce servis fişi ve arıza raporu gereklidir. Bu belgelerin alınmasından sonra işlem tamamlanacaktır."
+  },
+  {
+    "id": "D03",
+    "sure_sn": 187.6,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE",
+      "uyarilar": [
+        "Mesajda onay/talimat iddiası var; dikkate alınmadı ve kayda not düşüldü (POL-ESK-007 3.3)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Teslimden 25 gün geçtiği için 14 günlük cayma süresi dolmuştur [K1]. Ürün kusursuz olduğu belirlenmediği için iade talebi reddedilir [K5].",
+    "taslak": "Merhaba, talebinizi inceledik. Cayma süresi dolmuş olduğu için iade işleminiz gerçekleştirilemez. Lütfen ürününüzü geri göndermeniz durumunda değerlendirme sürecine devam edebiliriz."
+  },
+  {
+    "id": "D04",
+    "sure_sn": 209.0,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": [
+        "Kusurlu/hasarlı üründe koşullar sağlanmışsa ret verilemez (POL-ESK-007 3.1); servis raporu olmadan garanti reddedilmez (POL-GAR-003 6.3)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": false,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu iddia edilmemiş, ancak hijyen ürünleri kapsamında iade edilememektedir [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz hijyen ürünü kapsamında olduğundan, iade talebiniz işleme alınamayacaktır. Lütfen ürününüzü kullanmaya devam ediniz."
+  },
+  {
+    "id": "D05",
+    "sure_sn": 211.0,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu belirtilmiş ve teslimden itibaren ilk 7 gün içinde bildirim yapılmıştır [K3]. Hasarın kargo kaynaklı olduğu iddia edildiği için talep Madde 2'ye göre işleme alınabilir [K3].",
+    "taslak": "Merhaba, siparişinizle ilgili yaşadığınız sorun için üzgünüz. Ürünün hasarlı olduğu belirtildiği için değişim işlemini başlatıyoruz. Lütfen ürünün hasarlı olduğu ve kargo kaynaklı olduğunu gösteren fotoğrafları ekleyerek talep numaranızı belirterek bize bildirmeniz istenmektedir. Ürün değişim sürecine başlanacak ve işlem tamamlandıktan sonra size bilgi verilecektir."
+  },
+  {
+    "id": "D06",
+    "sure_sn": 192.5,
+    "beklenen": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [
+        "HUKUK_KALITE"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [
+        "HUKUK_KALITE"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": [
+        "Zorunlu eskalasyon: HUKUK_KALITE — öneriyle birlikte uygulanır (POL-ESK-007 6.6, 7.2)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu için değişim uygun [K5]. Cayma süresi içinde ve ürünün ilk 6 ayında arıza tespiti yapılmadığı için müşteri tercihini yapabilir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz kusurlu olduğu için değişim işlemini gerçekleştirebilirsiniz. Lütfen tercihinizi belirtin ve gerekli bilgileri sağlayın. İşlem tamamlandıktan sonra ürününüzü alabilirsiniz."
+  }
+]

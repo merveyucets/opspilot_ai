@@ -218,3 +218,55 @@ def bilgileri_hesapla(siparis: dict | None, musteri: dict | None, mesaj: str, bu
         isg = is_gunu_say(kargo, bugun)
         bilgi.update({"kargodan_gecen_is_gunu": isg, "kargo_durumu": kargo_durumu(isg)})
     return bilgi
+
+
+# --- Panel yardımcıları (deterministik; temsilci ekranındaki zaman çizelgesi ve mesaj işaretleme) ---
+DEGISIM_GRUPLARI = {"GIYIM", "AYAKKABI", "AKSESUAR"}   # POL-DEG-005 2.1-2.2
+
+
+def is_gunu_sonra(baslangic: date, n: int) -> date:
+    """baslangic'tan sonraki n. iş günü (POL-KRG-006 1.3: pazar ve resmî tatiller hariç)."""
+    g, sayac = baslangic, 0
+    while sayac < n:
+        g += timedelta(days=1)
+        sayac += is_gunu_mu(g)
+    return g
+
+
+def zaman_cizelgesi(siparis: dict | None, bugun: date) -> list[dict]:
+    """Siparişin olayları ve politika süre sınırları, tarih sırasıyla.
+    tur: olay | sinir | bugun · durum (sınırlar için): gecti | ileride · ref: 'KOD:madde'."""
+    if not siparis:
+        return []
+    t = {k: date.fromisoformat(siparis[k]) for k in ("siparis_tarihi", "kargo_tarihi", "teslim_tarihi") if siparis.get(k)}
+    olaylar = [{"tarih": t["siparis_tarihi"], "etiket": "Sipariş", "tur": "olay"}] if "siparis_tarihi" in t else []
+    if "kargo_tarihi" in t:
+        olaylar.append({"tarih": t["kargo_tarihi"], "etiket": "Kargoya verildi", "tur": "olay"})
+    teslim = t.get("teslim_tarihi")
+    if teslim:
+        gun = (bugun - teslim).days
+        olaylar.append({"tarih": teslim, "etiket": "Teslim", "tur": "olay"})
+        sinirlar = [(KUTUDAN_ARIZALI_GUN, "Kusurlu ürün: ilk 7 gün", "POL-HSR-004:4"),
+                    (CAYMA_GUN, "Cayma (iade) süresi sonu", "POL-IADE-001:3")]
+        if cayma_durumu(gun) == "GRI":
+            sinirlar.append((CAYMA_GUN + GRI_ALAN_GUN, "Gri alan sonu", "POL-ESK-007:4"))
+        if any(k.get("urun_grubu") in DEGISIM_GRUPLARI for k in siparis.get("kalemler", [])):
+            sinirlar.append((DEGISIM_GUN, "Beden/renk değişimi sonu", "POL-DEG-005:2"))
+        for n, etiket, ref in sinirlar:
+            olaylar.append({"tarih": teslim + timedelta(days=n), "etiket": etiket, "tur": "sinir", "ref": ref})
+    elif "kargo_tarihi" in t:
+        for n, etiket, ref in [(GECIKME_IS_GUNU, "Gecikme sınırı (7 iş günü)", "POL-KRG-006:4"),
+                               (KAYIP_IS_GUNU, "Kayıp sayılır (15 iş günü)", "POL-KRG-006:5")]:
+            olaylar.append({"tarih": is_gunu_sonra(t["kargo_tarihi"], n), "etiket": etiket, "tur": "sinir", "ref": ref})
+    olaylar.append({"tarih": bugun, "etiket": "Bugün", "tur": "bugun"})
+    for o in olaylar:
+        if o["tur"] == "sinir":
+            o["durum"] = "gecti" if o["tarih"] < bugun else "ileride"
+    olaylar.sort(key=lambda o: (o["tarih"], o["tur"] == "bugun"))
+    return [{**o, "tarih": o["tarih"].isoformat()} for o in olaylar]
+
+
+def mesaj_isaretle(mesaj: str) -> list[dict]:
+    """Mesajı cümlelere böler; onay/talimat iddiası içeren cümleleri işaretler (POL-ESK-007 3.3)."""
+    cumleler = [c for c in re.split(r"(?<=[.!?])\s+", mesaj.strip()) if c]
+    return [{"metin": c, "injection": any(k in normalize(c) for k in INJECTION_KALIPLARI)} for c in cumleler]

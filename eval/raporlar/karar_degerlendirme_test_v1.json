@@ -1,0 +1,966 @@
+[
+  {
+    "id": "T01",
+    "sure_sn": 234.7,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürününüzü 6 gün önce teslim aldığınız için cayma süresi içinde [K3]. Ürünü deneyip kutusuna geri koydunuz, bu iadeye engel değildir [K3]. İade talebiniz kabul edilir ve işlem başlatılır [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünü iade edebilmeniz için siparişlerim sayfasından iade kodunuzu alın ve ürünü en geç 14 gün içinde anlaşmalı kargo ile teslim edin. İade işlemi tamamlandıktan sonra ödemeniz kartınıza iade edilecektir."
+  },
+  {
+    "id": "T02",
+    "sure_sn": 158.6,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "OPERASYON_MUDURU",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "OPERASYON_MUDURU",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, cayma süresi içinde olduğu için iade talebi kabul edilebilir [K1]. Kredi kartı ile taksitli ödeme yapıldığı için tutar tek seferde karta iade edilir ve banka tarafından yansıtılır [POL-PARA-002 - 3.3]",
+    "taslak": "Merhaba, talebinizi inceledik. Cayma süresi içinde olduğu için iade işlemini gerçekleştirebiliriz. Kredi kartı ile taksitli ödeme yapıldığı için tutar tek seferde karta iade edilir ve banka tarafından yansıtılacaktır. İşlem tamamlandıktan sonra hesabınıza yansıması sürecektir."
+  },
+  {
+    "id": "T03",
+    "sure_sn": 129.2,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": true,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Teslimden 14 gün geçtiği için 14 günlük cayma süresi dolmadı [K1]. Ürün kusursuz olduğu için iade talebi politikaya uygun değildir [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz cayma süresi dolmadığı için iade işleminiz gerçekleştirilemez. Lütfen ürününüzü kullanmaya devam edin."
+  },
+  {
+    "id": "T04",
+    "sure_sn": 166.7,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "GARANTI",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": true,
+    "kategori_dogru": false,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Tıraş makinesi yedek başlık seti, hijyen ürünü olarak sınıflandırılmaktadır [K2]. Ambalaj mühürlü ve açılmamış olmasına rağmen, ürünün kusursuz olduğu varsayılabilir. Yanlış ürün gönderimi sebebiyle değişim uygun olur [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüzü değişim için değerlendireceğiz. Ambalajın mühürlü olduğuna dair bir fotoğraf gönderir misiniz? Gönderdiğinizde işlemi başlatmak üzere onay alacağız."
+  },
+  {
+    "id": "T05",
+    "sure_sn": 148.8,
+    "beklenen": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "DEGISIM"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "DEGISIM",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, teslimden 20 gün geçtiği için cayma süresi dolmuştur [K1]. Beden/renk değişim süresi içinde olduğu için değişim talebi kabul edilebilir [K3]. Ürünün etiketleri üzerinde ve denendiği belirtilmiş [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz beden değişim sürecine uygun olduğu için değişim işlemini başlatıyoruz. Lütfen siparişlerim sayfasından değişim talebi oluşturarak ilerleyin. İşlemin tamamlanması için yetkili onayın alınmasını bekliyoruz."
+  },
+  {
+    "id": "T06",
+    "sure_sn": 156.8,
+    "beklenen": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, sipariş ettiği Siyah S beden keten gömleğin yerine beyaz M beden gömlek gönderildiğini bildirdi [K1]. Teslimden bu yana 3 gün geçti ve cayma süresi içinde [K2]. Ürünün yanlış gönderildiği tespit edildiği için ücretsiz değişim yapılabilir.",
+    "taslak": "Merhaba, talebinizi inceledik. Gönderilen ürünün yanlış olduğu tespit edildiği için ücretsiz değişim işlemini başlatıyoruz. Lütfen sipariş numaranızı ve yeni tercihinizi belirtin. İşlemin tamamlanması için yetkili onayın ardından gerçekleşecektir."
+  },
+  {
+    "id": "T07",
+    "sure_sn": 166.3,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu için iade ve para iadesi uygun [K3]. Ürünün ambalajı açılmış olmasına rağmen cayma süresi içinde olduğu için iade talebi kabul edilir [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz kusurlu olduğu için iade ve para iadesi işlemini gerçekleştirebilirsiniz. Ürünü teslim aldığınız ambalajı açmış olduğunuz için cayma süresi içindeyse iade talebi kabul edilmiştir. İşlem tamamlandıktan sonra hesabınıza geri ödeme yapılacaktır."
+  },
+  {
+    "id": "T08",
+    "sure_sn": 151.7,
+    "beklenen": {
+      "oneri": "SERVISE_YONLENDIR",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "GARANTI"
+    },
+    "sistem": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ESKALASYON",
+      "kategori": "GARANTI",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurluysa uygulanacak politika: GARANTI (7 günden sonra) [K1]. Teslimden bu yana 240 gün geçti ve cayma süresi dolmuştur [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünün arızasının garanti kapsamında olup olmadığını belirlemek için yetkili servisin raporu gereklidir. Lütfen servis raporunu ekleyin. Rapora göre değerlendirme yapılacaktır."
+  },
+  {
+    "id": "T09",
+    "sure_sn": 174.1,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "KAMPANYA"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "KAMPANYA",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, kampanya kapsamında alınan ürünlerden birini iade etmek istemektedir. İade tutarı, iade edilen ürün için müşterinin fiilen ödediği paydır [K2]. Kampanya şartının artık sağlanmadığı gerekçesiyle ek ödeme talep edilmez [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Yoga Matı'nın iade tutarı sistemde hesaplanmıştır. Lütfen sipariş numaranızı belirtin, iade işlemini tamamlayabiliriz."
+  },
+  {
+    "id": "T10",
+    "sure_sn": 171.3,
+    "beklenen": {
+      "oneri": "KARGO_SORUSTURMA",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "KARGO"
+    },
+    "sistem": {
+      "oneri": "KARGO_SORUSTURMA",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "KARGO",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Kargoya verildiği tarihten itibaren 12 iş günü geçtiği için gecikmiş gönderi kabul edilir [K2]. Gecikmiş gönderilerde kargo firması üzerinden soruşturma başlatılır ve müşteriye en geç 2 iş günü içinde bilgi verilir [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Kargoya verildiği tarihten itibaren 12 iş günü geçtiği için gecikmiş gönderi kabul edilmiştir. Kargo firması üzerinden soruşturma başlatılacak ve en geç 2 iş gün içinde size bilgi vereceğiz. Lütfen bekleyin."
+  },
+  {
+    "id": "T11",
+    "sure_sn": 140.0,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Teslimden 19 gün geçtiği için 14 günlük cayma süresi dolmuştur [K1]. Ürün kusurluysa uygulanacak politika GARANTI'dir ve bu durumda iade talebi reddedilir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Cayma süresi dolmuş olduğu için iade talebi karşılanamaz. Lütfen ürününüzü kullanmadan önce ambalajını açmadan saklayarak geri göndermeniz durumunda değerlendirme yapılacaktır."
+  },
+  {
+    "id": "T12",
+    "sure_sn": 150.3,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": [
+        "Ürün cayma istisnası grubunda (CABUK_BOZULAN); ambalaj/kusur durumunu kontrol edin (POL-IADE-001 6)."
+      ]
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu için iade talebi kabul edilir [HASARLI_URUN]. Teslimden 5 gün geçtiği için cayma süresi dolmadı [K1]. İade tutarı, müşterinin fiilen ödediği 420.0 TL'dir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürün kusurlu olduğu için iade işlemini gerçekleştirebiliriz. İade tutarı, fiilen ödediğiniz 420.0 TL'dir. İşlem tamamlandıktan sonra hesabınıza geri ödeme yapılacak."
+  },
+  {
+    "id": "T13",
+    "sure_sn": 138.4,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": [
+        "Ürün cayma istisnası grubunda (KISIYE_OZEL); ambalaj/kusur durumunu kontrol edin (POL-IADE-001 6)."
+      ]
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusursuz olduğu için iade imkanı vardır [K1]. Cayma süresi dolmadığı için iade talebiniz kabul edilir.",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünü iade edebilmeniz için siparişlerim sayfasından iade kodunuzu alın ve ürünü en geç 14 gün içinde kargo şubesine teslim edin. İade işleminin tamamlanmasının ardından ödemeniz kartınıza iade edilecektir."
+  },
+  {
+    "id": "T14",
+    "sure_sn": 170.2,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "PARA_IADESI",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": false,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, anında teslim edilen dijital hediye kartı ürününü kullanmadan vazgeçti [K2]. Cayma süresi içinde ve ürün kusursuz olduğu için iade mümkündür. Para iadesi, ödeme yöntemi olan kredi kartına tek seferde yapılacaktır [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Dijital hediye kartınızın kullanılmadığı için iade işlemini başlatıyoruz. Para iadesi, ödeme yaparken kullandığınız kredi kartına tek seferde yapılacak ve hesabınıza yansıması bankaya bağlı olarak 2 ila 10 iş günü sürebilir. İşlemin tamamlanmasını bekleyiniz."
+  },
+  {
+    "id": "T15",
+    "sure_sn": 178.0,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "KAMPANYA"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "KAMPANYA",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürünün fiyatı satın alındığından beri düşmüştür [K3]. Cayma süresi dolmuş olduğu için iade talebi değerlendirilemez [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünün fiyatı satın alındığından beri düşmüştür ve cayma süresi dolmuş olduğu için iade talebi değerlendirilemez. Lütfen yeni fiyattan yeniden sipariş vererek ilgili işlemi tamamlayabilirsiniz."
+  },
+  {
+    "id": "T16",
+    "sure_sn": 311.1,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "DEGISIM"
+    },
+    "sistem": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "DEGISIM",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürünün beden/renk değişim süresi dolmuştur [K2], ayrıca teslimden 38 gün geçtiği için cayma süresi de dolmuştur [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünün beden/renk değişim süresi dolmuş ve cayma süresi de geçmiştir. Lütfen ürünün giyilmemiş olup olmadığını ve etiketinin tam olarak koparılmadığını onaylayınız."
+  },
+  {
+    "id": "T17",
+    "sure_sn": 147.5,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "DEGISIM"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "DEGISIM",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, teslimden 20 gün geçtiği için cayma süresi dolmuştur [K1]. Beden/renk değişim süresi içinde olduğu için değişim talebi kabul edilebilir [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüzü beyaz renkte değiştirmek isterseniz lütfen Siparişlerim sayfasından değişim talebi oluşturun. Değişim süreci için gerekli bilgileri eksiksiz şekilde girin. İşlemin tamamlanması için yetkili onayın alınmasını beklemekteyiz."
+  },
+  {
+    "id": "T18",
+    "sure_sn": 132.4,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "GARANTI"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "GARANTI",
+      "uyarilar": [
+        "Kusurlu/hasarlı üründe koşullar sağlanmışsa ret verilemez (POL-ESK-007 3.1); servis raporu olmadan garanti reddedilmez (POL-GAR-003 6.3)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürünün garanti süresi dolmuş ve cayma süresi de geçmiştir [K2]. Kusursuz üründe iade talebi reddedilmelidir.",
+    "taslak": "Merhaba, talebinizi inceledik. Ürünün garanti süresi dolmuş ve cayma süresi geçmiştir. Bu nedenle iade talebi işleme kapatılmıştır. İşlem için yetkili onay alındıktan sonra ilgili adımlar atılacaktır."
+  },
+  {
+    "id": "T19",
+    "sure_sn": 163.6,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "KAMPANYA"
+    },
+    "sistem": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ESKALASYON",
+      "kategori": "KAMPANYA",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, teslimat gecikmesi nedeniyle nakit olarak kuponun iade istemesi durumunda telafi kuponu tanımlanabilir [K2]. Ancak kupon nakde çevrilemez ve müşteriye yeniden tanımlanmalıdır [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Teslimat gecikmesi nedeniyle kuponunuz bir sonraki alışverişte kullanılmak üzere yeniden tanımlanacaktır. Bu işlemin tamamlanması için yetkili ekibin onayı gerekmektedir."
+  },
+  {
+    "id": "T20",
+    "sure_sn": 168.9,
+    "beklenen": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": [
+        "Ürün cayma istisnası grubunda (ICERIK_SARF); ambalaj/kusur durumunu kontrol edin (POL-IADE-001 6)."
+      ]
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün ambalajı açılmış ve kullanım sonrası olduğu belirtilmiş [K1]. Cayma süresi içinde olduğu için iade talebi kabul edilebilir [K2]. Ürünün kusursuz olduğu varsayılıyor; ancak ambalajın açılmış olması, iade sürecini etkileyebilir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz ambalajı açılmış ve kullanım sonrası olduğu için iade talebiniz kabul edilebilir. Lütfen ürünü geri gönderdiğinizde tüm aksesuarları ve faturasını da birlikte gönderin. İade işleminin tamamlanması için yetkili onayın ardından gerçekleşecektir."
+  },
+  {
+    "id": "T21",
+    "sure_sn": 137.1,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "KARGO"
+    },
+    "sistem": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "KARGO",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Sipariş bulunamadığı için kargo durumu sorgulanamaz [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Lütfen sipariş numaranızı belirtin, böylece kargoya verildiği tarih ve teslimat durumu kontrol edilebilir."
+  },
+  {
+    "id": "T22",
+    "sure_sn": 315.3,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "KAMPANYA"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "IADE",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": false,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Cayma süresi içinde olduğu için iade işlemini gerçekleştirebilirsiniz [K3]. İade tutarı, ürününüzün fiilen ödediğiniz tutar üzerinden hesaplanacak ve kargo ücreti de iade edilecek [K2]. Ürünü, iade kodunu ileterek anlaşmalı kargo şubesine en geç 14 gün içinde teslim edin [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Cayma süresi içinde olduğu için iade işlemini gerçekleştirebilirsiniz. Ürünü, iade kodunu ileterek anlaşmalı kargo şubesine en geç 14 gün içinde teslim edin. İade tutarı, ürününüzün fiilen ödediğiniz tutar üzerinden hesaplanacak ve kargo ücreti de iade edilecektir. Tesliminden sonra ödemeniz en geç 14 gün içinde kartınıza iade edilecektir."
+  },
+  {
+    "id": "T23",
+    "sure_sn": 133.4,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "HASARLI_URUN"
+    },
+    "sistem": {
+      "oneri": "DEGISIM_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "ONAY",
+      "kategori": "HASARLI_URUN",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurlu olduğu için değişim uygun [K1]. Cayma süresi içinde ve ürünün aynısı temin edilemiyorsa müşteriye bedel iadesi veya muadil ürün seçeneği sunulur [K1].",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz kusurlu olduğu için değişim sürecine başlayabiliriz. Lütfen ürününüzü teslim ederek değişim işlemini tamamlayın. İşlemin yetkili onayından sonra gerçekleşeceğini belirtiyoruz."
+  },
+  {
+    "id": "T24",
+    "sure_sn": 130.6,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "DEGISIM"
+    },
+    "sistem": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "DEGISIM",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, teslim tarihinden itibaren 30 gün içinde beden değişimi talep etmiştir [K2]. Ürünün stokta olduğuna dair bilgi mevcut değil; değişim işlemi için gerekli bilgiler eksik [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Beden değişimi için gerekli bilgiler eksik. İstenen bedenin stokta olduğuna dair bilgi verirseniz devam edebiliriz."
+  },
+  {
+    "id": "T25",
+    "sure_sn": 143.6,
+    "beklenen": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "EKSIK_BILGI",
+      "kategori": "PARA_IADESI"
+    },
+    "sistem": {
+      "oneri": "RED",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [],
+      "grup": "RED",
+      "kategori": "PARA_IADESI",
+      "uyarilar": []
+    },
+    "oneri_dogru": false,
+    "grup_dogru": false,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Kapıda ödeme yapıldığı için tutar, müşteri hesabına (IBAN) gönderilecek [K1]. İade işlemi tamamlandıktan sonra tutarın hesabınıza yansıması bankanıza bağlı olarak 2 ila 10 iş günü sürebilir [K1].",
+    "taslak": "Merhaba, iade işleminiz tamamlandı. Tutarın hesabınıza yansıması bankanıza bağlı olarak 2 ila 10 iş günü sürebilir. İade tutarınız belirlendikten sonra hesabınıza yansıyacaktır."
+  },
+  {
+    "id": "T26",
+    "sure_sn": 129.8,
+    "beklenen": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "KVKK"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GENEL"
+    },
+    "sistem": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "KVKK"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GENEL",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri kişisel verilerinin silinmesini talep etmektedir [K3]. Bu tür talepler KVKK birimine aktarılmalıdır [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Kişisel verilerinizi silmek isterseniz, bu işlemin gerçekleşmesini sağlamak için ilgili birimlerle iletişime geçiyoruz. Lütfen bekleyiniz."
+  },
+  {
+    "id": "T27",
+    "sure_sn": 165.0,
+    "beklenen": {
+      "oneri": "KARGO_SORUSTURMA",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "KALITE_KONTROL"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "KARGO"
+    },
+    "sistem": {
+      "oneri": "KARGO_SORUSTURMA",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [
+        "KALITE_KONTROL"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "KARGO",
+      "uyarilar": [
+        "Zorunlu eskalasyon: KALITE_KONTROL — öneriyle birlikte uygulanır (POL-ESK-007 6.6, 7.2)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Kargoya verildikten sonra 12 iş gün geçtiği için gecikmiş gönderi kabul edilir [K3]. Gecikmiş gönderilerde kargo firması üzerinden soruşturma başlatılır ve müşteriye en geç 2 iş günü içinde bilgi verilir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Şarjlı süpürgeniz kargoda 12 iş gün geçti ve gecikmiş gönderi olarak değerlendiriliyor. Kargo firması üzerinden soruşturma başlatılmıştır. En geç 2 iş günü içinde size bilgi verilecektir."
+  },
+  {
+    "id": "T28",
+    "sure_sn": 144.8,
+    "beklenen": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "GUVENLIK"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GENEL"
+    },
+    "sistem": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "OPERASYON_MUDURU",
+      "eskalasyon": [
+        "GUVENLIK"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GENEL",
+      "uyarilar": []
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": false,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": false,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Siparişin teslimat adresi değişikliği isteniyorsa, kargo firmasının şube yönlendirmesi gerekmektedir [K3].",
+    "taslak": "Merhaba, talebinizi inceledik. Siparişin teslimat adresi değişikliği isteniyorsa kargo firmasının şube yönlendirmesi gerekmektedir. Lütfen ilgili adımları takip ediniz ve bize bildirimde bulununuz."
+  },
+  {
+    "id": "T29",
+    "sure_sn": 162.1,
+    "beklenen": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "URUN_GUVENLIGI"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GARANTI"
+    },
+    "sistem": {
+      "oneri": "IADE_KABUL",
+      "gerekli_onay": "DESTEK_UZMANI",
+      "eskalasyon": [
+        "URUN_GUVENLIGI"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "GARANTI",
+      "uyarilar": [
+        "Zorunlu eskalasyon: URUN_GUVENLIGI — öneriyle birlikte uygulanır (POL-ESK-007 6.6, 7.2)."
+      ]
+    },
+    "oneri_dogru": true,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Ürün kusurluysa uygulanacak politika GARANTI'dir [K3]. Teslimden bu yana 150 gün geçtiği için cayma süresi dolmuştur [K1]. Ürünün iadesi ve para iadesi uygun [IADE_KABUL]",
+    "taslak": "Merhaba, talebinizi inceledik. Ürününüz kusurlu olduğu için iade işlemini başlatıyoruz. İade sürecini tamamlayabilmemiz için ürünü geri göndermeniz gerekiyor. Lütfen ürününüze ait tüm aksesuarları ve kullanım kılavuzunu birlikte gönderin. İşleminizin onayını aldıktan sonra işleme devam edeceğiz."
+  },
+  {
+    "id": "T30",
+    "sure_sn": 154.1,
+    "beklenen": {
+      "oneri": "ESKALASYON",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [
+        "POLITIKA_ISTISNASI"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "IADE"
+    },
+    "sistem": {
+      "oneri": "EKSIK_BILGI",
+      "gerekli_onay": "TAKIM_LIDERI",
+      "eskalasyon": [
+        "POLITIKA_ISTISNASI"
+      ],
+      "grup": "ESKALASYON",
+      "kategori": "IADE",
+      "uyarilar": [
+        "Zorunlu eskalasyon: POLITIKA_ISTISNASI — öneriyle birlikte uygulanır (POL-ESK-007 6.6, 7.2)."
+      ]
+    },
+    "oneri_dogru": false,
+    "grup_dogru": true,
+    "kategori_dogru": true,
+    "onay_dogru": true,
+    "eksik_onay": false,
+    "eskalasyon_dogru": true,
+    "uyari_var": true,
+    "atif_gecerli": true,
+    "yasak_ifade": [],
+    "gizli_kod": false,
+    "gerekce": "Müşteri, cayma süresini kaçırmıştır [K1]. Ürün ambalajı açılmış ve kullanım öncesi olduğu belirtilmiştir [K2].",
+    "taslak": "Merhaba, talebinizi inceledik. Cayma süresini kaçırmış olduğunuz için iade işlemini gerçekleştirmemiz mümkün değil. Lütfen ürünün ambalajında hasar var mı? Kullanım sonrası olup olmadığını detaylandırabilir misiniz?"
+  }
+]

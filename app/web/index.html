@@ -4,152 +4,922 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpsPilot AI — Destek Paneli</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- OpsPilot AI paneli (Faz 9). Harici kaynak (CDN, yazı tipi) kullanılmaz: internet olmadan da aynı görünür.
+     Müşteri ekranı yalnızca /musteri/* uç noktalarını kullanır; iç analiz verisi müşteri tarafına hiç gelmez. -->
 <style>
-  .rozet{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600}
-  .spin{width:18px;height:18px;border:3px solid #cbd5e1;border-top-color:#4f46e5;border-radius:50%;animation:s 1s linear infinite;display:inline-block;vertical-align:middle}
-  @keyframes s{to{transform:rotate(360deg)}}
+:root{
+  --bg:#f4f6fb; --card:#fff; --line:#e6e9f1; --line2:#f0f2f7; --ink:#0f172a; --ink2:#334155; --muted:#64748b; --soft:#94a3b8;
+  --accent:#4f46e5; --accent-bg:#eef2ff; --code:#2563eb; --code-bg:#eff5ff; --ai:#7c3aed; --ai-bg:#f5f0ff;
+  --ok:#059669; --ok-bg:#e8f8f1; --no:#e11d48; --no-bg:#fdecef; --warn:#b45309; --warn-bg:#fff7ea; --info:#0369a1; --info-bg:#e9f5fd;
+  --brand:#ea580c; --brand-bg:#fff7ed; --shadow:0 1px 2px #0f172a0d, 0 4px 16px #0f172a08;
+}
+*{box-sizing:border-box} html,body{margin:0;height:100%}
+body{font:14px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer} button:disabled{cursor:not-allowed}
+.mono{font-family:Consolas,"Cascadia Mono",monospace;font-size:.92em}
+.hidden{display:none!important}
+::-webkit-scrollbar{width:10px;height:10px} ::-webkit-scrollbar-thumb{background:#cfd5e2;border-radius:10px;border:3px solid transparent;background-clip:content-box}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:1px 8px;border-radius:6px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.6}
+.c-ok{background:var(--ok-bg);color:var(--ok)} .c-no{background:var(--no-bg);color:var(--no)} .c-warn{background:var(--warn-bg);color:var(--warn)}
+.c-info{background:var(--info-bg);color:var(--info)} .c-mut{background:#f1f5f9;color:#475569} .c-acc{background:var(--accent-bg);color:#3730a3} .c-ai{background:var(--ai-bg);color:var(--ai)}
+.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 13px;font-weight:600;font-size:13px;color:var(--ink2);display:inline-flex;align-items:center;gap:6px}
+.btn:hover:not(:disabled){background:#f8fafc;border-color:#d5dae6}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff} .btn.pri:hover:not(:disabled){background:#4338ca}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff} .btn.ok:hover:not(:disabled){background:#047857}
+.btn.warn{background:#d97706;border-color:#d97706;color:#fff} .btn.warn:hover:not(:disabled){background:#b45309}
+.btn.ghost-no{color:var(--no);border-color:#fbcfd8} .btn.ghost-no:hover:not(:disabled){background:var(--no-bg)}
+.btn:disabled{opacity:.5}
+.btn.lg{padding:10px 18px;font-size:14px;border-radius:10px}
+.field{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin:14px 0 6px}
+.inp{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;outline:0;transition:.15s}
+.inp:focus{border-color:#a5b4fc;box-shadow:0 0 0 3px #6366f11f}
+textarea.inp{resize:vertical;line-height:1.55}
+.spin{width:14px;height:14px;border:2px solid #ffffff66;border-top-color:#fff;border-radius:50%;animation:rot .8s linear infinite;display:inline-block}
+.spin.dark{border-color:#c7d2fe;border-top-color:var(--accent)}
+@keyframes rot{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.45}}
+@keyframes shimmer{from{background-position:-200px 0}to{background-position:200px 0}}
+
+/* ---------- Üst çubuk ---------- */
+.top{height:54px;background:#0b1220;color:#cbd5e1;display:flex;align-items:center;gap:16px;padding:0 18px;position:sticky;top:0;z-index:30}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;color:#fff;font-size:15px;white-space:nowrap}
+.logo i{width:27px;height:27px;border-radius:8px;background:linear-gradient(135deg,#6366f1,#7c3aed);display:grid;place-items:center;font-style:normal;font-size:12px}
+.logo small{font-weight:500;color:#64748b;font-size:12px}
+.switch{display:flex;background:#1e293b;border-radius:10px;padding:3px;margin-left:18px}
+.switch button{border:0;background:transparent;color:#94a3b8;padding:6px 16px;border-radius:8px;font-weight:600;font-size:13px}
+.switch button.on{background:#fff;color:var(--ink)} .switch button:not(.on):hover{color:#e2e8f0}
+.top .sp{flex:1}
+.sys{display:flex;gap:14px;align-items:center;font-size:12px}
+.sys span{display:flex;gap:6px;align-items:center;white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:#475569}
+.dot.on{background:#10b981;box-shadow:0 0 0 3px #10b98126} .dot.off{background:#f43f5e;box-shadow:0 0 0 3px #f43f5e26} .dot.mid{background:#f59e0b;box-shadow:0 0 0 3px #f59e0b26}
+.offline{background:var(--no);color:#fff;text-align:center;font-size:13px;padding:6px;position:sticky;top:54px;z-index:29}
+.screen{display:none} .screen.on{display:block}
+
+/* =================== MÜŞTERİ EKRANI =================== */
+.shop{background:#fff;border-bottom:1px solid var(--line)}
+.shop .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:24px;height:62px;padding:0 22px}
+.brand{font-weight:800;font-size:21px;color:var(--brand);letter-spacing:-.02em} .brand span{color:var(--ink)}
+.shop .crumb{color:var(--muted);font-size:13.5px} .shop .crumb b{color:var(--ink)}
+.shop .user{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px}
+.shop .user select{border:1px solid var(--line);border-radius:9px;padding:6px 8px;background:#f8fafc;max-width:210px}
+.av{width:32px;height:32px;border-radius:50%;background:#ffedd5;color:#9a3412;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none}
+.cwrap{max-width:1120px;margin:26px auto 60px;padding:0 22px;display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:start}
+.ccard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.ccard h2{margin:0 0 4px;font-size:19px} .ccard .sub{color:var(--muted);font-size:13px}
+.orders{display:grid;gap:8px}
+.ord{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;transition:.15s;background:#fff}
+.ord:hover{border-color:#fdba74} .ord.on{border-color:var(--brand);background:var(--brand-bg)}
+.ord .ic{width:42px;height:42px;border-radius:10px;background:#f8fafc;border:1px solid var(--line);display:grid;place-items:center;font-size:20px;flex:none}
+.ord.on .ic{background:#fff;border-color:#fed7aa}
+.ord .t{font-weight:600;font-size:13.5px} .ord small{color:var(--muted);font-size:12px}
+.ord .r{margin-left:auto}
+.att{display:flex;gap:8px;flex-wrap:wrap}
+.att label{border:1.5px dashed #cbd5e1;border-radius:10px;padding:7px 12px;font-size:12.5px;color:#475569;cursor:pointer;user-select:none;transition:.15s}
+.att input{display:none} .att label.on{border-style:solid;border-color:#fdba74;background:var(--brand-bg);color:#c2410c;font-weight:700}
+.cnt{font-size:11.5px;color:var(--soft);text-align:right;margin-top:4px}
+.cbtn{margin-top:18px;width:100%;border:0;border-radius:12px;padding:13px;background:var(--brand);color:#fff;font-weight:700;font-size:15px;display:flex;justify-content:center;align-items:center;gap:8px}
+.cbtn:hover:not(:disabled){background:#c2410c} .cbtn:disabled{opacity:.6}
+.err{color:var(--no);font-size:12.5px;margin-top:8px;min-height:18px}
+.demo-fill{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.demo-fill select{flex:1;border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:#f8fafc;font-size:12px}
+.req{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px}
+.req .h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.req .h b{font-size:14px} .req .h span{font-size:12px;color:var(--muted)}
+.st3{display:flex;align-items:flex-start;margin:14px 4px 6px}
+.st3 .s{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11.5px;color:var(--soft);width:92px;text-align:center}
+.st3 .s i{width:24px;height:24px;border-radius:50%;border:2px solid #e2e8f0;display:grid;place-items:center;font-style:normal;font-size:11px;background:#fff;font-weight:700}
+.st3 .s.d{color:var(--ink2)} .st3 .s.d i{background:var(--brand);border-color:var(--brand);color:#fff}
+.st3 .s.a{color:var(--ink2);font-weight:600} .st3 .s.a i{border-color:var(--brand);color:var(--brand);animation:pulse 1.4s infinite}
+.st3 .ln{flex:1;height:2px;background:#e2e8f0;margin-top:12px} .st3 .ln.d{background:var(--brand)}
+.mine{background:var(--brand-bg);border-radius:14px 4px 14px 14px;padding:10px 14px;font-size:13px;color:#7c2d12;margin-top:10px;white-space:pre-wrap}
+.mine.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.bubble{background:#f8fafc;border:1px solid var(--line2);border-radius:4px 14px 14px 14px;padding:12px 14px;margin-top:10px;font-size:13.5px;line-height:1.6;white-space:pre-wrap}
+.bubble .who{font-size:12px;font-weight:700;color:#c2410c;margin-bottom:4px;display:flex;justify-content:space-between}
+.bubble .who span{font-weight:400;color:var(--soft)}
+.wait{font-size:12.5px;color:var(--muted);margin-top:10px;display:flex;gap:8px;align-items:center}
+.trust{font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.empty{color:var(--muted);text-align:center;padding:36px 16px;font-size:13.5px}
+.empty b{display:block;color:var(--ink2);font-size:15px;margin-bottom:4px}
+.empty .ic{font-size:30px;margin-bottom:6px}
+
+/* =================== TEMSİLCİ EKRANI =================== */
+.rep{display:grid;grid-template-columns:340px 1fr;height:calc(100vh - 54px)}
+.inbox{background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.ihd{padding:14px 14px 0;border-bottom:1px solid var(--line)}
+.ihd .r1{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ihd h2{margin:0;font-size:16px;flex:1}
+.persona{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:5px 8px;margin-bottom:10px}
+.persona .av{width:28px;height:28px;background:var(--accent-bg);color:#3730a3;font-size:11px}
+.persona select{border:0;background:transparent;font-weight:600;font-size:13px;outline:0;flex:1;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.kpi{background:#f8fafc;border-radius:9px;padding:6px 8px}
+.kpi b{display:block;font-size:16px;line-height:1.2} .kpi span{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.search{width:100%;border:1px solid var(--line);border-radius:9px;padding:7px 10px 7px 30px;background:#f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath d='m9.5 9.5 3 3'/%3E%3C/svg%3E") no-repeat 10px 50%;outline:0;font-size:13px}
+.search:focus{border-color:#a5b4fc;background-color:#fff}
+.tabs{display:flex;gap:2px;margin-top:10px;overflow-x:auto}
+.tabs button{border:0;background:transparent;font-size:12.5px;padding:7px 7px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--ink);border-color:var(--accent);font-weight:700}
+.tabs button em{font-style:normal;font-size:11px;background:#f1f5f9;border-radius:9px;padding:0 6px;margin-left:3px;color:#475569}
+.tabs button.on em{background:var(--accent-bg);color:#3730a3}
+.list{overflow:auto;flex:1}
+.tk{display:grid;grid-template-columns:3px 1fr auto;gap:11px;align-items:center;padding:10px 14px 10px 0;border-bottom:1px solid var(--line2);cursor:pointer;outline:0}
+.tk:hover{background:#f8fafc} .tk.on{background:var(--accent-bg)}
+.tk .stripe{align-self:stretch;border-radius:0 3px 3px 0;background:#e2e8f0}
+.tk .n{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tk .m{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tk .rt{text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.mini{height:4px;width:64px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+.mini i{display:block;height:100%;background:var(--accent);transition:width .5s}
+
+.detail{overflow:auto;padding:22px 28px 70px;min-width:0}
+.dwrap{max-width:1080px;margin:0 auto}
+.dh{display:flex;align-items:flex-start;gap:12px;margin-bottom:4px}
+.dh h1{margin:0;font-size:20px;letter-spacing:-.01em} .dh .meta{color:var(--muted);font-size:12.5px;margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.dh .sp{flex:1}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:14px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 12px;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;font-weight:700}
+.card h3 .sp{flex:1} .card h3 .x{text-transform:none;letter-spacing:0;font-weight:500;font-size:12px}
+
+.prog{margin:14px 0 4px}
+.prog .track{height:7px;background:#e2e8f0;border-radius:5px;overflow:hidden;position:relative}
+.prog .fill{height:100%;background:linear-gradient(90deg,#6366f1,#7c3aed);border-radius:5px;transition:width .6s;position:relative;overflow:hidden}
+.prog .fill:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff70,transparent);background-size:200px 100%;animation:shimmer 1.4s linear infinite}
+.prog.done .fill{background:#10b981} .prog.done .fill:after{display:none}
+.prog .lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:7px;gap:10px}
+.prog .stg{display:flex;gap:4px 12px;flex-wrap:wrap;font-size:11.5px;color:var(--soft);margin-top:5px}
+.prog .stg span.d{color:#475569} .prog .stg span.d:before{content:"✓ ";color:var(--ok);font-weight:700}
+.prog .stg span.a{color:var(--accent);font-weight:700;animation:pulse 1.4s infinite}
+.alert{display:flex;gap:12px;align-items:flex-start;border-radius:12px;padding:12px 14px;margin-top:14px;font-size:13px}
+.alert.warn{background:var(--warn-bg);border:1px solid #fde3b8;color:#7c4a03} .alert.no{background:var(--no-bg);border:1px solid #fbcfd8;color:#9f1239}
+.alert.ok{background:var(--ok-bg);border:1px solid #bdebd7;color:#065f46} .alert.info{background:var(--info-bg);border:1px solid #c6e5f7;color:#075985}
+.alert .i{font-size:17px;line-height:1.2} .alert b{display:block;margin-bottom:2px} .alert ul{margin:4px 0 0;padding-left:18px}
+.alert .act{margin-left:auto;align-self:center}
+
+.sum{display:grid;grid-template-columns:minmax(200px,auto) 1fr auto;gap:22px;align-items:center}
+.verdict small,.role small{display:block;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:2px}
+.verdict b{font-size:23px;letter-spacing:-.01em;line-height:1.15;display:block}
+.verdict span{font-size:12.5px;color:#475569}
+.flags{display:flex;flex-wrap:wrap;gap:6px;align-content:center}
+.role{justify-self:end;text-align:right}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;font-size:12px}
+.seg span{padding:5px 10px;color:var(--soft);border-right:1px solid var(--line);white-space:nowrap}
+.seg span:last-child{border:0}
+.seg span.req{background:var(--ok);color:#fff;font-weight:700}
+.seg span.me{box-shadow:inset 0 -3px 0 var(--accent);color:var(--ink2)}
+.seg span.req.me{box-shadow:inset 0 -3px 0 #064e3b;color:#fff}
+.role .why{font-size:11.5px;color:var(--muted);margin-top:5px;max-width:430px}
+
+.msg{font-size:14px;line-height:1.7;white-space:pre-wrap}
+.inj{background:var(--no-bg);color:#9f1239;text-decoration:line-through;text-decoration-color:#e11d4880;border-radius:4px;padding:0 2px}
+.injn{font-size:12px;color:#9f1239;margin-top:8px}
+sup.k{font-size:10px;font-weight:800;color:var(--accent);background:var(--accent-bg);border-radius:4px;padding:0 4px;margin-left:2px;cursor:pointer;vertical-align:super;line-height:1}
+sup.k:hover{background:#c7d2fe}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.check{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--line2)}
+.check .i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:1px}
+.i.no{background:var(--no-bg);color:var(--no)} .i.ok{background:var(--ok-bg);color:var(--ok)} .i.w{background:var(--warn-bg);color:var(--warn)} .i.n{background:#f1f5f9;color:#64748b}
+.check .q{font-size:11.5px;color:var(--muted)} .check .a{font-size:13.5px;font-weight:600}
+.by{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap;margin-top:2px}
+.by.code{background:var(--code-bg);color:var(--code)} .by.ai{background:var(--ai-bg);color:var(--ai)}
+.aiq{margin-top:14px;background:#faf7ff;border-left:3px solid var(--ai);border-radius:0 10px 10px 0;padding:11px 14px;font-size:13.5px;color:#3b2a63}
+.aiq small{display:block;font-size:10.5px;font-weight:700;color:var(--ai);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.aiq .ask{margin-top:8px;font-size:13px;color:#4c1d95}
+details.src{margin-top:12px;font-size:12.5px;color:var(--muted)}
+details.src summary{cursor:pointer;list-style:none;user-select:none} details.src summary::-webkit-details-marker{display:none}
+details.src summary:before{content:"▸ "} details.src[open] summary:before{content:"▾ "}
+.srcrow{display:flex;gap:8px;align-items:center;padding:5px 0 5px 14px;cursor:pointer;border-radius:6px} .srcrow:hover{color:var(--ink);background:#f8fafc}
+.srcrow .tag{font-weight:800;font-size:10.5px;border:1px solid #cbd5e1;border-radius:5px;padding:0 5px;color:#475569;background:#fff}
+.srcrow .tag.used{background:#475569;color:#fff;border-color:#475569}
+.srcrow .sim{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--soft)}
+
+.tl{position:relative;margin:4px 8px 0}
+.tl .rail{position:absolute;left:0;right:0;height:4px;background:#e2e8f0;border-radius:3px}
+.tl .past{position:absolute;left:0;height:4px;background:#94a3b8;border-radius:3px}
+.tl .ms{position:absolute;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;width:120px;text-align:center}
+.tl .ms .lb{font-size:11px;color:var(--muted);line-height:1.25;cursor:default}
+.tl .ms .lb.ref{cursor:pointer;text-decoration:underline dotted #94a3b8;text-underline-offset:2px}
+.tl .ms i{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #94a3b8;position:absolute}
+.tl .ms .dt{font-size:11px;font-weight:700;color:#334155;position:absolute;white-space:nowrap}
+.tl .ms.gecti i{border-color:var(--no)} .tl .ms.gecti .lb{color:var(--no)}
+.tl .ms.ileride i{border-color:var(--ok)} .tl .ms.ileride .lb{color:var(--ok)}
+.tl .ms.bugun i{width:18px;height:18px;background:var(--ink);border-color:var(--ink);box-shadow:0 0 0 4px #0f172a1f}
+.tl .ms.bugun .lb{color:var(--ink);font-weight:800}
+.tl .ms.bugun .dt{background:var(--ink);color:#fff;border-radius:5px;padding:0 6px}
+.tlfoot{display:flex;gap:6px 18px;font-size:11.5px;color:var(--muted);flex-wrap:wrap;border-top:1px solid var(--line2);padding-top:10px}
+
+.lint{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 14px;align-items:center}
+.acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.acts .note{margin-left:auto;font-size:12px}
+.linkbtn{border:0;background:none;color:var(--accent);font-size:12px;padding:0;font-weight:600}
+.log{font-size:12.5px;margin:0;padding:0;list-style:none}
+.log li{display:grid;grid-template-columns:150px 1fr auto;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line2)}
+.log li:last-child{border:0} .log .t{color:var(--muted);font-variant-numeric:tabular-nums} .log .d{color:var(--soft);font-variant-numeric:tabular-nums}
+.skel{background:linear-gradient(90deg,#eef1f6 0,#f6f8fb 80px,#eef1f6 160px);background-size:400px 100%;animation:shimmer 1.2s linear infinite;border-radius:8px}
+
+/* Çekmece, pencere, bildirim */
+.drawer{position:fixed;top:54px;right:0;bottom:0;width:460px;max-width:92vw;background:#fff;border-left:1px solid var(--line);box-shadow:-24px 0 48px #0f172a1a;transform:translateX(105%);transition:transform .25s;z-index:40;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer .h{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+.drawer .h h4{margin:0;font-size:15px} .drawer .h small{color:var(--muted);font-size:12px}
+.drawer .bd{padding:16px 20px;overflow:auto;font-size:13.5px;line-height:1.7;white-space:pre-wrap;color:var(--ink2)}
+.drawer .bd strong{color:var(--ink)}
+.drawer table{border-collapse:collapse;width:100%;margin:2px 0;font-size:13px;white-space:normal}
+.drawer th,.drawer td{border:1px solid var(--line);padding:6px 9px;text-align:left} .drawer th{background:#f8fafc;font-weight:700}
+.drawer mark{background:#fef3c7;padding:1px 2px;border-radius:3px}
+.xb{margin-left:auto;border:0;background:#f1f5f9;border-radius:8px;width:30px;height:30px;flex:none}
+.xb:hover{background:#e2e8f0}
+.ov{position:fixed;inset:0;background:#0f172a66;z-index:50;display:grid;place-items:center;padding:20px}
+.modal{background:#fff;border-radius:16px;width:520px;max-width:100%;max-height:calc(100vh - 40px);overflow:auto;box-shadow:0 30px 80px #0f172a40}
+.modal .h{padding:18px 20px 0;display:flex;align-items:flex-start;gap:12px}
+.modal .h h4{margin:0;font-size:16px} .modal .h p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.modal .bd{padding:4px 20px 6px}
+.modal .ft{padding:14px 20px 18px;display:flex;gap:8px;justify-content:flex-end}
+.toasts{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:60;align-items:center}
+.toast{background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;box-shadow:0 10px 30px #0f172a33;animation:tin .2s}
+.toast.no{background:var(--no)} .toast.ok{background:#047857}
+@keyframes tin{from{transform:translateY(10px);opacity:0}}
 </style>
 </head>
-<body class="bg-slate-100 text-slate-800">
-<header class="bg-indigo-700 text-white px-6 py-3 flex items-center justify-between">
-  <div><span class="font-bold text-lg">OpsPilot AI</span> <span class="opacity-80 text-sm">· NovaSepet Destek Uzmanı Paneli (kurgusal)</span></div>
-  <div class="text-xs opacity-80">Yerel model · son karar her zaman çalışanda</div>
+<body>
+
+<header class="top">
+  <div class="logo"><i>◆</i>OpsPilot AI <small>· NovaSepet (kurgusal)</small></div>
+  <nav class="switch" aria-label="Ekran">
+    <button data-ekran="musteri">👤 Müşteri ekranı</button>
+    <button data-ekran="temsilci">🎧 Temsilci ekranı</button>
+  </nav>
+  <div class="sp"></div>
+  <div class="sys" id="sys">
+    <span title="Yerel dil modeli (Ollama)"><i class="dot" id="dOllama"></i><em id="tOllama" style="font-style:normal">Model</em></span>
+    <span title="MCP araç sunucusu"><i class="dot" id="dMcp"></i>MCP</span>
+    <span id="tKuyruk" class="hidden"></span>
+    <span title="Tüm modeller bu bilgisayarda çalışır">🔒 Yerel</span>
+  </div>
 </header>
+<div class="offline hidden" id="offline">Sunucuya ulaşılamıyor — API (uvicorn) çalışıyor mu? Bağlantı geri gelince sayfa kendini yeniler.</div>
 
-<main class="max-w-7xl mx-auto p-4 grid gap-4 lg:grid-cols-3">
-  <!-- Sol: yeni talep + liste -->
-  <section class="space-y-4">
-    <div class="bg-white rounded-xl shadow p-4 space-y-2">
-      <h2 class="font-semibold">Yeni talep</h2>
-      <select id="demo" class="w-full border rounded p-2 text-sm"><option value="">— Örnek talep seç (D01–D06 demo) —</option></select>
-      <textarea id="mesaj" rows="5" class="w-full border rounded p-2 text-sm" placeholder="Müşteri mesajı"></textarea>
-      <div class="grid grid-cols-2 gap-2">
-        <input id="siparis" class="border rounded p-2 text-sm" placeholder="Sipariş no (SP-2001)">
-        <input id="musteri" class="border rounded p-2 text-sm" placeholder="Müşteri (MUS-101)">
+<!-- =================== MÜŞTERİ EKRANI =================== -->
+<section class="screen" id="musteri">
+  <div class="shop"><div class="in">
+    <div class="brand">Nova<span>Sepet</span></div>
+    <div class="crumb">Hesabım › <b>Yardım merkezi</b></div>
+    <div class="user"><div class="av" id="cAv">–</div><select id="cMusteri" aria-label="Demo müşteri hesabı"></select></div>
+  </div></div>
+
+  <div class="cwrap">
+    <div class="ccard">
+      <h2>Size nasıl yardımcı olabiliriz?</h2>
+      <div class="sub">İade, değişim, kargo veya ürününüzle ilgili sorununuzu yazın; ekibimiz en kısa sürede dönüş yapar.</div>
+      <label class="field">Hangi siparişinizle ilgili?</label>
+      <div class="orders" id="cSiparisler"></div>
+      <label class="field" for="cMesaj">Talebiniz</label>
+      <textarea class="inp" id="cMesaj" rows="5" maxlength="4000" placeholder="Sorununuzu kısaca anlatın. Kart, IBAN veya kimlik numarası yazmanıza gerek yoktur."></textarea>
+      <div class="cnt" id="cSay">0 / 4000</div>
+      <label class="field">Ek (isteğe bağlı)</label>
+      <div class="att" id="cEkler"></div>
+      <div class="err" id="cHata"></div>
+      <button class="cbtn" id="cGonder">Talebi gönder</button>
+      <div class="demo-fill"><span style="white-space:nowrap">🎬 Sunum için</span>
+        <select id="cOrnek" aria-label="Örnek talep"><option value="">örnek talep seçip formu doldur…</option></select></div>
+    </div>
+
+    <div>
+      <div class="ccard">
+        <div style="display:flex;align-items:center;gap:8px"><h2 style="flex:1">Taleplerim</h2><span class="chip c-mut" id="cTalepSay"></span></div>
+        <div class="sub">Yanıtlarımız bir destek uzmanının kontrolünden sonra iletilir.</div>
+        <div id="cTalepler"></div>
       </div>
-      <div id="ekler" class="flex flex-wrap gap-3 text-xs text-slate-600"></div>
-      <button id="analizBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded p-2 font-semibold">Analiz et</button>
-      <p id="analizDurum" class="text-xs text-slate-500"></p>
+      <div class="trust">🔒 <span>Kişisel bilgileriniz (kart, IBAN, kimlik numarası) otomatik olarak gizlenir. Talebiniz yapay zekâ destekli sistemimizce ön incelemeden geçer; <b>son kararı her zaman bir destek uzmanı verir.</b></span></div>
     </div>
-    <div class="bg-white rounded-xl shadow p-4">
-      <div class="flex justify-between items-center mb-2"><h2 class="font-semibold">Talepler</h2>
-        <button id="yenile" class="text-xs text-indigo-600">yenile</button></div>
-      <ul id="liste" class="divide-y text-sm max-h-[420px] overflow-auto"></ul>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Sağ: analiz -->
-  <section class="lg:col-span-2 space-y-4" id="detay">
-    <div class="bg-white rounded-xl shadow p-6 text-slate-500">Bir talep seçin veya yeni talep analiz edin.</div>
-  </section>
-</main>
+<!-- =================== TEMSİLCİ EKRANI =================== -->
+<section class="screen" id="temsilci">
+  <div class="rep">
+    <aside class="inbox">
+      <div class="ihd">
+        <div class="r1"><h2>Gelen kutusu</h2><button class="btn pri" id="yeniTalepBtn" title="Telefon, e-posta veya canlı destekten gelen talebi kaydet">＋ Yeni talep</button></div>
+        <div class="persona"><div class="av" id="rAv">AK</div>
+          <select id="rol" aria-label="Oturum açan temsilci">
+            <option value="DESTEK_UZMANI" data-ad="Ayşe K." data-kisa="AK" data-id="ayse.k">Ayşe K. · Destek Uzmanı</option>
+            <option value="TAKIM_LIDERI" data-ad="Burak T." data-kisa="BT" data-id="burak.t">Burak T. · Takım Lideri</option>
+            <option value="OPERASYON_MUDURU" data-ad="Selin D." data-kisa="SD" data-id="selin.d">Selin D. · Operasyon Müdürü</option>
+          </select></div>
+        <div class="kpis" id="kpis"></div>
+        <input class="search" id="ara" placeholder="Talep, müşteri, ürün veya sipariş ara…" autocomplete="off">
+        <div class="tabs" id="tabs"></div>
+      </div>
+      <div class="list" id="liste" role="listbox" aria-label="Talepler"></div>
+    </aside>
+    <main class="detail" id="detay"></main>
+  </div>
+</section>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="h"><div><small id="dDok"></small><h4 id="dT"></h4></div><button class="xb" data-kapat="drawer" aria-label="Kapat">✕</button></div>
+  <div class="bd" id="dB"></div>
+</aside>
+<div id="modalKok"></div>
+<div class="toasts" id="toasts"></div>
 
 <script>
-const $ = s => document.querySelector(s);
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const RENK = {IADE_KABUL:"bg-emerald-100 text-emerald-800", DEGISIM_KABUL:"bg-emerald-100 text-emerald-800",
-  SERVISE_YONLENDIR:"bg-sky-100 text-sky-800", KARGO_SORUSTURMA:"bg-sky-100 text-sky-800", RED:"bg-rose-100 text-rose-800",
-  ESKALASYON:"bg-amber-100 text-amber-800", EKSIK_BILGI:"bg-slate-200 text-slate-800"};
-const ROL = {DESTEK_UZMANI:"Destek Uzmanı", TAKIM_LIDERI:"Takım Lideri", OPERASYON_MUDURU:"Operasyon Müdürü"};
-let demolar = [];
+"use strict";
+// ======================= Yardımcılar =======================
+const $ = (s, k = document) => k.querySelector(s), $$ = (s, k = document) => [...k.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const AYLAR = ["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+const tarihStr = iso => { const d = new Date(iso.length === 10 ? iso + "T00:00:00" : iso); return `${d.getDate()} ${AYLAR[d.getMonth()]}`; };
+const tarihYil = iso => { const d = new Date(iso + "T00:00:00"); return `${d.getDate()} ${AYLAR[d.getMonth()]} ${d.getFullYear()}`; };
+const saatStr = iso => new Date(iso).toLocaleTimeString("tr-TR", {hour:"2-digit", minute:"2-digit"});
+function zamanOnce(iso){
+  const d = new Date(iso), sn = (Date.now() - d) / 1000;
+  if (sn < 60) return "az önce"; if (sn < 3600) return `${Math.floor(sn/60)} dk önce`;
+  const bugun = new Date(); bugun.setHours(0,0,0,0);
+  if (d >= bugun) return saatStr(iso);
+  if (d >= bugun - 864e5) return "dün " + saatStr(iso);
+  return tarihStr(iso) + " " + saatStr(iso);
+}
+const sure = sn => sn == null ? "—" : sn < 60 ? `${Math.round(sn)} sn` : `${Math.floor(sn/60)} dk ${String(Math.round(sn%60)).padStart(2,"0")} sn`;
+const tl = n => Number(n).toLocaleString("tr-TR", {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}) + " TL";
+const initials = ad => (ad || "?").split(/\s+/).map(x => x[0]).join("").slice(0,2).toLocaleUpperCase("tr-TR");
 
-async function api(yol, govde) {
-  const r = await fetch(yol, govde ? {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(govde)} : {});
-  const j = await r.json();
-  if (!r.ok) throw new Error(j.detail || r.statusText);
+let cevrimdisi = false;
+async function api(yol, govde, yontem){
+  let r;
+  try { r = await fetch(yol, govde !== undefined || yontem ? {method: yontem || "POST", headers: {"Content-Type":"application/json"}, body: govde !== undefined ? JSON.stringify(govde) : undefined} : {}); }
+  catch (e) { cevrimdisiYap(true); throw new Error("Sunucuya ulaşılamadı"); }
+  cevrimdisiYap(false);
+  let j = null; try { j = await r.json(); } catch {}
+  if (!r.ok) { const d = j?.detail; throw new Error(Array.isArray(d) ? d.map(x => x.msg).join("; ") : (d || r.statusText)); }
   return j;
 }
+function cevrimdisiYap(v){ if (v === cevrimdisi) return; cevrimdisi = v; $("#offline").classList.toggle("hidden", !v); }
+function toast(m, tur = ""){ const t = document.createElement("div"); t.className = "toast " + tur; t.textContent = m; $("#toasts").append(t); setTimeout(() => t.remove(), 3600); }
 
-async function demolariYukle() {
-  const turler = await api("/ek-turleri");
-  $("#ekler").innerHTML = "<span>Ekler:</span>" + Object.entries(turler).map(([k, v]) =>
-    `<label><input type="checkbox" value="${k}" class="ek mr-1">${v}</label>`).join("");
-  demolar = await api("/demo-talepler");
-  for (const d of demolar) $("#demo").insertAdjacentHTML("beforeend",
-    `<option value="${d.id}">${d.id} — ${esc(d.mesaj.slice(0,60))}…</option>`);
+// ======================= Etiketler =======================
+const ONERI = {
+  IADE_KABUL: ["İade kabul", "Ürün iadesi ve para iadesi uygun", "ok"], DEGISIM_KABUL: ["Değişim kabul", "Ürün değişimi uygun", "ok"],
+  SERVISE_YONLENDIR: ["Servise yönlendir", "Garanti kapsamında servis incelemesi", "ok"], KARGO_SORUSTURMA: ["Kargo soruşturması", "Gönderi için soruşturma başlatılır", "ok"],
+  RED: ["Red", "Talep politikaya göre karşılanamaz", "no"], ESKALASYON: ["Üst birime aktar", "İstisna veya uzman değerlendirmesi gerekir", "warn"],
+  EKSIK_BILGI: ["Bilgi iste", "Karar için müşteriden bilgi/belge gerekir", "info"]};
+const RENK = {ok: "var(--ok)", no: "var(--no)", warn: "#d97706", info: "var(--info)"};
+const KATEGORI = {IADE:"İade", PARA_IADESI:"Para iadesi", GARANTI:"Garanti", HASARLI_URUN:"Hasarlı / yanlış ürün", DEGISIM:"Değişim", KARGO:"Kargo", KAMPANYA:"Kampanya / kupon", GENEL:"Genel"};
+const ROL = {DESTEK_UZMANI:"Destek Uzmanı", TAKIM_LIDERI:"Takım Lideri", OPERASYON_MUDURU:"Operasyon Müdürü"};
+const ROL_KISA = {DESTEK_UZMANI:"Uzman", TAKIM_LIDERI:"T. Lideri", OPERASYON_MUDURU:"Op. Müdürü"};
+const ROLLER = Object.keys(ROL);
+const BIRIM = {HUKUK_KALITE:"Hukuk ve Kalite", KVKK:"KVKK", GUVENLIK:"Hesap güvenliği", URUN_GUVENLIGI:"Ürün güvenliği", KALITE_KONTROL:"Kalite kontrol", POLITIKA_ISTISNASI:"Politika istisnası"};
+const KANAL = {WEB_FORM:"Web formu", CANLI_DESTEK:"Canlı destek", E_POSTA:"E-posta", PANEL:"Panel", TELEFON:"Telefon", N8N:"n8n", KONSOL:"Konsol"};
+const ACILIYET = {DUSUK:"Düşük", ORTA:"Orta", YUKSEK:"Yüksek", KRITIK:"Kritik"};
+const DUYGU = {OLUMLU:"Olumlu", NOTR:"Nötr", OLUMSUZ:"Olumsuz", COK_OLUMSUZ:"Çok olumsuz"};
+const ISTISNA = {HIJYEN:"hijyen ürünü", KISIYE_OZEL:"kişiye özel ürün", CABUK_BOZULAN:"çabuk bozulan ürün", ICERIK_SARF:"içerik / sarf malzemesi", ANINDA_DIJITAL:"anında teslim dijital ürün"};
+const SIPARIS_DURUM = {TESLIM_EDILDI:"Teslim edildi", KARGODA:"Kargoda", HAZIRLANIYOR:"Hazırlanıyor", IADE_ONAYLANDI:"İade onaylandı"};
+const KARAR = {ONAYLA:"Onaylandı ve gönderildi", DUZENLE_ONAYLA:"Düzenlenip gönderildi", ESKALE_ET:"Üst birime eskale edildi", REDDET:"Taslak reddedildi"};
+const URUN_IKON = [[/saat/i,"⌚"],[/telefon|kulaklık|hoparlör|tablet|konsol|oyun/i,"🎧"],[/televizyon|tv|monitör/i,"📺"],[/makine|süpürge|blender|ütü|ısıtıcı|kurutma|fırın|tost|temizleyici/i,"🔌"],
+  [/gömlek|tişört|ayakkabı|mont|elbise|pantolon|bot/i,"👕"],[/kahve|gıda|çay/i,"☕"],[/kart/i,"🎁"],[/masa|lamba|koltuk/i,"🛋️"]];
+const ikon = u => (URUN_IKON.find(([r]) => r.test(u || "")) || [0,"📦"])[1];
+let EK_TURLERI = {}, DEMOLAR = [];
+
+// ======================= Ekran geçişi =======================
+function ekran(ad, kaydet = true){
+  $$(".screen").forEach(s => s.classList.toggle("on", s.id === ad));
+  $$(".switch button").forEach(b => b.classList.toggle("on", b.dataset.ekran === ad));
+  if (kaydet) history.replaceState(null, "", "#" + ad + (ad === "temsilci" && secili ? "/" + secili : ""));
+  ad === "musteri" ? musteriYenile() : listeYenile();
 }
-$("#demo").onchange = () => { const d = demolar.find(x => x.id === $("#demo").value); if (!d) return;
-  $("#mesaj").value = d.mesaj; $("#siparis").value = d.siparis_no; $("#musteri").value = d.musteri_id;
-  document.querySelectorAll(".ek").forEach(c => c.checked = d.ekler.includes(c.value)); };
+$$(".switch button").forEach(b => b.onclick = () => ekran(b.dataset.ekran));
 
-async function listele() {
-  const l = await api("/tickets");
-  $("#liste").innerHTML = l.map(t => `<li class="py-2 cursor-pointer hover:bg-slate-50" onclick="goster('${t.talep_no}')">
-    <div class="flex justify-between"><b>${t.talep_no}</b><span class="text-xs">${t.durum}</span></div>
-    <div class="text-xs text-slate-500 truncate">${esc(t.mesaj)}</div>
-    ${t.oneri ? `<span class="rozet ${RENK[t.oneri]||""}">${t.oneri}</span> <span class="text-xs">${ROL[t.gerekli_onay]||""}</span>` : ""}</li>`).join("")
-    || `<li class="py-2 text-slate-400">Henüz talep yok</li>`;
+// ======================= Sistem durumu =======================
+async function sistem(){
+  try {
+    const s = await api("/sistem");
+    $("#dOllama").className = "dot " + (!s.ollama ? "off" : s.model_sicak ? "on" : "mid");
+    $("#tOllama").textContent = !s.ollama ? "Model kapalı" : s.model_sicak ? "Model hazır" : "Model soğuk";
+    $("#dOllama").parentElement.title = !s.ollama ? "Ollama'ya ulaşılamıyor" : s.model_sicak ? `${s.modeller.yazim} bellekte` : "Model henüz belleğe yüklenmedi — ilk analiz daha uzun sürer";
+    $("#dMcp").className = "dot " + (s.mcp ? "on" : "off");
+    $("#tKuyruk").classList.toggle("hidden", !s.kuyruk);
+    $("#tKuyruk").textContent = `⏳ Analiz kuyruğu: ${s.kuyruk}`;
+  } catch {}
 }
 
-$("#analizBtn").onclick = async () => {
-  const govde = {mesaj:$("#mesaj").value.trim(), siparis_no:$("#siparis").value.trim(), musteri_id:$("#musteri").value.trim(), kanal:"PANEL",
-    ekler:[...document.querySelectorAll(".ek:checked")].map(c => c.value)};
-  if (!govde.mesaj) return;
-  $("#analizBtn").disabled = true;
-  $("#analizDurum").innerHTML = `<span class="spin"></span> Agent çalışıyor: sınıflandırma → sipariş → kurallar → politika arama → öneri → güvenlik kontrolü (CPU'da 1-2 dk)`;
-  try { const r = await api("/analyze", govde); await listele(); await goster(r.talep_no); $("#analizDurum").textContent = ""; }
-  catch (e) { $("#analizDurum").textContent = "Hata: " + e.message; }
-  finally { $("#analizBtn").disabled = false; }
+// ======================= Politika çekmecesi =======================
+async function politikaAc(kod, madde, vurgu){
+  try {
+    const m = await api(`/politika/${encodeURIComponent(kod)}/${madde}`);
+    $("#dDok").textContent = `${m.kod} · ${m.dokuman}`;
+    $("#dT").textContent = `Madde ${m.madde_no} — ${m.baslik}`;
+    $("#dB").innerHTML = mdHtml(m.metin, vurgu);
+    $("#drawer").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false");
+  } catch (e) { toast("Madde açılamadı: " + e.message, "no"); }
+}
+// Politika Markdown'ı → HTML: kalın yazı, tablolar, vurgulanan alt madde (kaynak: yerel politika dosyaları, yine de kaçışlanır)
+function mdHtml(metin, vurgu){
+  const satirlar = metin.split("\n"), out = [];
+  const satirHtml = x => esc(x).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  const hucre = x => x.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+  for (let i = 0; i < satirlar.length; i++) {
+    if (satirlar[i].trim().startsWith("|")) {
+      const tablo = [];
+      while (i < satirlar.length && satirlar[i].trim().startsWith("|")) tablo.push(satirlar[i++]);
+      i--;
+      const govde = tablo.filter(x => !/^\|[\s|:-]+\|$/.test(x.trim()));
+      out.push(`<table><thead><tr>${hucre(govde[0]).map(c => `<th>${satirHtml(c)}</th>`).join("")}</tr></thead><tbody>`
+        + govde.slice(1).map(r => `<tr>${hucre(r).map(c => `<td>${satirHtml(c)}</td>`).join("")}</tr>`).join("") + `</tbody></table>`);
+    } else {
+      const h = satirHtml(satirlar[i]);
+      out.push(vurgu && satirlar[i].startsWith(vurgu + ".") ? `<mark>${h}</mark>` : h);
+    }
+  }
+  return out.join("\n");
+}
+function kapat(id){ $("#" + id).classList.remove("on"); }
+document.addEventListener("click", e => {
+  const r = e.target.closest("[data-ref]");
+  if (r) { const [kod, madde, alt] = r.dataset.ref.split(":"); politikaAc(kod, madde, alt); return; }
+  const k = e.target.closest("[data-kapat]"); if (k) kapat(k.dataset.kapat);
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") { if ($("#modalKok").firstChild) modalKapat(); else kapat("drawer"); }
+  if (!$("#temsilci").classList.contains("on") || ["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName) || $("#modalKok").firstChild) return;
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); const g = gorunenler(); const i = g.findIndex(t => t.talep_no === secili);
+    const y = g[Math.max(0, Math.min(g.length - 1, i + (e.key === "ArrowDown" ? 1 : -1)))]; if (y) sec(y.talep_no); }
+});
+const ref = (kod, madde, alt, metin) => `<sup class="k" data-ref="${kod}:${madde}${alt ? ":" + alt : ""}" title="${kod} Madde ${alt || madde} — metni aç">${metin || (alt || madde)}</sup>`;
+
+// ======================= Pencere (modal) =======================
+function modal(html, kur){
+  $("#modalKok").innerHTML = `<div class="ov"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`;
+  const ov = $("#modalKok .ov"); ov.addEventListener("mousedown", e => { if (e.target === ov) modalKapat(); });
+  $$("[data-iptal]", ov).forEach(b => b.onclick = modalKapat);
+  kur && kur($("#modalKok .modal")); const ilk = $("#modalKok textarea, #modalKok select, #modalKok input"); ilk && ilk.focus();
+}
+function modalKapat(){ $("#modalKok").innerHTML = ""; }
+
+// =====================================================================
+//                              MÜŞTERİ
+// =====================================================================
+let cMusteri = null, cSiparis = "", cTalepZaman = null;
+async function musteriBaslat(){
+  const l = await api("/musteri/liste");
+  $("#cMusteri").innerHTML = l.filter(m => m.siparis_sayisi).map(m => `<option value="${m.musteri_id}">${esc(m.ad_soyad)}</option>`).join("");
+  cMusteri = localStorage.getItem("opsMusteri") && l.some(m => m.musteri_id === localStorage.getItem("opsMusteri")) ? localStorage.getItem("opsMusteri") : $("#cMusteri").value;
+  $("#cMusteri").value = cMusteri;
+  $("#cEkler").innerHTML = Object.entries(EK_TURLERI).map(([k, v]) => `<label data-ek="${k}"><input type="checkbox" value="${k}">${{fotograf:"📷",video:"🎥",servis_fisi:"🧾",saglik_raporu:"🏥",fatura:"🧾"}[k] || "📎"} ${esc(v[0].toLocaleUpperCase("tr-TR") + v.slice(1))}</label>`).join("");
+  $$("#cEkler label").forEach(l => l.querySelector("input").onchange = e => l.classList.toggle("on", e.target.checked));
+  $("#cOrnek").innerHTML += DEMOLAR.map(d => `<option value="${d.id}">${d.id} — ${esc(d.mesaj.slice(0, 70))}…</option>`).join("");
+  await musteriDegisti();
+}
+async function musteriDegisti(){
+  cMusteri = $("#cMusteri").value; localStorage.setItem("opsMusteri", cMusteri);
+  // Hesap değişince yarım kalan form temizlenir (başka müşterinin mesajı yeni hesaba taşınmasın)
+  $("#cMesaj").value = ""; $("#cSay").textContent = "0 / 4000"; $("#cHata").textContent = ""; cTalepZaman = null;
+  $$("#cEkler label").forEach(l => { l.classList.remove("on"); l.querySelector("input").checked = false; });
+  $("#cAv").textContent = initials($("#cMusteri").selectedOptions[0]?.textContent);
+  const s = await api(`/musteri/${cMusteri}/siparisler`);
+  cSiparis = s[0]?.siparis_no || "";
+  $("#cSiparisler").innerHTML = s.map(o => {
+    const urun = o.urunler.filter(u => !u.hediye), ad = urun.map(u => u.urun).join(", "), top = urun.reduce((a, u) => a + u.fiyat, 0);
+    const durum = SIPARIS_DURUM[o.durum] || o.durum, trh = o.teslim_tarihi ? `teslim ${tarihYil(o.teslim_tarihi)}` : `sipariş ${tarihYil(o.siparis_tarihi)}`;
+    return `<div class="ord" data-sp="${o.siparis_no}" role="radio" tabindex="0"><div class="ic">${ikon(ad)}</div>
+      <div style="min-width:0"><div class="t">${esc(ad)}</div><small>${o.siparis_no} · ${trh} · ${tl(top)}</small></div>
+      <span class="r chip ${o.durum === "TESLIM_EDILDI" ? "c-ok" : "c-info"}">${durum}</span></div>`; }).join("")
+    + `<div class="ord" data-sp="" role="radio" tabindex="0"><div class="ic">💬</div><div><div class="t">Siparişle ilgili değil</div><small>Hesap, kampanya veya genel sorular</small></div></div>`;
+  $$("#cSiparisler .ord").forEach(o => { o.onclick = () => siparisSec(o.dataset.sp); o.onkeydown = e => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), siparisSec(o.dataset.sp)); });
+  siparisSec(cSiparis);
+  await musteriYenile();
+}
+function siparisSec(sp){ cSiparis = sp; $$("#cSiparisler .ord").forEach(o => { o.classList.toggle("on", o.dataset.sp === sp); o.setAttribute("aria-checked", o.dataset.sp === sp); }); }
+$("#cMusteri").onchange = musteriDegisti;
+$("#cMesaj").oninput = () => { $("#cSay").textContent = `${$("#cMesaj").value.length} / 4000`; $("#cHata").textContent = ""; };
+$("#cOrnek").onchange = async () => {
+  const d = DEMOLAR.find(x => x.id === $("#cOrnek").value); if (!d) return;
+  if ($("#cMusteri").value !== d.musteri_id) { $("#cMusteri").value = d.musteri_id; await musteriDegisti(); }
+  siparisSec(d.siparis_no || ""); $("#cMesaj").value = d.mesaj; $("#cMesaj").oninput();
+  $$("#cEkler label").forEach(l => { const v = d.ekler.includes(l.dataset.ek); l.querySelector("input").checked = v; l.classList.toggle("on", v); });
+  $("#cOrnek").value = "";
+};
+$("#cGonder").onclick = async () => {
+  const mesaj = $("#cMesaj").value.trim();
+  if (mesaj.length < 10) { $("#cHata").textContent = "Lütfen talebinizi en az birkaç kelimeyle anlatın."; $("#cMesaj").focus(); return; }
+  const b = $("#cGonder"); b.disabled = true; b.innerHTML = `<span class="spin"></span> Gönderiliyor…`;
+  try {
+    const r = await api(`/musteri/${cMusteri}/talep`, {mesaj, siparis_no: cSiparis, ekler: $$("#cEkler input:checked").map(i => i.value)});
+    $("#cMesaj").value = ""; $("#cMesaj").oninput(); $$("#cEkler label").forEach(l => { l.classList.remove("on"); l.querySelector("input").checked = false; });
+    toast(`Talebiniz alındı (${r.talep_no}). Yanıtımızı bu sayfadan takip edebilirsiniz.`, "ok");
+    await musteriYenile();
+  } catch (e) { $("#cHata").textContent = "Gönderilemedi: " + e.message; }
+  finally { b.disabled = false; b.textContent = "Talebi gönder"; }
+};
+async function musteriYenile(){
+  if (!cMusteri || !$("#musteri").classList.contains("on")) return;
+  let l; try { l = await api(`/musteri/${cMusteri}/talepler`); } catch { return; }
+  const anahtar = cMusteri + JSON.stringify(l) + Math.floor(Date.now() / 60000);   // değişmediyse yeniden çizme
+  if (anahtar === cTalepZaman) return; cTalepZaman = anahtar;
+  $("#cTalepSay").textContent = l.length ? `${l.length} talep` : "";
+  if (!l.length) { $("#cTalepler").innerHTML = `<div class="empty"><div class="ic">📭</div><b>Henüz talebiniz yok</b>Soldaki formdan yeni bir talep oluşturabilirsiniz.</div>`; return; }
+  const ADIM = {ALINDI: 0, INCELENIYOR: 1, YANITLANDI: 2, UZMANA_ILETILDI: 2};
+  $("#cTalepler").innerHTML = l.map(t => {
+    const a = ADIM[t.asama], son = t.asama === "UZMANA_ILETILDI" ? "Uzmana iletildi" : "Yanıtlandı";
+    const s = (i, ad) => `<div class="s ${i < a || (i === a && i === 2) ? "d" : i === a ? "a" : ""}"><i>${i < a || (i === 2 && a === 2) ? "✓" : i + 1}</i>${ad}</div>`;
+    return `<div class="req"><div class="h"><b>${t.siparis_no ? "Sipariş " + t.siparis_no : "Genel talep"}</b><span class="mono">${t.talep_no} · ${zamanOnce(t.tarih)}</span></div>
+      <div class="st3">${s(0, "Alındı")}<div class="ln ${a >= 1 ? "d" : ""}"></div>${s(1, "İnceleniyor")}<div class="ln ${a >= 2 ? "d" : ""}"></div>${s(2, son)}</div>
+      <div class="mine clamp" title="Tamamını görmek için tıklayın" onclick="this.classList.toggle('clamp')">${esc(t.mesaj)}</div>
+      ${t.yanit ? `<div class="bubble"><div class="who">NovaSepet Destek <span>${zamanOnce(t.yanit_tarihi)}</span></div>${esc(t.yanit)}</div>`
+        : t.asama === "UZMANA_ILETILDI" ? `<div class="wait">👥 Talebiniz ilgili uzman ekibimize iletildi; en kısa sürede size dönüş yapılacak.</div>`
+        : `<div class="wait"><span class="spin dark"></span> Talebiniz destek ekibimizce inceleniyor. Yanıt bu sayfada görünecek.</div>`}</div>`; }).join("");
+}
+
+// =====================================================================
+//                              TEMSİLCİ
+// =====================================================================
+let talepler = [], secili = null, sekme = "bekleyen", detayVeri = null, taslakIlk = "", detayZaman = null;
+const SEKMELER = [["bekleyen", "Bekleyen"], ["analizde", "Analizde"], ["eskale", "Eskale"], ["kapandi", "Kapanan"], ["tumu", "Tümü"]];
+const kova = t => t.durum === "ESKALE_EDILDI" ? "eskale" : ["KAPANDI", "TASLAK_REDDEDILDI"].includes(t.durum) ? "kapandi"
+  : t.analiz_durumu.durum === "HAZIR" && t.karar_bekliyor ? "bekleyen" : "analizde";
+const persona = () => { const o = $("#rol").selectedOptions[0]; return {rol: o.value, ad: o.dataset.ad, id: o.dataset.id, kisa: o.dataset.kisa}; };
+$("#rol").value = localStorage.getItem("opsRol") || "DESTEK_UZMANI";
+$("#rol").onchange = () => { localStorage.setItem("opsRol", $("#rol").value); $("#rAv").textContent = persona().kisa; if (detayVeri) detayCiz(detayVeri, false); };
+$("#rAv").textContent = persona().kisa;
+
+async function listeYenile(){
+  if (!$("#temsilci").classList.contains("on")) return;
+  try { [talepler] = await Promise.all([api("/tickets")]); } catch { return; }
+  api("/istatistik").then(kpiCiz).catch(() => {});
+  sekmeCiz(); listeCiz();
+  if (!secili && !detayVeri) bosCiz();
+}
+function kpiCiz(s){
+  const say = k => talepler.filter(t => kova(t) === k).length;
+  $("#kpis").innerHTML = [[say("bekleyen"), "Karar bekleyen"], [say("analizde"), "Analizde"], [say("kapandi"), "Kapanan"],
+    [s.ort_analiz_sn ? (s.ort_analiz_sn < 60 ? s.ort_analiz_sn + " sn" : Math.round(s.ort_analiz_sn / 60) + " dk") : "—", "Ort. analiz"]]
+    .map(([v, e]) => `<div class="kpi" title="${e}"><b>${v}</b><span>${e}</span></div>`).join("");
+}
+function sekmeCiz(){
+  $("#tabs").innerHTML = SEKMELER.map(([k, ad]) => `<button data-s="${k}" class="${k === sekme ? "on" : ""}">${ad}<em>${k === "tumu" ? talepler.length : talepler.filter(t => kova(t) === k).length}</em></button>`).join("");
+  $$("#tabs button").forEach(b => b.onclick = () => { sekme = b.dataset.s; sekmeCiz(); listeCiz(); });
+}
+function gorunenler(){
+  const q = $("#ara").value.trim().toLocaleLowerCase("tr-TR");
+  return talepler.filter(t => (sekme === "tumu" || kova(t) === sekme) &&
+    (!q || [t.talep_no, t.ad_soyad, t.kalem, t.siparis_no, t.mesaj, KATEGORI[t.kategori]].join(" ").toLocaleLowerCase("tr-TR").includes(q)));
+}
+$("#ara").oninput = listeCiz;
+function listeCiz(){
+  const g = gorunenler();
+  if (!g.length) { $("#liste").innerHTML = `<div class="empty"><div class="ic">${$("#ara").value ? "🔍" : "✨"}</div><b>${$("#ara").value ? "Sonuç yok" : "Bu sekmede talep yok"}</b>${$("#ara").value ? "Aramayı değiştirin." : ""}</div>`; return; }
+  $("#liste").innerHTML = g.map(t => {
+    const ad = t.analiz_durumu, o = ONERI[t.oneri], renk = t.karar ? "#cbd5e1" : o ? RENK[o[2]] : "var(--accent)";
+    const isaret = [t.uyari_sayisi ? `⚠ ${t.uyari_sayisi}` : "", t.ekler.length ? `📎 ${t.ekler.length}` : "", ...t.eskalasyon.map(b => BIRIM[b] || b)].filter(Boolean).join(" · ");
+    let sag;
+    if (t.karar) sag = `<span class="chip c-mut">${{ONAYLA:"Gönderildi", DUZENLE_ONAYLA:"Gönderildi", ESKALE_ET:"Eskale", REDDET:"Taslak red"}[t.karar]}</span>`;
+    else if (ad.durum === "HAZIR" && !t.karar_bekliyor) sag = `<span class="chip c-warn">Yeniden analiz</span>`;
+    else if (ad.durum === "HAZIR") sag = `<span class="chip c-${o ? {ok:"ok",no:"no",warn:"warn",info:"info"}[o[2]] : "mut"}">${o ? o[0] : "—"}</span><span class="chip c-acc">${ROL_KISA[t.gerekli_onay] || ""}</span>`;
+    else if (ad.durum === "SURUYOR") sag = `<span class="chip c-acc">%${Math.round(ad.adim / ad.toplam * 100)}</span><div class="mini"><i style="width:${ad.adim / ad.toplam * 100}%"></i></div>`;
+    else if (ad.durum === "SIRADA") sag = `<span class="chip c-mut">Sırada${ad.sira ? " · " + (ad.sira + 1) : ""}</span>`;
+    else sag = `<span class="chip c-no">${ad.durum === "HATA" ? "Hata" : "Analiz yok"}</span>`;
+    return `<div class="tk ${t.talep_no === secili ? "on" : ""}" data-no="${t.talep_no}" role="option" tabindex="0">
+      <div class="stripe" style="background:${renk}"></div>
+      <div style="min-width:0"><div class="n">${esc(t.ad_soyad || t.musteri_id || "Bilinmeyen müşteri")}${t.kalem ? " · " + esc(t.kalem) : ""}</div>
+      <div class="m">${t.kategori ? KATEGORI[t.kategori] + " · " : ""}${zamanOnce(t.created_at)}${isaret ? " · " + isaret : ""}${t.injection ? " · 🛡" : ""}</div></div>
+      <div class="rt">${sag}</div></div>`; }).join("");
+  $$("#liste .tk").forEach(e => { e.onclick = () => sec(e.dataset.no); e.onkeydown = k => k.key === "Enter" && sec(e.dataset.no); });
+}
+async function sec(no){
+  secili = no; history.replaceState(null, "", "#temsilci/" + no);
+  $$("#liste .tk").forEach(e => e.classList.toggle("on", e.dataset.no === no));
+  $("#liste .tk.on")?.scrollIntoView({block: "nearest"});
+  detayVeri = null; $("#detay").innerHTML = `<div class="dwrap"><div class="skel" style="height:30px;width:45%"></div><div class="skel" style="height:14px;width:60%;margin-top:10px"></div>
+    <div class="skel" style="height:110px;margin-top:22px"></div><div class="skel" style="height:220px;margin-top:14px"></div></div>`;
+  await detayYukle(true);
+}
+async function detayYukle(ilk){
+  const no = secili; if (!no) return;
+  let r; try { r = await api("/tickets/" + no); } catch (e) { if (ilk) $("#detay").innerHTML = `<div class="dwrap"><div class="alert no"><span class="i">⛔</span><div><b>Talep açılamadı</b>${esc(e.message)}</div></div></div>`; return; }
+  if (no !== secili) return;
+  const degisti = !detayVeri || JSON.stringify([detayVeri.analiz_durumu, detayVeri.talep.durum, detayVeri.kararlar.length, detayVeri.olaylar.length]) !==
+    JSON.stringify([r.analiz_durumu, r.talep.durum, r.kararlar.length, r.olaylar.length]);
+  detayVeri = r;
+  if (ilk || degisti) detayCiz(r, ilk);
+  else if (["SURUYOR", "SIRADA"].includes(r.analiz_durumu.durum)) gecenSureCiz();
+}
+function bosCiz(){
+  $("#detay").innerHTML = `<div class="dwrap"><div class="empty" style="padding-top:12vh"><div class="ic">📨</div><b>Bir talep seçin</b>
+    Soldaki gelen kutusundan bir talep seçtiğinizde yapay zekânın önerisi, dayandığı politika maddeleri ve<br>sistem kurallarının hesapladığı bilgiler burada görünür.<br><br>
+    <span style="font-size:12px">İpucu: ↑ ↓ tuşlarıyla talepler arasında gezinebilirsiniz · Müşteri ekranından gönderilen talepler burada otomatik belirir.</span></div></div>`;
+}
+
+// ---------- Detay çizimi ----------
+function detayCiz(r, ilk){
+  const t = r.talep, a = t.analiz, ad = r.analiz_durumu, m = r.musteri || {};
+  const kalem = a?.guvenlik?.kalem || r.siparis?.kalemler?.find(k => !k.hediye)?.urun;
+  const baslik = `<div class="dh"><div style="min-width:0"><h1>${esc(m.ad_soyad || t.musteri_id || "Bilinmeyen müşteri")}${kalem ? " · " + esc(kalem) : ""}</h1>
+    <div class="meta"><span class="mono">${t.talep_no}</span>${t.siparis_no ? `<span>Sipariş <span class="mono">${esc(t.siparis_no)}</span></span>` : "<span>Siparişsiz</span>"}
+    <span>${KANAL[t.kanal] || esc(t.kanal)}</span><span>${zamanOnce(t.created_at)}</span>
+    ${a ? `<span class="chip c-mut">${KATEGORI[a.siniflandirma.kategori]}</span><span class="chip c-mut">Aciliyet: ${ACILIYET[a.siniflandirma.aciliyet]}</span><span class="chip c-mut">Duygu: ${DUYGU[a.siniflandirma.duygu]}</span>` : ""}
+    ${m.son_30_gun_sikayet ? `<span class="chip c-warn">Son 30 günde ${m.son_30_gun_sikayet} şikâyet</span>` : ""}</div></div>
+    <div class="sp"></div>${durumRozeti(r)}</div>`;
+  let govde = "";
+  if (ad.durum !== "HAZIR" || !a) govde = analizBekleniyor(r);
+  else govde = kararBandi(r) + ozetKart(r) + uyariKart(r) + mesajKart(r) + nedenKart(r) + zamanKart(r) + yanitKart(r) + gecmisKart(r);
+  if (ad.durum !== "HAZIR" || !a) govde += mesajKart(r);
+  const kayit = $("#yanit")?.value, kayitNo = $("#yanit")?.dataset.no;
+  $("#detay").innerHTML = `<div class="dwrap">${baslik}${govde}</div>`;
+  if (ilk) $("#detay").scrollTop = 0;
+  if ($("#yanit")) { if (!ilk && kayitNo === t.talep_no && kayit != null) $("#yanit").value = kayit; yanitKur(r); }
+  $("#yenidenBtn") && ($("#yenidenBtn").onclick = yenidenAnaliz);
+  gecenSureCiz();
+}
+function durumRozeti(r){
+  const d = r.talep.durum, ad = r.analiz_durumu.durum;
+  if (d === "KAPANDI") return `<span class="chip c-ok" style="padding:5px 10px;font-size:12px">✓ Kapandı</span>`;
+  if (d === "ESKALE_EDILDI") return `<span class="chip c-warn" style="padding:5px 10px;font-size:12px">↗ Eskale edildi</span>`;
+  if (d === "TASLAK_REDDEDILDI") return `<span class="chip c-mut" style="padding:5px 10px;font-size:12px">Taslak reddedildi</span>`;
+  if (ad === "HAZIR" && !r.karar_bekliyor) return `<span class="chip c-warn" style="padding:5px 10px;font-size:12px">↻ Yeniden analiz gerekli</span>`;
+  if (ad === "HAZIR") return `<span class="chip c-warn" style="padding:5px 10px;font-size:12px">● Karar bekliyor</span>`;
+  if (ad === "SURUYOR" || ad === "SIRADA") return `<span class="chip c-acc" style="padding:5px 10px;font-size:12px"><span class="spin dark" style="width:11px;height:11px"></span> Analiz ediliyor</span>`;
+  return `<span class="chip c-no" style="padding:5px 10px;font-size:12px">Analiz yok</span>`;
+}
+function ilerleme(r){
+  const ad = r.analiz_durumu, tamam = new Set(r.olaylar.map(o => o.node_name)), hazir = ad.durum === "HAZIR";
+  const n = r.adimlar.filter(x => tamam.has(x.ad)).length, aktif = r.adimlar.find(x => !tamam.has(x.ad));
+  const yuzde = hazir ? 100 : Math.max(3, n / r.adimlar.length * 100);
+  const toplamSn = hazir && r.olaylar.length ? (new Date(r.olaylar.find(o => o.node_name === "analiz_kaydet")?.created_at || r.olaylar.at(-1).created_at) - new Date(r.talep.created_at)) / 1000 : null;
+  let sol;
+  if (hazir) sol = `<b style="color:var(--ok)">Analiz tamamlandı</b> · ${sure(toplamSn)} (CPU)`;
+  else if (ad.durum === "SIRADA") sol = `<b>Sırada</b> — ${ad.sira ? `önünde ${ad.sira} talep var` : "birazdan başlayacak"}`;
+  else if (ad.durum === "SURUYOR") sol = `<b style="color:var(--accent)">${esc(aktif?.etiket || "")}</b> çalışıyor…`;
+  else sol = `<b style="color:var(--no)">${ad.durum === "HATA" ? "Analiz hata verdi" : "Analiz tamamlanmadı"}</b>`;
+  return `<div class="prog ${hazir ? "done" : ""}"><div class="track"><div class="fill" style="width:${yuzde}%"></div></div>
+    <div class="lbl"><span>${sol}</span><span>${hazir ? "" : `<span id="gecen"></span> · `}${n} / ${r.adimlar.length} adım</span></div>
+    <div class="stg">${r.adimlar.map(x => `<span class="${tamam.has(x.ad) ? "d" : !hazir && ad.durum === "SURUYOR" && x === aktif ? "a" : ""}">${x.etiket}</span>`).join("")}</div></div>`;
+}
+function gecenSureCiz(){
+  const g = $("#gecen"); if (!g || !detayVeri) return;
+  g.textContent = "geçen " + sure((Date.now() - new Date(detayVeri.talep.created_at)) / 1000);
+}
+function analizBekleniyor(r){
+  const ad = r.analiz_durumu;
+  let ek = "";
+  if (ad.durum === "SURUYOR" || ad.durum === "SIRADA")
+    ek = `<div class="alert info"><span class="i">🤖</span><div><b>Yapay zekâ talebi analiz ediyor</b>Sınıflandırma, sipariş bilgileri, politika araması ve öneri adımları tamamlandığında öneri ve yanıt taslağı burada görünecek. Yerel model CPU'da çalıştığı için birkaç dakika sürebilir; bu sırada başka taleplerle ilgilenebilirsiniz.</div></div>`;
+  else ek = `<div class="alert no"><span class="i">⛔</span><div><b>${ad.durum === "HATA" ? "Analiz sırasında hata oluştu" : "Bu talebin analizi tamamlanmamış"}</b>
+    ${ad.durum === "HATA" ? esc(ad.hata) : "Sunucu analiz sırasında yeniden başlatılmış olabilir."} Talebi yeniden analize gönderebilirsiniz; tamamlanan adımlar tekrar edilmez.</div>
+    <button class="btn act" id="yenidenBtn">↻ Yeniden analiz et</button></div>`;
+  return ilerleme(r) + ek;
+}
+async function yenidenAnaliz(){
+  const b = $("#yenidenBtn"); b.disabled = true; b.innerHTML = `<span class="spin dark"></span> Kuyruğa alınıyor`;
+  try { await api(`/tickets/${secili}/yeniden-analiz`, {}); toast("Talep yeniden analiz kuyruğuna alındı"); await detayYukle(true); listeYenile(); }
+  catch (e) { toast(e.message, "no"); b.disabled = false; b.textContent = "↻ Yeniden analiz et"; }
+}
+
+function kararBandi(r){
+  const k = r.kararlar.at(-1); if (!k) return ilerleme(r);
+  const tur = {ONAYLA: "ok", DUZENLE_ONAYLA: "ok", ESKALE_ET: "warn", REDDET: "info"}[k.karar];
+  const kisi = $(`#rol option[data-id="${k.calisan}"]`)?.dataset.ad || k.calisan;
+  return ilerleme(r) + `<div class="alert ${tur}"><span class="i">${{ok:"✅", warn:"↗️", info:"📝"}[tur]}</span><div><b>${KARAR[k.karar]}${k.duzenlendi && k.karar.includes("ONAYLA") ? " · yanıt düzenlendi" : ""}</b>
+    ${esc(kisi)} (${ROL[k.rol]}) · ${tarihStr(k.created_at)} ${saatStr(k.created_at)}${k.eskalasyon_birimi ? ` · Birim: ${esc(k.eskalasyon_birimi.split(",").map(b => BIRIM[b] || b).join(", "))}` : ""}
+    ${k.ai_onerisi ? ` · Yapay zekâ önerisi: ${ONERI[k.ai_onerisi]?.[0] || k.ai_onerisi}` : ""}${k.gerekce ? `<div style="margin-top:4px">Not: ${esc(k.gerekce)}</div>` : ""}</div></div>`;
+}
+function yetkiAciklama(g, o){
+  if (["RED", "EKSIK_BILGI"].includes(o)) return `Red ve bilgi isteme kararları tutardan bağımsız Destek Uzmanı yetkisindedir ${ref("POL-ESK-007", 2, "2.4")}`;
+  let s = g.islem_tutari != null ? `İşlem tutarı <b>${tl(g.islem_tutari)}</b> → ${ROL[g.gerekli_onay]} ${ref("POL-ESK-007", 2, "2.1")}` : `Tutar belirlenemedi; en düşük yetki seviyesi`;
+  if (g.politika_istisnasi) s += ` · politika istisnası en az Takım Lideri ${ref("POL-ESK-007", 4)}`;
+  return s;
+}
+function ozetKart(r){
+  const a = r.talep.analiz, o = a.oneri, g = a.guvenlik, on = ONERI[o.oneri] || [o.oneri, "", "info"], me = persona().rol;
+  const bayrak = [...g.eskalasyon_birimleri.map(b => `<span class="chip c-warn">↗ ${BIRIM[b] || b} birimine bildirilir</span>`),
+    a.bilgi.injection_isareti ? `<span class="chip c-no">🛡 Talimat iddiası dikkate alınmadı</span>` : "",
+    g.uyarilar.length ? `<span class="chip c-warn">⚠ ${g.uyarilar.length} güvenlik uyarısı</span>` : `<span class="chip c-ok">✓ Güvenlik denetiminden geçti</span>`].filter(Boolean).join("");
+  return `<div class="card sum">
+    <div class="verdict"><small>Yapay zekâ önerisi</small><b style="color:${RENK[on[2]]}">${on[0]}</b><span>${on[1]}</span></div>
+    <div class="flags">${bayrak}</div>
+    <div class="role"><small>Kim onaylar?</small><div class="seg">${ROLLER.map(x => `<span class="${x === g.gerekli_onay ? "req" : ""} ${x === me ? "me" : ""}" title="${x === me ? "Siz" : ""}">${x === g.gerekli_onay ? "✓ " : ""}${ROL[x]}</span>`).join("")}</div>
+      <div class="why">${yetkiAciklama(g, o.oneri)}</div></div></div>`;
+}
+function uyariMetni(u){
+  if (u.startsWith("Gerekçede geçerli")) return "Yapay zekânın gerekçesinde geçerli bir kaynak atıfı yok; gerekçeyi politika maddeleriyle karşılaştırın.";
+  return u.replace(/\((POL-[A-Z]+-\d{3}) ([\d.]+(?:, [\d.]+)*)\)/g, (_, kod, mad) => mad.split(", ").map(x => ref(kod, x.split(".")[0], x)).join(""));
+}
+function uyariKart(r){
+  const g = r.talep.analiz.guvenlik, u = g.uyarilar.filter(x => !x.startsWith("Mesajda onay/talimat"));
+  if (!u.length) return "";
+  return `<div class="alert warn"><span class="i">⚠️</span><div><b>Güvenlik denetimi uyarıları — kararınızdan önce inceleyin</b>
+    <ul>${u.map(x => `<li>${uyariMetni(esc(x))}</li>`).join("")}</ul>
+    <div style="margin-top:4px;font-size:12px;opacity:.85">Sistem yapay zekânın önerisini değiştirmez; çelişkileri size gösterir. Son karar sizindir.</div></div></div>`;
+}
+function mesajKart(r){
+  const p = r.mesaj_parcalari, inj = p.some(x => x.injection);
+  const ekler = r.talep.ekler?.length ? r.talep.ekler : (r.talep.analiz?.bilgi?.ekler || []);
+  return `<div class="card"><h3>Müşteri mesajı<span class="sp"></span>
+    ${r.mesaj_maskelendi ? `<span class="chip c-info x">🔒 Kişisel veri maskelendi</span>` : ""}
+    <span class="chip c-mut x">${ekler.length ? "📎 " + ekler.map(e => EK_TURLERI[e] || e).join(", ") : "Ek yok"}</span></h3>
+    <div class="msg">${p.map(x => x.injection ? `<span class="inj" title="Onay/talimat iddiası — dikkate alınmadı">${esc(x.metin)}</span>` : esc(x.metin)).join(" ")}</div>
+    ${inj ? `<div class="injn">🛡 Üstü çizili ifadeler onay yerine geçmez ve onay seviyesini değiştirmez; onay rolü yalnızca sistem kurallarıyla belirlenir ${ref("POL-ESK-007", 3, "3.3")}</div>` : ""}</div>`;
+}
+function satir(ikon, q, a, by, refHtml = ""){
+  return `<div class="check"><div class="i ${ikon[0]}">${ikon[1]}</div><div><div class="q">${q}</div><div class="a">${a}${refHtml}</div></div><span class="by ${by}">${by === "ai" ? "✨ Yapay zekâ" : "🔒 Kod"}</span></div>`;
+}
+const OK = ["ok", "✓"], NO = ["no", "✕"], W = ["w", "!"], N = ["n", "i"];
+function nedenKart(r){
+  const a = r.talep.analiz, b = a.bilgi, s = a.siniflandirma, g = a.guvenlik, o = a.oneri;
+  const sol = [], sag = [];
+  sol.push(satir(N, "Talep türü", KATEGORI[s.kategori] + (s.kategori_llm ? ` <span style="font-weight:400;color:var(--muted)">(yapay zekâ “${KATEGORI[s.kategori_llm]}” dedi; teslim tarihine göre düzeltildi)</span>` : ""), s.kategori_llm ? "code" : "ai"));
+  if (!b.siparis_var) sol.push(satir(NO, "Sipariş", "Bulunamadı — müşteri sipariş numarası vermemiş veya numara geçersiz", "code", ref("POL-KRG-006", 8)));
+  else sol.push(satir(OK, "Sipariş", `${SIPARIS_DURUM[b.durum] || b.durum} · ${{KREDI_KARTI_TEK:"Kredi kartı", KREDI_KARTI_TAKSIT:`Kredi kartı (${b.taksit_sayisi} taksit)`, BANKA_KARTI:"Banka kartı", KAPIDA_NAKIT:"Kapıda nakit", KAPIDA_KART:"Kapıda kart", HAVALE:"Havale"}[b.odeme_yontemi] || b.odeme_yontemi}${b.kampanya ? " · " + esc(b.kampanya) : ""}`, "code"));
+  const k = (b.kalemler || []).find(x => x.urun === g.kalem);
+  if (k) sol.push(satir(k.cayma_istisnasi ? W : OK, "İlgili ürün", `${esc(k.urun)} · ödenen ${tl(k.odenen_pay_tl)}${k.cayma_istisnasi ? ` · <span style="color:var(--warn)">${ISTISNA[k.cayma_istisnasi] || k.cayma_istisnasi} (cayma istisnası)</span>` : ""}${k.onarim_sayisi ? ` · daha önce ${k.onarim_sayisi} kez onarıldı` : ""}`, "code", k.cayma_istisnasi ? ref("POL-IADE-001", 6) : k.onarim_sayisi ? ref("POL-GAR-003", 5) : ""));
+  else if ((b.kalemler || []).filter(x => !x.hediye).length > 1) sol.push(satir(W, "İlgili ürün", `Belirsiz — siparişte ${b.kalemler.filter(x => !x.hediye).length} ürün var`, "ai"));
+  if (b.teslimden_gecen_gun != null) {
+    const c = b.cayma_durumu, gun = b.teslimden_gecen_gun;
+    sol.push(satir(c === "SURE_ICI" ? OK : c === "GRI" ? W : NO, "İade (cayma) süresi içinde mi?",
+      c === "SURE_ICI" ? `Evet — teslimden ${gun} gün geçti, sınır 14 gün` : c === "GRI" ? `Süre ${gun - 14} gün aşılmış (gri alan) — ${gun}. gün` : `Hayır — teslimden ${gun} gün geçti, sınır 14 gün`,
+      "code", c === "GRI" ? ref("POL-ESK-007", 4, "4.4") : ref("POL-IADE-001", 3, "3.1")));
+    sag.push(satir(N, "Ürün kusurluysa hangi süreç?", b.kusur_halinde_politika === "HASARLI_URUN" ? "Hasarlı / kutudan arızalı ürün süreci (ilk 7 gün)" : "Garanti süreci (teslimden 7 gün sonra)",
+      "code", b.kusur_halinde_politika === "HASARLI_URUN" ? ref("POL-HSR-004", 4, "4.1") : ref("POL-GAR-003", 1, "1.2")));
+    sag.push(satir(b.garanti_icinde ? OK : NO, "Garanti", b.garanti_icinde ? "Devam ediyor" : "Dolmuş veya garantisiz ürün", "code"));
+  }
+  if (b.kargo_durumu) sol.push(satir({NORMAL: OK, GECIKMIS: W, KAYIP: NO}[b.kargo_durumu], "Kargo durumu",
+    `${{NORMAL:"Normal süre içinde", GECIKMIS:"Gecikmiş", KAYIP:"Kayıp sayılır"}[b.kargo_durumu]} — kargoya verileli ${b.kargodan_gecen_is_gunu} iş günü`, "code", ref("POL-KRG-006", b.kargo_durumu === "KAYIP" ? 5 : 4)));
+  const ekler = b.ekler || r.talep.ekler || [];
+  sag.push(satir(ekler.length ? OK : N, "Müşterinin eklediği belgeler", ekler.length ? ekler.map(e => EK_TURLERI[e] || e).join(", ") + ` <span style="font-weight:400;color:var(--muted)">(içeriği sizce kontrol edilmeli)</span>` : "Ek yok", "code"));
+  sag.push(b.injection_isareti ? satir(W, "Mesajda onay/talimat iddiası", "Var — geçersiz sayıldı, kayda not düşüldü", "code", ref("POL-ESK-007", 3, "3.3"))
+    : satir(OK, "Mesajda onay/talimat iddiası", "Yok", "code"));
+  sag.push(g.eskalasyon_birimleri.length ? satir(W, "Zorunlu eskalasyon", g.eskalasyon_birimleri.map(x => BIRIM[x] || x).join(", "), "code", ref("POL-ESK-007", 6))
+    : satir(OK, "Zorunlu eskalasyon", "Gerekmiyor (hukuki, KVKK, güvenlik ifadesi yok; tekrarlayan şikâyet yok)", "code"));
+  const kaynak = a.politikalar, kul = new Set(g.atif?.used || []);
+  const kRef = e => { const p = kaynak.find(x => x.etiket === e), m = p && p.kaynak.match(/^(\S+) Madde (\d+)/); return m ? ref(m[1], m[2], null, e) : `<sup class="k">${e}</sup>`; };
+  const gerekce = esc(o.gerekce).replace(/\s*\[(K\d+)\]/g, (_, e) => kRef(e));
+  return `<div class="card"><h3>Neden bu öneri?<span class="sp"></span><span class="x"><span class="by code">🔒 Kod</span> kesin hesap · <span class="by ai">✨ Yapay zekâ</span> yorum</span></h3>
+    <div class="grid2"><div>${sol.join("")}</div><div>${sag.join("")}</div></div>
+    <div class="aiq"><small>✨ Yapay zekânın gerekçesi</small>${gerekce || "<i>Gerekçe üretilmedi.</i>"}
+      ${o.musteriden_istenecek && o.oneri === "EKSIK_BILGI" ? `<div class="ask"><b>Müşteriden istenecek:</b> ${esc(o.musteriden_istenecek)}</div>` : ""}</div>
+    <details class="src"><summary>Yapay zekânın okuduğu ${kaynak.length} politika maddesi</summary>
+      ${kaynak.map(p => { const m = p.kaynak.match(/^(\S+) Madde (\d+)/); return `<div class="srcrow" ${m ? `data-ref="${m[1]}:${m[2]}"` : ""}><span class="tag ${kul.has(p.etiket) ? "used" : ""}">${p.etiket}</span>${esc(p.kaynak)} — ${esc(p.madde_baslik)}<span class="sim">${p.benzerlik.toFixed(2)}</span></div>`; }).join("")}
+      <div style="padding:4px 0 0 14px;font-size:11.5px">Koyu etiketler gerekçede kullanılan maddelerdir · sağdaki sayı arama benzerliğidir.</div></details></div>`;
+}
+function zamanKart(r){
+  const z = r.zaman_cizelgesi; if (!z.length) return "";
+  const gun = iso => new Date(iso + "T00:00:00").getTime() / 864e5;
+  const min = gun(z[0].tarih), max = gun(z.at(-1).tarih), span = Math.max(max - min, 1);
+  const x = iso => 4 + (gun(iso) - min) / span * 92;
+  // Etiket çakışmasını önlemek için yakın olaylar iki sıraya dağıtılır
+  const sira = [-1e9, -1e9]; const yer = z.map(o => { const xx = x(o.tarih); const r0 = xx - sira[0] >= 13 ? 0 : xx - sira[1] >= 13 ? 1 : 0; sira[r0] = xx; return [o, xx, r0]; });
+  const RAIL = 62;
+  const ms = yer.map(([o, xx, r0]) => { const [kod, mad] = (o.ref || "").split(":"); const ly = r0 ? 0 : 28;
+    return `<div class="ms ${o.tur === "bugun" ? "bugun" : o.durum || ""}" style="left:${xx}%;top:0;height:${RAIL + 40}px">
+      <div class="lb ${o.ref ? "ref" : ""}" style="position:absolute;top:${ly}px;width:120px" ${o.ref ? `data-ref="${kod}:${mad}" title="Politika maddesini aç"` : ""}>${esc(o.etiket)}</div>
+      <i style="top:${RAIL - (o.tur === "bugun" ? 7 : 5)}px"></i><div class="dt" style="top:${RAIL + 14}px">${tarihStr(o.tarih)}</div></div>`; }).join("");
+  const bugunX = x(z.find(o => o.tur === "bugun").tarih);
+  const sp = r.siparis, notlar = [];
+  if (sp?.teslim_tarihi) { const ga = Math.max(0, ...sp.kalemler.map(k => k.garanti_ay || 0));
+    if (ga) { const d = new Date(sp.teslim_tarihi + "T00:00:00"); d.setMonth(d.getMonth() + ga); notlar.push(`Garanti bitişi: <b>${d.getDate()} ${AYLAR[d.getMonth()]} ${d.getFullYear()}</b> (${ga} ay)`); } }
+  if (sp?.teslim_tarihi && !z.some(o => o.etiket.includes("değişimi"))) notlar.push("Bu üründe beden/renk değişimi uygulanmaz");
+  return `<div class="card"><h3>Sipariş zaman çizelgesi<span class="sp"></span><span class="x">Tarihler sistem kurallarıyla hesaplanır · etikete tıklayınca ilgili madde açılır</span></h3>
+    <div class="tl" style="height:${RAIL + 40}px"><div class="rail" style="top:${RAIL}px"></div><div class="past" style="top:${RAIL}px;width:${bugunX}%"></div>${ms}</div>
+    <div class="tlfoot"><span><span style="color:var(--no)">●</span> Geçmiş süre sınırı</span><span><span style="color:var(--ok)">●</span> Hâlâ geçerli</span>${notlar.map(n => `<span>${n}</span>`).join("")}</div></div>`;
+}
+function yanitKart(r){
+  const t = r.talep, k = r.kararlar.at(-1);
+  if (!r.karar_bekliyor && !k) return `<div class="alert warn"><span class="i">↻</span><div><b>Bu analiz için karar oturumu bulunamadı</b>
+    Talep, sistemin önceki bir sürümüyle veya yarım kalan bir oturumda analiz edilmiş. Karar verebilmek için talebi yeniden analiz edin; öneri ve taslak güncel kurallarla yeniden üretilir.</div>
+    <button class="btn act" id="yenidenBtn">↻ Yeniden analiz et</button></div>`;
+  if (!r.karar_bekliyor) {
+    const metin = k?.gonderilen_yanit;
+    return `<div class="card"><h3>${metin ? "Müşteriye gönderilen yanıt" : "Müşteri yanıt taslağı"}</h3>
+      <div class="bubble" style="margin:0">${esc(metin || t.analiz.yanit_taslagi || "—")}</div>
+      ${!metin ? `<div style="font-size:12px;color:var(--muted);margin-top:8px">Bu taslak müşteriye gönderilmedi.</div>` : ""}</div>`;
+  }
+  taslakIlk = t.analiz.yanit_taslagi || "";
+  return `<div class="card"><h3>Müşteri yanıt taslağı<span class="sp"></span><span id="duzenlendi" class="chip c-ai x hidden">✎ Düzenlendi</span>
+      <button class="linkbtn hidden" id="geriAl" style="text-transform:none;letter-spacing:0">Taslağa geri dön</button></h3>
+    <textarea class="inp" id="yanit" rows="5" maxlength="4000" data-no="${t.talep_no}">${esc(taslakIlk)}</textarea>
+    <div class="lint" id="lint"></div>
+    <div class="acts">
+      <button class="btn ok lg" id="onayBtn">✓ Onayla ve gönder</button>
+      <button class="btn warn lg" id="eskaleBtn">↗ Eskale et</button>
+      <button class="btn ghost-no lg" id="redBtn">✕ Taslağı reddet</button>
+      <span class="note" id="yetkiNot"></span></div></div>`;
+}
+const LINT = [[/\[K\d+\]/, "Kaynak etiketi"], [/(POL|GZL)-[A-Z]+-\d{3}/, "Politika kodu"], [/\bTR\d{2}(?:\s?\d{4}){5}\s?\d{2}\b/i, "IBAN"],
+  [/\b(?:\d[ -]?){15,18}\d\b/, "Kart numarası"], [/\b\d{11}\b/, "T.C. kimlik no"], [/GIZLI10/i, "Gizli kod"]];
+function yanitKur(r){
+  const ta = $("#yanit"); if (!ta) return;
+  const g = r.talep.analiz.guvenlik, yeter = ROLLER.indexOf(persona().rol) >= ROLLER.indexOf(g.gerekli_onay);
+  const kontrol = () => {
+    const v = ta.value, sorun = LINT.filter(([re]) => re.test(v)).map(([, ad]) => ad), bos = !v.trim(), duz = v !== taslakIlk;
+    $("#lint").innerHTML = (sorun.length ? sorun.map(s => `<span class="chip c-no">✕ ${s} — müşteriye gönderilemez</span>`).join("")
+      : `<span class="chip c-ok">✓ İç kod / atıf yok</span><span class="chip c-ok">✓ Kişisel veri yok</span>`) + `<span class="chip c-mut">${v.length} karakter</span>`;
+    $("#duzenlendi").classList.toggle("hidden", !duz); $("#geriAl").classList.toggle("hidden", !duz);
+    $("#onayBtn").disabled = !yeter || sorun.length > 0 || bos;
+    $("#onayBtn").innerHTML = duz ? "✓ Düzenlenmiş yanıtı onayla ve gönder" : "✓ Onayla ve gönder";
+    $("#yetkiNot").innerHTML = !yeter ? `<span style="color:var(--no)">🔒 ${ROL[persona().rol]} yetkisi yetmez (gerekli: ${ROL[g.gerekli_onay]}) — eskale edin</span>`
+      : bos ? `<span style="color:var(--no)">Yanıt boş olamaz</span>` : `<span style="color:var(--ok)">✓ ${persona().ad} (${ROL[persona().rol]}) olarak karar verebilirsiniz</span>`;
+  };
+  ta.oninput = kontrol; kontrol();
+  $("#geriAl").onclick = () => { ta.value = taslakIlk; kontrol(); };
+  $("#onayBtn").onclick = () => kararVer(ta.value !== taslakIlk ? "DUZENLE_ONAYLA" : "ONAYLA", {yanit_metni: ta.value});
+  $("#eskaleBtn").onclick = () => eskaleModal(r);
+  $("#redBtn").onclick = () => redModal();
+}
+async function kararVer(karar, ek = {}){
+  const p = persona(), no = secili;
+  const butonlar = $$("#onayBtn, #eskaleBtn, #redBtn, .modal .btn"); butonlar.forEach(b => b.disabled = true);
+  const aktif = karar.includes("ONAYLA") ? $("#onayBtn") : $(".modal .btn.pri, .modal .btn.warn, .modal .btn.ghost-no");
+  const eski = aktif?.innerHTML; if (aktif) aktif.innerHTML = `<span class="spin"></span> Kaydediliyor…`;
+  try {
+    await api("/approve", {talep_no: no, karar, rol: p.rol, calisan: p.id, ...ek});
+    modalKapat();
+    toast({ONAYLA: "Yanıt onaylandı ve müşteriye gönderildi", DUZENLE_ONAYLA: "Düzenlenen yanıt onaylandı ve gönderildi", ESKALE_ET: "Talep üst birime eskale edildi", REDDET: "Taslak reddedildi; müşteriye yanıt gönderilmedi"}[karar], "ok");
+    await Promise.all([detayYukle(true), listeYenile()]);
+  } catch (e) {
+    toast(e.message, "no"); butonlar.forEach(b => b.disabled = false); if (aktif) aktif.innerHTML = eski;
+    if ($("#yanit")) yanitKur(detayVeri);
+  }
+}
+function eskaleModal(r){
+  const g = r.talep.analiz.guvenlik, varsayilan = g.eskalasyon_birimleri[0] || (ROLLER.indexOf(persona().rol) < ROLLER.indexOf(g.gerekli_onay) ? "YETKI" : "");
+  const sec = {YETKI: `Yetkili onay (${ROL[g.gerekli_onay]})`, ...BIRIM};
+  modal(`<div class="h"><div><h4>Talebi eskale et</h4><p>Talep seçtiğiniz birime aktarılır; müşteriye “uzman ekibimize iletildi” bilgisi gösterilir.</p></div><button class="xb" data-iptal aria-label="Kapat">✕</button></div>
+    <div class="bd"><label class="field" for="mBirim">Birim</label><select class="inp" id="mBirim">${Object.entries(sec).map(([k, v]) => `<option value="${k}" ${k === varsayilan ? "selected" : ""}>${v}</option>`).join("")}</select>
+      <label class="field" for="mNot">Not <span style="font-weight:400;color:var(--muted)">(birimin göreceği açıklama)</span></label>
+      <textarea class="inp" id="mNot" rows="3" maxlength="1000" placeholder="Örn. Tutar yetkimi aşıyor; müşteri hukuki süreç başlatacağını belirtti."></textarea><div class="err" id="mHata"></div></div>
+    <div class="ft"><button class="btn" data-iptal>Vazgeç</button><button class="btn warn" id="mTamam">↗ Eskale et</button></div>`, m => {
+    $("#mTamam", m).onclick = () => { const not = $("#mNot", m).value.trim(); if (not.length < 5) { $("#mHata", m).textContent = "Lütfen kısa bir not yazın."; return; }
+      const b = $("#mBirim", m).value; kararVer("ESKALE_ET", {gerekce: not, eskalasyon_birimi: b === "YETKI" ? g.gerekli_onay : b}); };
+  });
+}
+function redModal(){
+  modal(`<div class="h"><div><h4>Taslağı reddet</h4><p>Yapay zekânın taslağı müşteriye gönderilmez. Talep kapanır; gerekirse müşteriyle ayrıca iletişime geçilir.</p></div><button class="xb" data-iptal aria-label="Kapat">✕</button></div>
+    <div class="bd"><label class="field" for="mNot">Neden reddediyorsunuz?</label>
+      <select class="inp" id="mNeden"><option>Öneri politikaya uygun değil</option><option>Yanıt dili / içeriği uygun değil</option><option>Eksik veya yanlış bilgi var</option><option>Diğer</option></select>
+      <textarea class="inp" id="mNot" rows="3" maxlength="1000" style="margin-top:8px" placeholder="Açıklama (isteğe bağlı)"></textarea></div>
+    <div class="ft"><button class="btn" data-iptal>Vazgeç</button><button class="btn ghost-no" id="mTamam">✕ Taslağı reddet</button></div>`, m => {
+    $("#mTamam", m).onclick = () => kararVer("REDDET", {gerekce: [$("#mNeden", m).value, $("#mNot", m).value.trim()].filter(Boolean).join(" — ")});
+  });
+}
+function gecmisKart(r){
+  const ad = {girdi_kontrol:"Girdi kontrolü ve kişisel veri maskeleme", siniflandir:"Sınıflandırma (yapay zekâ)", siparis_getir:"Sipariş bilgisi (MCP)", bilgileri_hesapla:"Kural hesapları (kod)",
+    politika_ara:"Politika araması (RAG)", karar_onerisi:"Öneri ve yanıt taslağı (yapay zekâ)", guvenlik_kontrol:"Güvenlik denetimi (kod)", yanit_taslagi:"Yanıt temizliği (kod)", analiz_kaydet:"Analiz kaydı", kaydet:"Karar kaydı (onay token'ı ile)"};
+  let onceki = new Date(r.talep.created_at);
+  const satirlar = r.olaylar.map(o => { const t = new Date(o.created_at), d = (t - onceki) / 1000; onceki = t;
+    return `<li><span class="t">${tarihStr(o.created_at)} ${t.toLocaleTimeString("tr-TR")}</span><span>${ad[o.node_name] || o.node_name}</span><span class="d">${o.node_name === "kaydet" ? "" : "+" + sure(d)}</span></li>`; });
+  return `<div class="card"><details><summary style="cursor:pointer;list-style:none"><h3 style="margin:0">▸ İşlem geçmişi (denetim kaydı)<span class="sp"></span><span class="x">${r.olaylar.length} kayıt</span></h3></summary>
+    <ul class="log" style="margin-top:12px">${satirlar.join("")}</ul></details></div>`;
+}
+
+// ---------- Temsilci: yeni talep (telefon / e-posta / canlı destek) ----------
+$("#yeniTalepBtn").onclick = async () => {
+  let musteriler = []; try { musteriler = await api("/musteri/liste"); } catch (e) { toast(e.message, "no"); return; }
+  modal(`<div class="h"><div><h4>Yeni talep kaydet</h4><p>Telefon, e-posta veya canlı destekten gelen talebi kaydedin; yapay zekâ analizi otomatik başlar.</p></div><button class="xb" data-iptal aria-label="Kapat">✕</button></div>
+    <div class="bd">
+      <div class="demo-fill" style="margin:6px 0 0;padding:0;border:0">🎬 <select id="mOrnek"><option value="">Sunum için örnek talep seç…</option>${DEMOLAR.map(d => `<option value="${d.id}">${d.id} — ${esc(d.mesaj.slice(0, 60))}…</option>`).join("")}</select></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px">
+        <div><label class="field" for="mMus">Müşteri</label><select class="inp" id="mMus"><option value="">— Kayıtlı değil —</option>${musteriler.map(m => `<option value="${m.musteri_id}">${esc(m.ad_soyad)} (${m.musteri_id})</option>`).join("")}</select></div>
+        <div><label class="field" for="mKanal">Kanal</label><select class="inp" id="mKanal"><option value="TELEFON">Telefon</option><option value="E_POSTA">E-posta</option><option value="CANLI_DESTEK">Canlı destek</option></select></div></div>
+      <label class="field" for="mSip">Sipariş</label><select class="inp" id="mSip"><option value="">— Siparişsiz —</option></select>
+      <label class="field" for="mMesaj">Müşteri mesajı</label><textarea class="inp" id="mMesaj" rows="5" maxlength="4000" placeholder="Müşterinin talebini yazın"></textarea>
+      <label class="field">Ekler</label><div class="att" id="mEkler">${Object.entries(EK_TURLERI).map(([k, v]) => `<label data-ek="${k}"><input type="checkbox" value="${k}">${esc(v)}</label>`).join("")}</div>
+      <div class="err" id="mHata"></div></div>
+    <div class="ft"><button class="btn" data-iptal>Vazgeç</button><button class="btn pri" id="mTamam">Kaydet ve analiz et</button></div>`, m => {
+    const sipYukle = async (sec) => { const id = $("#mMus", m).value; const l = id ? await api(`/musteri/${id}/siparisler`) : [];
+      $("#mSip", m).innerHTML = `<option value="">— Siparişsiz —</option>` + l.map(o => `<option value="${o.siparis_no}">${o.siparis_no} · ${esc(o.urunler.map(u => u.urun).join(", "))}</option>`).join("");
+      $("#mSip", m).value = sec ?? (l[0]?.siparis_no || ""); };
+    $("#mMus", m).onchange = () => sipYukle();
+    $$("#mEkler label", m).forEach(l => l.querySelector("input").onchange = e => l.classList.toggle("on", e.target.checked));
+    $("#mOrnek", m).onchange = async () => { const d = DEMOLAR.find(x => x.id === $("#mOrnek", m).value); if (!d) return;
+      $("#mMus", m).value = d.musteri_id; await sipYukle(d.siparis_no || ""); $("#mMesaj", m).value = d.mesaj;
+      $("#mKanal", m).value = {E_POSTA: "E_POSTA", CANLI_DESTEK: "CANLI_DESTEK"}[d.kanal] || "TELEFON";
+      $$("#mEkler label", m).forEach(l => { const v = d.ekler.includes(l.dataset.ek); l.querySelector("input").checked = v; l.classList.toggle("on", v); }); };
+    $("#mTamam", m).onclick = async () => {
+      const mesaj = $("#mMesaj", m).value.trim(); if (mesaj.length < 5) { $("#mHata", m).textContent = "Mesaj boş olamaz."; return; }
+      const b = $("#mTamam", m); b.disabled = true; b.innerHTML = `<span class="spin"></span> Kaydediliyor…`;
+      try {
+        const r = await api("/analyze", {mesaj, musteri_id: $("#mMus", m).value, siparis_no: $("#mSip", m).value, kanal: $("#mKanal", m).value,
+          ekler: $$("#mEkler input:checked", m).map(i => i.value), bekle: false});
+        modalKapat(); toast(`${r.talep_no} kaydedildi; analiz başladı`, "ok"); sekme = "analizde"; await listeYenile(); sec(r.talep_no);
+      } catch (e) { $("#mHata", m).textContent = e.message; b.disabled = false; b.textContent = "Kaydet ve analiz et"; }
+    };
+  });
 };
 
-async function goster(no) {
-  const r = await api("/tickets/" + no);
-  const a = r.talep.analiz;
-  if (!a) { $("#detay").innerHTML = `<div class="bg-white rounded-xl shadow p-6">${no}: analiz yok</div>`; return; }
-  const s = a.siniflandirma, o = a.oneri, g = a.guvenlik, b = a.bilgi;
-  const karar = r.kararlar.at(-1);
-  $("#detay").innerHTML = `
-  <div class="bg-white rounded-xl shadow p-5 space-y-3">
-    <div class="flex flex-wrap items-center gap-2">
-      <h2 class="font-bold text-lg mr-2">${no}</h2>
-      <span class="rozet ${RENK[o.oneri]||""}">Öneri: ${o.oneri}</span>
-      <span class="rozet bg-indigo-100 text-indigo-800">Gerekli onay: ${ROL[g.gerekli_onay]}</span>
-      ${g.islem_tutari != null ? `<span class="rozet bg-slate-100">İşlem tutarı: ${g.islem_tutari} TL</span>` : ""}
-      ${g.eskalasyon_birimleri.map(e => `<span class="rozet bg-amber-100 text-amber-800">Eskalasyon: ${e}</span>`).join("")}
-    </div>
-    <p class="text-sm bg-slate-50 rounded p-3"><b>Müşteri mesajı:</b> ${esc(r.talep.mesaj)}</p>
-    <div class="grid md:grid-cols-3 gap-3 text-sm">
-      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Kategori</div><b>${s.kategori}</b> <span class="text-xs">(${esc(s.kaynak)})</span><div class="text-xs">aciliyet ${s.aciliyet} · duygu ${s.duygu}</div></div>
-      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">Sipariş</div>${b.siparis_var ? `${r.talep.siparis_no} · teslimden <b>${b.teslimden_gecen_gun ?? "-"}</b> gün · ${b.cayma_durumu ?? b.kargo_durumu ?? ""}` : "<b>bulunamadı</b>"}</div>
-      <div class="bg-slate-50 rounded p-3"><div class="text-xs text-slate-500">İlgili ürün</div>${esc(g.kalem ?? "-")}<div class="text-xs mt-1">Ekler: ${(b.ekler||[]).map(esc).join(", ") || "yok"}</div></div>
-    </div>
-    ${g.uyarilar.length ? `<div class="bg-amber-50 border border-amber-300 rounded p-3 text-sm">${g.uyarilar.map(u => `<div>⚠ ${esc(u)}</div>`).join("")}</div>` : ""}
-    <div class="text-sm"><b>Gerekçe:</b> ${esc(o.gerekce)}</div>
-    <div class="text-sm"><b>Dayanak:</b> ${g.dayanak.length ? g.dayanak.map(esc).join("; ") : "—"}</div>
-    <details class="text-sm"><summary class="cursor-pointer text-indigo-700">Bulunan politika maddeleri</summary>
-      <ul class="mt-1">${a.politikalar.map(p => `<li>[${p.etiket}] ${p.kaynak} — ${esc(p.madde_baslik)} <span class="text-xs text-slate-500">(benzerlik ${p.benzerlik})</span></li>`).join("")}</ul></details>
-  </div>
-  <div class="bg-white rounded-xl shadow p-5 space-y-2">
-    <h3 class="font-semibold">Müşteri yanıt taslağı</h3>
-    <textarea id="yanit" rows="6" class="w-full border rounded p-2 text-sm" ${r.karar_bekliyor ? "" : "disabled"}>${esc(karar?.gonderilen_yanit ?? a.yanit_taslagi)}</textarea>
-    ${r.karar_bekliyor ? `
-    <div class="flex flex-wrap items-center gap-2">
-      <select id="rol" class="border rounded p-2 text-sm">${Object.entries(ROL).map(([k,v]) => `<option value="${k}" ${k===g.gerekli_onay?"selected":""}>${v}</option>`).join("")}</select>
-      <input id="calisan" class="border rounded p-2 text-sm w-32" value="demo_uzman">
-      <button onclick="karar('${no}','ONAYLA')" class="bg-emerald-600 text-white rounded px-3 py-2 text-sm">Onayla</button>
-      <button onclick="karar('${no}','DUZENLE_ONAYLA')" class="bg-emerald-700 text-white rounded px-3 py-2 text-sm">Düzenle + onayla</button>
-      <button onclick="karar('${no}','ESKALE_ET')" class="bg-amber-500 text-white rounded px-3 py-2 text-sm">Eskale et</button>
-      <button onclick="karar('${no}','REDDET')" class="bg-rose-600 text-white rounded px-3 py-2 text-sm">Taslağı reddet</button>
-    </div><p id="kararDurum" class="text-sm"></p>` :
-    `<p class="text-sm"><b>Karar:</b> ${karar ? `${karar.karar} · ${karar.calisan} (${ROL[karar.rol]}) · ${karar.created_at}${karar.duzenlendi ? " · yanıt düzenlendi" : ""}` : r.talep.durum}</p>`}
-  </div>
-  <div class="bg-white rounded-xl shadow p-5">
-    <h3 class="font-semibold mb-2">Agent adımları (audit)</h3>
-    <ol class="text-xs space-y-1 list-decimal ml-5">${r.olaylar.map(e => `<li><b>${e.node_name}</b> <span class="text-slate-500">${e.created_at}</span></li>`).join("")}</ol>
-  </div>`;
+// ======================= Döngüler ve başlangıç =======================
+async function baslat(){
+  try { [EK_TURLERI, DEMOLAR] = await Promise.all([api("/ek-turleri"), api("/demo-talepler")]); } catch {}
+  await musteriBaslat().catch(e => toast("Müşteri verisi yüklenemedi: " + e.message, "no"));
+  const [ad, no] = location.hash.slice(1).split("/");
+  ekran(ad === "musteri" ? "musteri" : "temsilci", false);
+  if (ad !== "musteri") { await listeYenile(); if (no) { const t = talepler.find(x => x.talep_no === no); if (t) { sekme = kova(t); sekmeCiz(); listeCiz(); } sec(no); } else bosCiz(); }
+  sistem();
+  setInterval(sistem, 15000);
+  setInterval(() => { if (document.hidden) return; listeYenile(); musteriYenile(); }, 4000);
+  setInterval(() => { if (document.hidden || !detayVeri) return; if (["SURUYOR", "SIRADA"].includes(detayVeri.analiz_durumu.durum)) detayYukle(false); gecenSureCiz(); }, 2000);
 }
-
-async function karar(no, k) {
-  $("#kararDurum").innerHTML = `<span class="spin"></span> Kaydediliyor…`;
-  try {
-    await api("/approve", {talep_no:no, karar:k, rol:$("#rol").value, calisan:$("#calisan").value, yanit_metni:$("#yanit").value});
-    await listele(); await goster(no);
-  } catch (e) { $("#kararDurum").textContent = "⛔ " + e.message; }
-}
-
-$("#yenile").onclick = listele;
-demolariYukle(); listele();
+baslat();
 </script>
 </body>
 </html>

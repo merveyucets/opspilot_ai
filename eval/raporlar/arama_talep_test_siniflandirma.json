@@ -1,0 +1,475 @@
+{
+  "T01": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, 6 gün önce teslim aldığında ürünün beklendiği gibi çalışmadığını belirterek iade istiyor.",
+      "arama_sorulari": [
+        "El blender seti iade edilebilir mi?",
+        "Kutuya geri konulan ürün için iade süreci nasıl çalışır?",
+        "Ürünün tesliminden 7 gün içinde arızası olmamışsa iade süreci ne şekilde yürütülür?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 45.35,
+    "bitis": "stop"
+  },
+  "T02": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, 11 gün önce aldığında kutusunda bulunan dizüstü bilgisayarını iade etmek istemekte ve taksit taksit para iadesi sürecini öğrenmektedir.",
+      "arama_sorulari": [
+        "Dizüstü bilgisayar iade edilebilir mi?",
+        "Dizüstü bilgisayar için değişim yapılır mı?",
+        "İade süreci tamamlandıktan sonra taksit taksit para iadesi yapılır mı?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 36.61,
+    "bitis": "stop"
+  },
+  "T03": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, süpürgeyi iade etmek istemekte ve iade süresinin sonuna yaklaşmış olduğunu belirtmektedir.",
+      "arama_sorulari": [
+        "Robot süpürge için iade süresi ne kadardır?",
+        "Kusursuz ürün iade edilebilir mi?",
+        "İade süreci başlatılmışsa para ne zaman iade edilir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 33.33,
+    "bitis": "stop"
+  },
+  "T04": {
+    "sonuc": {
+      "kategori": "HASARLI_URUN",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, yanlış modelde tıraş makineleri yedek başlık seti aldığını ve iade isteğini bildirdi.",
+      "arama_sorulari": [
+        "Yanlış modelde ürün gönderildiğinde iade edilebilir mi?",
+        "Mühürlü ambalaj açılmadan iade işlemini gerçekleştirmek mümkün mü?",
+        "Yanlış model ürün için ne tür belgeler gereklidir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 38.17,
+    "bitis": "stop"
+  },
+  "T05": {
+    "sonuc": {
+      "kategori": "DEGISIM",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, aldığında kapüşonlu montun M bedeni küçük geldiğini belirtip L beden ile değişim istiyor.",
+      "arama_sorulari": [
+        "Kapüşonlu mont için değişim yapılır mı?",
+        "Beden değişim isteğinde hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 31.66,
+    "bitis": "stop"
+  },
+  "T06": {
+    "sonuc": {
+      "kategori": "HASARLI_URUN",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri yanlış renk ve beden gönderilen ürünü bildirerek doğru ürün gönderilmesini istiyor.",
+      "arama_sorulari": [
+        "Kargo sırasında ürünün yanlış renk ve beden gönderildi mi?",
+        "Yanlış ürün gönderildiğinde ne yapılır?",
+        "Kargo sırasında ürünün hasarlı olup olmadığı kontrol edilir mi?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 34.22,
+    "bitis": "stop"
+  },
+  "T07": {
+    "sonuc": {
+      "kategori": "HASARLI_URUN",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "4 gün önce alınan filtre kahve makinesi çalışmıyor, iade edip paramı almak isteniyor.",
+      "arama_sorulari": [
+        "Filtre kahve makinesi iade edilebilir mi?",
+        "Kargoda hasarlı ürün için ne yapılır?",
+        "İade edilen ürünün para iadesi nasıl yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 34.57,
+    "bitis": "stop"
+  },
+  "T08": {
+    "sonuc": {
+      "kategori": "GARANTI",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, telefonunun arızalı olduğunu ve garanti kapsamında onarım istiyor.",
+      "arama_sorulari": [
+        "Telefon arızası garanti süresi içinde mi?",
+        "Telefonun arızası kusur sayılır mı?",
+        "Arıza nedeniyle garanti kapsamında onarım yapılır mı?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 31.2,
+    "bitis": "stop"
+  },
+  "T09": {
+    "sonuc": {
+      "kategori": "KAMPANYA",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Kampanya kapsamında alınan ürünlerden birini iade etmek isteyen müşteri, diğer ürünler için ek ücret ödemek istemediğini ve iade tutarını öğrenmektedir.",
+      "arama_sorulari": [
+        "3 Al 2 Öde kampanyasında ürün iade edildiğinde diğer ürünler için ek ücret alınır mı?",
+        "Kampanya kapsamında alınan ürünlerden birinin iade edilmesi durumunda ne yapılır?",
+        "Kampanya süresi sona erdikten sonra ürün iade edilmesi durumunda ne yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 43.95,
+    "bitis": "stop"
+  },
+  "T10": {
+    "sonuc": {
+      "kategori": "KARGO",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, siparişinin iki hafta kargoda kaldığını ve gecikme nedeniyle 200 TL indirim kuponu talep ediyor.",
+      "arama_sorulari": [
+        "Kargoda kalmış ürün için gecikme süresi ne kadardır?",
+        "Kargoda kalmış ürünler için indirim kuponu tanımlanabilir mi?",
+        "Kargoda kalmış ürünün teslimat süresi ne kadardır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 39.64,
+    "bitis": "stop"
+  },
+  "T11": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, koştaki ayakkabısını almakla birlikte vazgeçti ve iade etmek istemektedir.",
+      "arama_sorulari": [
+        "Koşu ayakkabısı iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 29.97,
+    "bitis": "stop"
+  },
+  "T12": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, paket açtıktan sonra kahve tadını beğenmediği için kalan ürünü iade etmek istiyor.",
+      "arama_sorulari": [
+        "Çekirdek kahve iade edilebilir mi?",
+        "Kahve tadını beğenmedikten sonra iade süreci nasıl çalışır?",
+        "İade edilen ürünün miktarı ne kadar olursa iade işlemini tamamlar mı?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 36.4,
+    "bitis": "stop"
+  },
+  "T13": {
+    "sonuc": {
+      "kategori": "DEGISIM",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, tişörtün rengini sevmediği için değişim istiyor.",
+      "arama_sorulari": [
+        "Kıyafet için değişim yapılır mı?",
+        "Renk tercihindeki farklılık durumunda ne yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 27.06,
+    "bitis": "stop"
+  },
+  "T14": {
+    "sonuc": {
+      "kategori": "PARA_IADESI",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, 500 TL'lik dijital hediye kartını kullanmadan vazgeçti ve para iadesi istiyor.",
+      "arama_sorulari": [
+        "Dijital hediye kartı için para iadesi süreci başlatıldı mı?",
+        "Dijital hediye kartı iade edildiğinde para ne şekilde geri çevrilir?",
+        "Dijital hediye kartı iade talebi için hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 42.16,
+    "bitis": "stop"
+  },
+  "T15": {
+    "sonuc": {
+      "kategori": "KAMPANYA",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, kahve öğütücüsünün fiyatında oluşan farkı iade etme isteğiyle kampanya kapsamında talep etti.",
+      "arama_sorulari": [
+        "Kampanyalı siparişte kısmi iade tutarı nasıl hesaplanır?",
+        "Fiyat farkı durumunda ne yapılır?",
+        "Kahve öğütücüsü için kampanya kapsamında iade yapılabilir mi?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 37.07,
+    "bitis": "stop"
+  },
+  "T16": {
+    "sonuc": {
+      "kategori": "DEGISIM",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Mavi gömleğin L bedeni büyük geldi, M ile değişim isteniyor.",
+      "arama_sorulari": [
+        "Gömlek için değişim yapılır mı?",
+        "Beden değiştirme işleminde hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 29.09,
+    "bitis": "stop"
+  },
+  "T17": {
+    "sonuc": {
+      "kategori": "DEGISIM",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, aldığında siyah kulaklık yerine beyaz olanı tercih etti ve değişim istiyor.",
+      "arama_sorulari": [
+        "Kulaklık için değişim yapılır mı?",
+        "Renk değişikliği durumunda ne yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 5621.05,
+    "bitis": "stop"
+  },
+  "T18": {
+    "sonuc": {
+      "kategori": "GARANTI",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Blender ürününde garanti süresi içinde arıza tespit edildi, ücretsiz tamir isteniyor.",
+      "arama_sorulari": [
+        "Blender ürününde teslimden 7 günden sonra arıza tespit edildi mi?",
+        "Blender ürününün garanti süresi içinde ücretsiz tamir edilmesi için hangi belgeler gereklidir?",
+        "Blender ürününde arıza durumunda ne tür bir işlem yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 55.34,
+    "bitis": "stop"
+  },
+  "T19": {
+    "sonuc": {
+      "kategori": "KAMPANYA",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, sipariş gecikmesi nedeniyle verilen kuponu nakit olarak iade etmeyi istiyor.",
+      "arama_sorulari": [
+        "Kampanyalı siparişte kısmi iade tutarı nasıl hesaplanır?",
+        "Sipariş gecikmesi nedeniyle verilen kuponun nakit olarak iade edilmesi mümkün müdür?",
+        "Kampanyalı siparişte kuponun nakit olarak iade edilmesi süreci nedir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 52.15,
+    "bitis": "stop"
+  },
+  "T20": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, konsol oyununu sevmedikten sonra iade etmek istemektedir.",
+      "arama_sorulari": [
+        "Konsol oyunu iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?",
+        "İade edilen ürünün ambalajı açılmışsa ne yapılır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 39.71,
+    "bitis": "stop"
+  },
+  "T21": {
+    "sonuc": {
+      "kategori": "KARGO",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri kargonun gelme süresini sormaktadır.",
+      "arama_sorulari": [
+        "Kargonun teslimat süresi ne kadardır?",
+        "Kargonun gecikme süresi ne kadardır?",
+        "Kargonun takip numarası ve durumu nedir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 31.18,
+    "bitis": "stop"
+  },
+  "T22": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri son siparişimdeki bir ürün iade etmek istiyor ve iade süreci ile ilgili bilgi istiyor.",
+      "arama_sorulari": [
+        "Ürün iade edilebilir mi?",
+        "İade süreci için hangi bilgi veya belge gerekir?",
+        "İade tutarı ne kadar olur?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 31.0,
+    "bitis": "stop"
+  },
+  "T23": {
+    "sonuc": {
+      "kategori": "HASARLI_URUN",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, 3 gün önce gelen Bluetooth hoparlörün şarj olmadığını ve açılmadığını belirtip yeni biriyle değiştirmeyi istiyor.",
+      "arama_sorulari": [
+        "Bluetooth hoparlör iade edilebilir mi?",
+        "Kargoda hasarlı ürün için ne yapılır?",
+        "Şarj olmayan ürün için değişim yapılır mı?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 38.9,
+    "bitis": "stop"
+  },
+  "T24": {
+    "sonuc": {
+      "kategori": "DEGISIM",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, aldığım elbisenin bedeni uygun olmayan için değişim istiyor.",
+      "arama_sorulari": [
+        "Elbise için değişim yapılır mı?",
+        "Değişim işleminde hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 30.81,
+    "bitis": "stop"
+  },
+  "T25": {
+    "sonuc": {
+      "kategori": "PARA_IADESI",
+      "aciliyet": "ORTA",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, tost makinesinin iadesi onaylandı ve nakit ödenmesi nedeniyle para iadesi istiyor.",
+      "arama_sorulari": [
+        "Kapıda nakit ödeme durumunda para iadesi nasıl yapılır?",
+        "Nakit ödemelerde iade tutarı ne şekilde hesaplanır?",
+        "Para iadesi için gerekli olan hesap bilgileri nelerdir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 44.28,
+    "bitis": "stop"
+  },
+  "T26": {
+    "sonuc": {
+      "kategori": "GENEL",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, kişisel verilerinin silinmesini istiyor.",
+      "arama_sorulari": [
+        "Kişisel veri silme talepleri nasıl işlenir?",
+        "Müşteri verilerinin silinmesi süreci ne şekilde yürütülür?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 35.22,
+    "bitis": "stop"
+  },
+  "T27": {
+    "sonuc": {
+      "kategori": "KARGO",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, şarjlı süpürgesinin iki haftadır kargoda olduğunu ve bilgi alamadığı için öfkelendiğini belirtiyor.",
+      "arama_sorulari": [
+        "Şarjlı süpürgenin kargoda kalma süresi ne kadardır?",
+        "Kargoda kalmış ürünün takip bilgisi nasıl sağlanır?",
+        "Kargoda kalmış ürünün teslimat süresi ne kadardır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 47.08,
+    "bitis": "stop"
+  },
+  "T28": {
+    "sonuc": {
+      "kategori": "GENEL",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, hesabında bilinmeden yapılan bir oyun konsolu siparişi olduğunu ve hesabının ele geçirildiğini düşünüyor.",
+      "arama_sorulari": [
+        "Kişisel hesap güvenliği ile ilgili kullanıcı hesabında bilinmeden yapılan işlem durumunda ne yapılır?",
+        "Kullanıcının hesabına bilinmeden yapılan siparişler için hangi bilgi veya belge gerekir?",
+        "Hesap güvenliği ihlalleri durumunda kullanıcıya ne tür destek sağlanır?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 43.29,
+    "bitis": "stop"
+  },
+  "T29": {
+    "sonuc": {
+      "kategori": "HASARLI_URUN",
+      "aciliyet": "YUKSEK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, saç kurutma makinesi kullanırken duman ve yanık kokusu geldiğini belirtip ürünü iade etmek istediğini ifade etti.",
+      "arama_sorulari": [
+        "Saç kurutma makinesi iade edilebilir mi?",
+        "Makine kullanırken duman ve yanık kokusu geldi durumunda ne yapılır?",
+        "Kullanım sırasında arıza yaşanan ürün için hangi bilgi veya belge gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 41.44,
+    "bitis": "stop"
+  },
+  "T30": {
+    "sonuc": {
+      "kategori": "IADE",
+      "aciliyet": "DUSUK",
+      "duygu": "OLUMSUZ",
+      "ozet": "Müşteri, hava temizleyicisini kullanmadan teslim aldıktan sonra hastaneye yattığı için iade süresini kaçırdığını belirtip iade etmeme izni istiyor.",
+      "arama_sorulari": [
+        "Hava temizleyici iade edilebilir mi?",
+        "Kullanılmadığı belgelenmiş ürün için iade süresi geçtiğinde ne yapılır?",
+        "İade süreci için hangi belgeler gerekir?"
+      ]
+    },
+    "hata": "",
+    "sure_sn": 40.87,
+    "bitis": "stop"
+  }
+}

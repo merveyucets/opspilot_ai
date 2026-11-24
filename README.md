@@ -8,23 +8,42 @@ Destek uzmanına gelen iade, garanti, kargo ve şikâyet taleplerini şirket pol
 
 **Teknolojiler:** Ollama · LangChain · ChromaDB · LangGraph (interrupt + SQLite checkpoint) · MCP (streamable HTTP) · FastAPI · n8n
 
+### Hızlı başlangıç (Windows)
+
+Gereksinimler: [Python 3.12](https://www.python.org/downloads/) ve [Ollama](https://ollama.com/download) kurulu ve çalışır durumda (GPU gerekmez; ~8 GB boş RAM önerilir).
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\kurulum.ps1   # .venv, paketler (requirements.lock.txt), modeller (~6,5 GB), veri, indeks, testler
+powershell -ExecutionPolicy Bypass -File .aslat.ps1    # MCP + API pencereleri, model ısıtma, panel → http://127.0.0.1:8000
+```
+
+Panelde üstteki düğmeyle **Müşteri ekranı** ↔ **Temsilci ekranı** arasında geçin. Müşteri ekranındaki "Sunum için" listesinden örnek bir talep seçip gönderin; talep temsilci ekranında belirir ve analiz ilerlemesi canlı izlenir (CPU'da birkaç dakika). Adım adım elle kurulum: §4.
+
 ---
 
 ## 1. Ne yapar?
 
 ```
-Müşteri talebi (panel / n8n webhook)
+Müşteri talebi (müşteri ekranı / temsilci ekranı / n8n webhook) — ekler (fotoğraf, fiş…) türleriyle
   → girdi_kontrol      PII maskeleme (kart, IBAN, TCKN, e-posta, telefon)
   → siniflandir        LLM, JSON şemalı çıktı (kategori, aciliyet, duygu)
   → siparis_getir      MCP → SQLite
   → bilgileri_hesapla  Python: gün / iş günü, ödenen pay, cayma ve garanti durumu, zorunlu eskalasyon, injection işareti
-  → politika_ara       MCP → bge-m3 + Chroma, müşteri modu (gizli doküman aramaya girmez)
+  → politika_ara       MCP → bge-m3 + Chroma, müşteri modu (gizli doküman aramaya girmez), ilk 5 madde
   → karar_onerisi      LLM: öneri + [K#] atıflı gerekçe + müşteri yanıt taslağı
   → guvenlik_kontrol   Python: onay rolü, eskalasyon, atıf doğrulama, çelişki uyarıları (⚠)
   → yanit_taslagi      Python: iç atıf / PII / gizli kod temizliği
   → [interrupt] çalışan kararı: Onayla · Düzenle+Onayla · Eskale et · Taslağı reddet
   → kaydet             MCP: tek kullanımlık onay token'ı + yeterli rol olmadan kayıt yok
 ```
+
+### Panel: madalyonun iki yüzü (http://127.0.0.1:8000)
+
+Üstteki düğmeyle iki ekran arasında geçilir:
+
+- **Müşteri ekranı (NovaSepet yardım merkezi):** müşteri siparişini seçer, talebini ve eklerini gönderir; "Taleplerim"de aşamayı (Alındı → İnceleniyor → Yanıtlandı / Uzmana iletildi) ve **yalnızca temsilcinin onayladığı yanıtı** görür. Müşteri uç noktaları (`/musteri/...`) yapay zekâ önerisini, gerekçeyi, uyarıları veya onaylanmamış taslağı hiç döndürmez (`app/panel.musteri_gorunumu`, `tests/test_panel.py`).
+- **Temsilci ekranı:** gelen kutusu (sekmeler, arama, göstergeler), analiz sırasında canlı ilerleme çubuğu, öneri özeti ve "kim onaylar" şeridi, güvenlik uyarıları, talimat iddiası içeren cümlelerin işaretlenmesi, **"Neden bu öneri?"** (her satırda bilgiyi kodun mu yapay zekânın mı ürettiği), sipariş zaman çizelgesi, tıklanınca açılan politika maddeleri, yanıt düzenleme (kart/IBAN/iç kod yazılırsa gönderim engellenir), onay · eskalasyon · taslak reddi ve denetim kaydı. Rol seçimi demo içindir (gerçek kimlik doğrulama yok); yetkisi yetmeyen rol onay düğmesini kullanamaz, API de 403 döner.
+- Analizler arka planda tek işçili kuyrukta çalışır (CPU'da iki analiz aynı modeli paylaşmasın). Önceki panel `/eski` adresindedir.
 
 ## 2. Altın kurallar koda nasıl yansıdı
 
@@ -50,26 +69,30 @@ Müşteri talebi (panel / n8n webhook)
 | 7. gün `veritabani` | `app/veritabani.py` | Sipariş seed'i, tek kullanımlık onay token'ı, rol kontrolü |
 | 7. gün `mcp_sunucusu/istemcisi` | `app/mcp_sunucusu.py`, `mcp_istemcisi.py` | 9 araç, trace + mcp_calls |
 | 7. gün `destek_grafi`, `04_konsol_agent` | `app/agent/graf.py`, `konsol.py` | 11 düğümlü akış, güvenlik katmanı |
-| 8. gün `api_kopru`, n8n | `app/api.py`, `app/web/index.html`, `n8n/` | Panel, rol kontrollü onay |
+| 8. gün `api_kopru`, n8n | `app/api.py`, `app/panel.py`, `app/web/index.html`, `n8n/` | Müşteri + temsilci paneli, analiz kuyruğu, rol kontrollü onay |
 
 ## 4. Kurulum ve çalıştırma (Windows, PowerShell)
 
+`kurulum.ps1` ve `baslat.ps1` aşağıdaki adımları otomatik yapar. Elle kurulum:
+
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements.lock.txt   # test edilen sürümler (aralıklar: requirements.txt)
 ollama pull bge-m3; ollama pull qwen3:8b
 
-.\.venv\Scripts\python.exe -m app.veritabani --seed        # SQLite + kurgusal siparişler (tarihler bugüne göre)
+.\.venv\Scripts\python.exe -m app.veritabani --seed        # SQLite + kurgusal siparişler (tarihler BUGÜNE göre)
 .\.venv\Scripts\python.exe -m app.rag.indexer --model bge-m3   # politika indeksi
 .\.venv\Scripts\python.exe -m unittest                     # testler (model gerektirmez)
 ```
+
+> **Önemli:** Sipariş tarihleri "bugünden X gün önce" olarak yüklenir. Demo veya ölçüm hangi gün yapılacaksa **o gün önce `--seed` çalıştırın**; aksi halde teslimden geçen gün sayıları kayar ve süre sınırındaki talepler (ör. 14. gün iadesi) farklı sonuçlanır.
 
 Üç terminal:
 
 ```powershell
 # 1) MCP sunucusu (araç çağrıları canlı görünür)
 .\.venv\Scripts\python.exe -m app.mcp_sunucusu
-# 2) API + panel → http://127.0.0.1:8000
+# 2) API + panel → http://127.0.0.1:8000  (önceki panel: /eski)
 .\.venv\Scripts\python.exe -m uvicorn app.api:app --host 127.0.0.1 --port 8000
 # 3) (isteğe bağlı) konsoldan uçtan uca
 .\.venv\Scripts\python.exe -m app.agent.konsol --talep D03
@@ -88,7 +111,9 @@ ollama pull bge-m3; ollama pull qwen3:8b
 | D05 | "Kırık geldi", fotoğraf ve tercih yok | EKSIK_BILGI · seçenekler sunulur |
 | D06 | Kargo hasarı + "hakem heyetine başvuracağım" | DEGISIM_KABUL + Hukuk ve Kalite eskalasyonu |
 
-Rol kontrolü demosu: D01'i panelde "Destek Uzmanı" ile onaylamayı deneyin → 403 "Yetersiz yetki"; "Operasyon Müdürü" ile onaylayın → kaydedilir.
+Rol kontrolü demosu: D01'i temsilci ekranında "Destek Uzmanı" rolüyle açın → onay düğmesi kilitli, "yetki yetmez — eskale edin" uyarısı; sağ üstten "Operasyon Müdürü"nü seçin → onaylanır ve yanıt müşteri ekranında görünür. (API doğrudan çağrılırsa da 403 döner.)
+
+Demo talepleri müşteri ekranındaki **"Sunum için"** listesinden veya temsilci ekranındaki **"＋ Yeni talep"** penceresinden tek tıkla doldurulur.
 
 > CPU'da bir talebin analizi ~2,5–3 dakika sürer (karar değerlendirmesi raporu). Sunumdan önce modelleri ısıtın ve demo taleplerini önceden analiz edin.
 
@@ -98,14 +123,31 @@ Rol kontrolü demosu: D01'i panelde "Destek Uzmanı" ile onaylamayı deneyin →
 
 **Sınıflandırma** (`siniflandirma_*.md`, 30 test talebi): şema geçerliliği 4 aday ayarda 30/30. Kategori doğruluğu: qwen2.5:1.5b 13/30 · qwen2.5 7B 18/30 · qwen3:8b düşünme kapalı 21/30 · qwen3:8b düşünme açık 23/30 (89 sn/talep). Tanımlar netleştirildikten sonra (v2) qwen3:8b 26/30; v2 tanımları hatalar görüldükten sonra yazıldığı için bu sonuç iyimserdir. İyileştirmede kullanılmamış demo setinde 4/6. Bu yüzden kategori karar girdisi olarak kullanılmaz; HASARLI_URUN / GARANTI ayrımını teslim tarihine göre kod yapar.
 
-**Uçtan uca karar** (`karar_degerlendirme_test.md`): _değerlendirme tamamlanınca eklenecek._
+**Talep mesajlarıyla arama** (`arama_talep_test.md`, 30 test talebi; beklenen dayanak maddeleri): müşteri mesajı tek sorgu, ilk 3 madde → beklenen maddelerin hepsi **7/30** talepte bulundu; ilk 5 madde → **10/30**. LLM'in politika diliyle yazdığı arama sorularıyla çoklu sorgu (RRF / dönüşümlü birleştirme) **9/30** ile iyileştirmedi; agent'a eklenmedi. Gizli doküman 0.
+
+**Uçtan uca karar** (30 test talebi, agent interrupt noktasına kadar; karar kaydı yapılmadan):
+
+| Sürüm | Öneri (birebir) | Grup | Onay rolü | Eksik onay | Zorunlu eskalasyon | Atıf geçerli | Yanıtta yasak ifade / gizli kod | Süre ort. |
+|---|---|---|---|---|---|---|---|---|
+| **v1** — Faz 8 talimatı, 3 madde (`karar_degerlendirme_test_v1.md`) | **16/30** | 18/30 | 25/30 | 1/30 | **30/30** | 30/30 | 0 / 0 | 166 sn* |
+| v2 — + ek bilgisi, 5 madde (`karar_degerlendirme_test_v2.md`) | 12/30 | 15/30 | 29/30 | 0/30 | **30/30** | 29/30 | 0 / 0 | 196 sn |
+
+\* v1 ölçümü sırasında aynı bilgisayarda başka bir analiz de çalıştı; süre iyimser değil, karışıktır.
+
+- **Teslim edilen varsayılan ayar v1'dir** (`config.KARAR_TALIMAT_SURUMU="v1"`, `AGENT_ARAMA_TOP_N=3`). v2 asıl metrikte (öneri) geriledi: "ek eklenmemiş" bilgisi modeli gereksiz "bilgi iste" önerisine itti (7 talep). Ekler panelde temsilciye gösterilir.
+- Demo seti (6 talep, iyileştirmelerde kullanılmadı) v2 ile **5/6** (`karar_degerlendirme_demo_v2.md`); v1 ile demo seti ölçülmedi.
+- **v3** — politikanın karar adımları talimata eklendi (`app/agent/graf.py` `KARAR_ADIMLARI`; açmak için `$env:KARAR_TALIMAT_SURUMU="v3"; $env:AGENT_ARAMA_TOP_N="5"`). Teslim saatinde 30 talepte ölçülüyordu; sonuç `karar_degerlendirme_test.md`'ye yazılacaktır. Adımlar test hataları görüldükten sonra yazıldığı için sonucu iyimser olacaktır.
+- Hata türü (v1): en sık hata iade edilemeyen ürüne veya süresi geçmiş talebe "iade kabul" (riskli kabul 7/30). Güvenlik katmanı yanlış önerilerin 4/14'ünde uyarı üretti. Bu nedenle sistem öneriyi **insan onayı olmadan uygulamaz**; onay rolü ve zorunlu eskalasyon koddan gelir (eskalasyon 30/30).
 
 ## 7. Sınırlamalar
 
-- Yerel demo: kimlik doğrulama ve HTTPS yok; servisler yalnızca 127.0.0.1'de çalışır.
+- Yerel demo: kimlik doğrulama ve HTTPS yok; servisler yalnızca 127.0.0.1'de çalışır. Paneldeki müşteri ve temsilci seçimi demo içindir.
+- Ekler yalnızca TÜRÜYLE kaydedilir (dosya yüklenmez); içeriği sistem doğrulamaz, temsilci kontrol eder.
 - CPU'da yanıt süresi uzun; GPU ile kısalır.
 - Küçük yerel modellerin Türkçe karar kalitesi sınırlı. Bu yüzden kritik kontroller deterministik katmanda; çelişkiler ⚠ uyarısıyla çalışana gösterilir.
 - Telafi kuponu tutarı mesajdan otomatik çıkarılmaz; kupon onay rolü (POL-ESK-007 5.1) `kurallar.kupon_onay_rolu` ile hesaplanır ancak agent akışına bağlı değildir.
 - n8n tarafında yalnızca talep alma akışı vardır. Karar sonrası işlemler ve politika güncelleme akışları kapsam dışıdır.
+- Docker / docker-compose yoktur: uygulama `.venv` ile çalışır, n8n ayrı bir Docker container'ında çalıştırılır. Kurulum `kurulum.ps1` / `baslat.ps1` ile otomatiktir.
+- **Öneri doğruluğu sınırlı** (§6): 8B parametreli yerel model CPU'da, düşünme modu kapalı. Sonraki adımlar: GPU ile daha büyük model veya düşünme modu (sınıflandırmada +2 doğru ölçüldü, ancak ~4 kat süre), politikadan türetilmiş çözümlü örnekler, test setinden bağımsız daha büyük bir değerlendirme seti.
 
 Ayrıntılı plan ve karar günlüğü: [PROJE_PLANI.md](PROJE_PLANI.md), [CALISMA_KURALLARI.md](CALISMA_KURALLARI.md).

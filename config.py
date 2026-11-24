@@ -29,6 +29,18 @@ CHUNK_SIZE = 900          # karakter; başlık bazlı bölümlemeden sonra uzun 
 CHUNK_OVERLAP = 120
 RETRIEVAL_K = 8           # ilk vektör aramasında aday sayısı
 RERANK_TOP_N = 3          # LLM'e verilecek son parça sayısı
+RRF_SABITI = 60           # Çoklu sorgu birleştirme (Reciprocal Rank Fusion) için standart sabit
+# Agent araması (Faz 9, eval/raporlar/arama_talep_test.md): müşteri mesajı tek sorgu. Arama ölçümünde ilk 5 madde
+# beklenen maddelerin hepsini 10/30 talepte, ilk 3 madde 7/30 talepte getirdi; ancak karar ölçümünde v1 3 maddeyle
+# ölçüldüğü için varsayılan 3'tür (v3 talimatı 5 maddeyle ölçüldü). LLM'in yazdığı arama sorularıyla çoklu sorgu
+# (RRF / dönüşümlü) iyileştirmedi (9/30). Yöntem None → yalnızca müşteri mesajı.
+AGENT_ARAMA_YONTEMI = os.getenv("AGENT_ARAMA_YONTEMI") or None
+AGENT_ARAMA_TOP_N = int(os.getenv("AGENT_ARAMA_TOP_N", "3"))
+# Öneri talimatı (eval/raporlar/karar_degerlendirme_test_v*.md):
+#   v1 = Faz 8 talimatı, ek bilgisi modele gitmez; 3 madde ile 16/30 (teslim varsayılanı, ölçülmüş)
+#   v2 = (yalnızca ölçüm kaydı) v1 + "ek var/yok" satırı + 5 madde; 12/30, geri alındı
+#   v3 = v1 + politikanın karar adımları + kapsamı daraltılmış ek bilgisi + politika istisnası cümlesi (Faz 9)
+KARAR_TALIMAT_SURUMU = os.getenv("KARAR_TALIMAT_SURUMU", "v1")
 # Hibrit rerank: skor = SEMANTIK_AGIRLIK * anlamsal benzerlik + (1 - SEMANTIK_AGIRLIK) * kelime örtüşmesi.
 # Faz 3 ızgarasında bge-m3 için en iyi değer 1.0 çıktı (kelime örtüşmesi katkı sağlamadı); eval/raporlar/rag_izgara.md
 SEMANTIK_AGIRLIK = float(os.getenv("SEMANTIK_AGIRLIK", "1.0"))

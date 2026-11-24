@@ -74,6 +74,9 @@ def init_db() -> str:
           arguments_json TEXT NOT NULL, response_json TEXT, success INTEGER NOT NULL, duration_ms INTEGER NOT NULL,
           error_message TEXT, created_at TEXT NOT NULL);
         """)
+        # Faz 9 göçü: talep ekleri (türleri) — eski veritabanlarında sütun yoksa eklenir
+        if "ekler_json" not in {r["name"] for r in c.execute("PRAGMA table_info(talepler)")}:
+            c.execute("ALTER TABLE talepler ADD COLUMN ekler_json TEXT")
     return str(DB_PATH)
 
 
@@ -197,6 +200,7 @@ def talep_getir(talep_no: str) -> dict:
             "SELECT node_name, event_type, details_json, created_at FROM workflow_events WHERE talep_no=? ORDER BY id", (talep_no,))]
         d = dict(t)
         d["analiz"] = json.loads(d.pop("analiz_json") or "null")
+        d["ekler"] = json.loads(d.pop("ekler_json", None) or "[]")
         return {"bulundu": True, "talep": d, "kararlar": kararlar, "olaylar": olaylar}
 
 
@@ -207,6 +211,88 @@ def talep_listele(limit: int = 50) -> list[dict]:
             "CASE WHEN durum='YENI' AND analiz_json IS NOT NULL THEN 'ONAY_BEKLIYOR' ELSE durum END AS durum, "
             "json_extract(analiz_json,'$.oneri.oneri') AS oneri, json_extract(analiz_json,'$.guvenlik.gerekli_onay') AS gerekli_onay "
             "FROM talepler ORDER BY id DESC LIMIT ?", (limit,))]
+
+
+# --- Panel sorguları (Faz 9: müşteri ve temsilci ekranları) ---
+PANEL_DISI_KANALLAR = ("EVAL",)   # değerlendirme scriptinin kayıtları panelde listelenmez
+_YER = ",".join("?" * len(PANEL_DISI_KANALLAR))
+
+
+def talep_ekleri_kaydet(talep_no: str, ekler: list[str]) -> None:
+    """Talep alınırken müşterinin eklediği ek TÜRLERİ (karar değildir)."""
+    with connect() as c:
+        c.execute("UPDATE talepler SET ekler_json=? WHERE talep_no=?", (json.dumps(ekler), talep_no))
+
+
+def panel_listesi(limit: int = 200) -> list[dict]:
+    """Temsilci gelen kutusu: talep + müşteri adı + analiz özeti + son karar + tamamlanan agent adımı sayısı."""
+    with connect() as c:
+        return [dict(r) for r in c.execute(
+            "SELECT t.talep_no, t.musteri_id, m.ad_soyad, t.siparis_no, t.kanal, substr(t.mesaj,1,160) AS mesaj, "
+            "t.created_at, t.updated_at, t.durum, t.analiz_json IS NOT NULL AS analiz_var, t.ekler_json, "
+            "json_extract(t.analiz_json,'$.oneri.oneri') AS oneri, "
+            "json_extract(t.analiz_json,'$.guvenlik.gerekli_onay') AS gerekli_onay, "
+            "json_extract(t.analiz_json,'$.siniflandirma.kategori') AS kategori, "
+            "json_extract(t.analiz_json,'$.siniflandirma.aciliyet') AS aciliyet, "
+            "json_extract(t.analiz_json,'$.guvenlik.kalem') AS kalem, "
+            "json_array_length(t.analiz_json,'$.guvenlik.uyarilar') AS uyari_sayisi, "
+            "json_extract(t.analiz_json,'$.guvenlik.eskalasyon_birimleri') AS eskalasyon, "
+            "json_extract(t.analiz_json,'$.bilgi.injection_isareti') AS injection, "
+            "(SELECT count(DISTINCT node_name) FROM workflow_events w WHERE w.talep_no=t.talep_no) AS adim, "
+            "(SELECT karar FROM kararlar k WHERE k.talep_no=t.talep_no ORDER BY id DESC LIMIT 1) AS karar "
+            "FROM talepler t LEFT JOIN musteriler m ON m.musteri_id=t.musteri_id "
+            f"WHERE t.kanal NOT IN ({_YER}) ORDER BY t.id DESC LIMIT ?", (*PANEL_DISI_KANALLAR, limit))]
+
+
+def musteri_listesi() -> list[dict]:
+    with connect() as c:
+        return [dict(r) for r in c.execute(
+            "SELECT m.musteri_id, m.ad_soyad, count(s.siparis_no) AS siparis_sayisi FROM musteriler m "
+            "LEFT JOIN siparisler s ON s.musteri_id=m.musteri_id GROUP BY m.musteri_id ORDER BY m.musteri_id")]
+
+
+def musteri_siparisleri(musteri_id: str) -> list[dict]:
+    """Müşterinin kendi siparişleri (müşteri ekranı): ürünler ve fiyatlar, iç alanlar yok."""
+    with connect() as c:
+        sonuc = []
+        for s in c.execute("SELECT siparis_no, durum, siparis_tarihi, teslim_tarihi, kalemler_json FROM siparisler "
+                           "WHERE musteri_id=? ORDER BY siparis_tarihi DESC", (musteri_id,)):
+            kalemler = json.loads(s["kalemler_json"])
+            sonuc.append({"siparis_no": s["siparis_no"], "durum": s["durum"], "siparis_tarihi": s["siparis_tarihi"],
+                          "teslim_tarihi": s["teslim_tarihi"],
+                          "urunler": [{"urun": k["urun"], "fiyat": k["liste_fiyati"], "hediye": k.get("hediye", False)}
+                                      for k in kalemler]})
+        return sonuc
+
+
+def musteri_talepleri(musteri_id: str) -> list[dict]:
+    """Müşterinin talepleri ve son kararları (ham; müşteriye gösterilecek alanları app/panel.py seçer)."""
+    with connect() as c:
+        talepler = [dict(r) for r in c.execute(
+            "SELECT talep_no, siparis_no, kanal, mesaj, durum, created_at, ekler_json, analiz_json IS NOT NULL AS analiz_var "
+            f"FROM talepler WHERE musteri_id=? AND kanal NOT IN ({_YER}) ORDER BY id DESC",
+            (musteri_id, *PANEL_DISI_KANALLAR))]
+        for t in talepler:
+            k = c.execute("SELECT karar, gonderilen_yanit, created_at FROM kararlar WHERE talep_no=? ORDER BY id DESC LIMIT 1",
+                          (t["talep_no"],)).fetchone()
+            t["son_karar"] = dict(k) if k else None
+        return talepler
+
+
+def istatistik() -> dict:
+    """Gelen kutusu üstündeki göstergeler — veritabanından o anda hesaplanır (değerlendirme kayıtları hariç)."""
+    with connect() as c:
+        durumlar = dict(c.execute(
+            "SELECT CASE WHEN durum='YENI' AND analiz_json IS NOT NULL THEN 'ONAY_BEKLIYOR' ELSE durum END, count(*) "
+            f"FROM talepler WHERE kanal NOT IN ({_YER}) GROUP BY 1", PANEL_DISI_KANALLAR).fetchall())
+        kararlar = dict(c.execute(
+            "SELECT k.karar, count(*) FROM kararlar k JOIN talepler t USING(talep_no) "
+            f"WHERE t.kanal NOT IN ({_YER}) GROUP BY k.karar", PANEL_DISI_KANALLAR).fetchall())
+        sure = c.execute(
+            "SELECT avg(sn) FROM (SELECT (julianday(max(w.created_at)) - julianday(t.created_at)) * 86400 AS sn "
+            "FROM talepler t JOIN workflow_events w ON w.talep_no=t.talep_no AND w.node_name='analiz_kaydet' "
+            f"WHERE t.kanal NOT IN ({_YER}) GROUP BY t.talep_no)", PANEL_DISI_KANALLAR).fetchone()[0]
+    return {"durumlar": durumlar, "kararlar": kararlar, "ort_analiz_sn": round(sure) if sure else None}
 
 
 def workflow_event(thread_id, talep_no, node_name, event_type, details, operation_key) -> dict:

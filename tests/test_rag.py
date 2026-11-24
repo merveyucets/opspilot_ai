@@ -16,7 +16,7 @@ from types import SimpleNamespace
 from config import CHUNK_SIZE, DATA_DIR, POLICY_DIR
 from app.rag.chunker import tum_dokumanlari_parcala
 from app.rag.indexer import icerik_ozeti
-from app.rag.search import AramaSonucu, erisim_filtresi, tekillestir
+from app.rag.search import AramaSonucu, donusumlu_birlestir, erisim_filtresi, rrf_birlestir, tekillestir
 from eval.metrikler import ana_madde, esik_analizi, soruyu_degerlendir
 
 
@@ -72,6 +72,26 @@ class TestArama(unittest.TestCase):
         a = [sonuc("POL-HSR-004", 2, 0.9, "p1"), sonuc("POL-HSR-004", 2, 0.8, "p2"), sonuc("POL-PARA-002", 3, 0.7)]
         t = tekillestir(a)
         self.assertEqual([x.id for x in t], ["POL-HSR-004_M2_p1", "POL-PARA-002_M3_0"])
+
+    def test_rrf_birden_cok_sorguda_cikan_one_gecer(self):
+        mesaj = [sonuc("POL-A-001", 1, 0.9), sonuc("POL-B-002", 2, 0.8)]
+        soru1 = [sonuc("POL-C-003", 3, 0.7), sonuc("POL-B-002", 2, 0.6)]
+        soru2 = [sonuc("POL-B-002", 2, 0.5)]
+        r = rrf_birlestir([mesaj, soru1, soru2], top_n=2)
+        self.assertEqual([(x.kod, x.madde_no) for x in r], [("POL-B-002", 2), ("POL-A-001", 1)])
+        self.assertEqual(r[0].benzerlik, 0.8)   # sorgular arasındaki en yüksek benzerlik korunur
+
+    def test_donusumlu_her_sorgunun_ilk_sonucu_girer(self):
+        mesaj = [sonuc("POL-A-001", 5), sonuc("POL-B-002", 3)]
+        soru1 = [sonuc("POL-C-006", 6), sonuc("POL-A-001", 5)]
+        soru2 = [sonuc("POL-A-001", 5), sonuc("POL-D-009", 9)]
+        r = donusumlu_birlestir([mesaj, soru1, soru2], top_n=3)
+        self.assertEqual([(x.kod, x.madde_no) for x in r], [("POL-A-001", 5), ("POL-C-006", 6), ("POL-B-002", 3)])
+        self.assertEqual(len(donusumlu_birlestir([mesaj], top_n=5)), 2)
+
+    def test_rrf_tek_liste_sirayi_korur(self):
+        tek = [sonuc("POL-A-001", 1, 0.9), sonuc("POL-B-002", 2, 0.8), sonuc("POL-C-003", 3, 0.7)]
+        self.assertEqual(rrf_birlestir([tek], top_n=3), tek)
 
 
 class TestMetrikler(unittest.TestCase):
