@@ -86,6 +86,7 @@ Alınan her mimari kararın kısa gerekçesi. Yeni karar alındıkça en alta ek
 | 2026-11-24 | Seed, demo/ölçüm günü yeniden çalıştırılır | Gece yarısını geçen ölçümde gün sayıları 1 kaydı (T03 14→15. gün); ölçüm durdurulup seed ile yeniden başlatıldı. |
 | 2026-11-24 | Teslim varsayılanı öneri talimatı **v1** (16/30 ölçüldü). v2 (ek bilgisi + 5 madde) 12/30 ile geriledi, geri alındı; v3 (politikanın karar adımları) ayarla açılır, teslim saatinde ölçülüyordu | Yalnızca ölçülmüş sürüm varsayılan olur (altın kural 6). v2'de "ek eklenmemiş" satırı gereksiz EKSIK_BILGI'ye itti (7 talep). v3 adımları test hatalarından sonra yazıldı → iyimser. |
 | 2026-11-24 | Docker/docker-compose eklenmedi; yerine test edilmiş `kurulum.ps1` / `baslat.ps1` + `requirements.lock.txt` | Teslime 2 saat kala Docker imajı + 6,5 GB model test edilemezdi; denenmemiş compose dosyası değerlendiricide hata verir. |
+| 2026-11-24 | Varsayılan öneri talimatı v3 (teslimden sonra, Merve onayıyla) | v3 17/30 · grup 20/30 · düşük onay rolü 0 (v1 16/30 · 18/30 · 1). Fark küçük ve ölçüm iyimser; README'de açıkça yazıldı. |
 
 ## 5. Kod ve veri standartları
 
@@ -128,9 +129,9 @@ Donanım notu: GPU yok, tüm model çıkarımı CPU'da. Süre ölçümleri buna 
 
 > Her çalışma oturumunun sonunda bu bölüm güncellenir. Yeni oturum buradan devam eder.
 
-**Son güncelleme:** 2026-11-24 (kod teslimi 12:00)
+**Son güncelleme:** 2026-11-24 (kod teslimi 12:00; v3 sonucu teslimden sonra eklendi)
 
-**Durum:** Faz 0–8 tamamlandı. Faz 9 (2026-11-24): talep ekleri, talep mesajlarıyla arama ölçümü, karar ölçümü v1/v2 (+ demo seti), yeni panel (müşteri + temsilci ekranı), `kurulum.ps1` / `baslat.ps1`, README sonuçları. Teslim varsayılanı öneri talimatı v1 (16/30). v3 talimatı (politikanın karar adımları) teslim saatinde ölçülüyordu; ilk 8 talepte 7/8 (v1 5/8) — tam sonuç `eval/raporlar/karar_degerlendirme_test.md`; v1'den iyiyse `config.KARAR_TALIMAT_SURUMU="v3"` ve `AGENT_ARAMA_TOP_N=5` yapılıp README §6 güncellenir.
+**Durum:** Faz 0–8 tamamlandı. Faz 9 (2026-11-24): talep ekleri, talep mesajlarıyla arama ölçümü, karar ölçümü v1/v2 (+ demo seti), yeni panel (müşteri + temsilci ekranı), `kurulum.ps1` / `baslat.ps1`, README sonuçları. Varsayılan öneri talimatı v3 (17/30, 5 madde; v1 16/30). v3 ve v1 demo setinde ölçülmedi (v2 5/6).
 
 **Çalıştırma:** `kurulum.ps1` bir kez, sonra `baslat.ps1` (README "Hızlı başlangıç"). Elle: `app.veritabani --seed` (her demo/ölçüm GÜNÜ) → `app.mcp_sunucusu` → `uvicorn app.api:app` → panel http://127.0.0.1:8000 (eski panel `/eski`).
 

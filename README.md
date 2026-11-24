@@ -131,13 +131,15 @@ Demo talepleri müşteri ekranındaki **"Sunum için"** listesinden veya temsilc
 |---|---|---|---|---|---|---|---|---|
 | **v1** — Faz 8 talimatı, 3 madde (`karar_degerlendirme_test_v1.md`) | **16/30** | 18/30 | 25/30 | 1/30 | **30/30** | 30/30 | 0 / 0 | 166 sn* |
 | v2 — + ek bilgisi, 5 madde (`karar_degerlendirme_test_v2.md`) | 12/30 | 15/30 | 29/30 | 0/30 | **30/30** | 29/30 | 0 / 0 | 196 sn |
+| **v3** — + politikanın karar adımları, 5 madde (`karar_degerlendirme_test_v3.md`) | **17/30** | **20/30** | 28/30 | **0/30** | **30/30** | 30/30 | 0 / 0 | 231 sn |
 
 \* v1 ölçümü sırasında aynı bilgisayarda başka bir analiz de çalıştı; süre iyimser değil, karışıktır.
 
-- **Teslim edilen varsayılan ayar v1'dir** (`config.KARAR_TALIMAT_SURUMU="v1"`, `AGENT_ARAMA_TOP_N=3`). v2 asıl metrikte (öneri) geriledi: "ek eklenmemiş" bilgisi modeli gereksiz "bilgi iste" önerisine itti (7 talep). Ekler panelde temsilciye gösterilir.
-- Demo seti (6 talep, iyileştirmelerde kullanılmadı) v2 ile **5/6** (`karar_degerlendirme_demo_v2.md`); v1 ile demo seti ölçülmedi.
-- **v3** — politikanın karar adımları talimata eklendi (`app/agent/graf.py` `KARAR_ADIMLARI`; açmak için `$env:KARAR_TALIMAT_SURUMU="v3"; $env:AGENT_ARAMA_TOP_N="5"`). Teslim saatinde 30 talepte ölçülüyordu; sonuç `karar_degerlendirme_test.md`'ye yazılacaktır. Adımlar test hataları görüldükten sonra yazıldığı için sonucu iyimser olacaktır.
-- Hata türü (v1): en sık hata iade edilemeyen ürüne veya süresi geçmiş talebe "iade kabul" (riskli kabul 7/30). Güvenlik katmanı yanlış önerilerin 4/14'ünde uyarı üretti. Bu nedenle sistem öneriyi **insan onayı olmadan uygulamaz**; onay rolü ve zorunlu eskalasyon koddan gelir (eskalasyon 30/30).
+- **Varsayılan ayar v3'tür** (`config.KARAR_TALIMAT_SURUMU="v3"`, `AGENT_ARAMA_TOP_N=5`). v1'e göre öneri 16 → 17, grup 18 → 20, gerekenden düşük onay rolü 1 → 0, yanlış önerilerde uyarı 4/14 → 5/13; buna karşılık riskli kabul 7 → 8 ve süre arttı. Asıl metrikteki fark 1 talep olduğundan rastlantıdan ayrıştırılamaz; karar adımları test hataları görüldükten sonra yazıldığı için sonuç **iyimserdir**. v1'e dönmek için `$env:KARAR_TALIMAT_SURUMU="v1"; $env:AGENT_ARAMA_TOP_N="3"`.
+- v2 asıl metrikte geriledi: "ek eklenmemiş" bilgisi modeli gereksiz "bilgi iste" önerisine itti (7 talep); geri alındı. v3'te ek bilgisi yalnızca kusur/hasar iddiasında önemli olduğu belirtilerek verilir (gereksiz "bilgi iste" 3). Ekler panelde temsilciye de gösterilir.
+- Demo seti (6 talep, iyileştirmelerde kullanılmadı) v2 ile **5/6** (`karar_degerlendirme_demo_v2.md`); v1 ve v3 ile demo seti ölçülmedi.
+- v3 karar adımları: `app/agent/graf.py` `KARAR_ADIMLARI` (her adım bir politika maddesine dayanır: POL-IADE-001 3/6, POL-HSR-004 4, POL-GAR-003 6, POL-DEG-005 2, POL-ESK-007 4.4).
+- Hata türü: en sık hata iade edilemeyen ürüne veya süresi geçmiş talebe "kabul" (riskli kabul v1 7/30, v3 8/30). Güvenlik katmanı yanlış önerilerin v3'te 5/13'ünde uyarı üretti. Bu nedenle sistem öneriyi **insan onayı olmadan uygulamaz**; onay rolü ve zorunlu eskalasyon koddan gelir (eskalasyon 30/30).
 
 ## 7. Sınırlamalar
 
